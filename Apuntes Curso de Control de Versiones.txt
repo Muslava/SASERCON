@@ -24,7 +24,7 @@ git status
 
 Estados de archivos: Modificado, preparado, confirmado.
 
-Rama: Origin Master (punto de partida):
+Rama: Oirigin Master (punto de partida):
 	Carpeta: Working directory.
 	Archivos: Untracked / Unmodified. El dev puede: modified para Confirmar -> $git add -> staged.
 $commit: cambios confirmados.
@@ -33,6 +33,6 @@ $commit: cambios confirmados.
 
 git remote add oirigin https://github.com/Muslava/PruebaILB.git
 git commit -m "Prueba núm 1"
-git push -u origin master	//login
+git push -u oirigin master	//login
 
 git clone https://github.com/Muslava/PruebaILB.git  //descargar repositorio
