@@ -1,0 +1,10 @@
+https://angular-university.io/lesson/angular-beginners-course-kickoff
+
+npm install -g @angular/cli
+ng new angular-course
+
+npm start
+//uses ng serve
+http://localhost:4200
+
+git checkout -b 1-components origin/1-components

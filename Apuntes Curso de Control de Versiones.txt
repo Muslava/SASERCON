@@ -11,14 +11,14 @@ $clone / pull: Obtener los archivos actualizados.
 
 ---------------------------------------------------------------------------
 
-git config --global user.name "Usuario"
-git config --globar user.email
-git config --list  //observar configuración
+$ git config --global user.name "Usuario"
+$ git config --globar user.email
+$ git config --list  //observar configuración
 
 ls // cd // localizar en la carpeta de trabajo
 
-git init
-git status
+$ git init
+$ git status
 
 ---------------------------------------------------------------------------
 
@@ -26,13 +26,47 @@ Estados de archivos: Modificado, preparado, confirmado.
 
 Rama: Oirigin Master (punto de partida):
 	Carpeta: Working directory.
-	Archivos: Untracked / Unmodified. El dev puede: modified para Confirmar -> $git add -> staged.
-$commit: cambios confirmados.
+	Archivos: Untracked / Unmodified. El dev puede: modified para Confirmar -> $ git add -> staged.
+$ commit: cambios confirmados.
 
 ---------------------------------------------------------------------------
 
-git remote add oirigin https://github.com/Muslava/PruebaILB.git
-git commit -m "Prueba núm 1"
-git push -u oirigin master	//login
+$ git remote add oirigin https://github.com/Muslava/PruebaILB.git
+$ git commit -m "Prueba núm 1"
+$ git push -u oirigin master	//login
 
-git clone https://github.com/Muslava/PruebaILB.git  //descargar repositorio
+$ git clone https://github.com/Muslava/PruebaILB.git  //descargar repositorio
+
+---------------------------------------------------------------------------
+
+Cambios de repositorio:
+$ git pull origin master
+$ git show x000000
+
+Ramas:
+principal -> master
+$ git branch "RamaNueva"
+$ git checkout	//en cuál rama me encuentro
+$ git branch	//qué ramas hay
+$ git checkout RamaNueva	//cambiar de rama
+$ git merge RamaNueva	//combinar RamaNueva con master
+$ git branch -d RamaNueva	//elimina la rama
+
+Commits:
+$ git log
+$ git show xx0x000x0x	//info
+$ git diff xx0x000x0x	//diferencias
+	Corrección:
+	$ git checkout x00x0x00000	//revertir a la penúltima versión
+	$ git push oirigin master
+	$ git commit --amend	//borrar el mensaje para que el commit sea reemplazado
+	$ git revert x00x0x00000	//anterior al último
+
+---------------------------------------------------------------------------
+
+$ git pull	//otener los cambios localmente
+
+Omisión de archivos:	//pueden ser: .log registros; .exe compilaciones; .node node_modules; carpetas IDE; .txt notas personales.
+.gitignore	//nombre del archivo
+carpeta/	//es una carpeta
+$ git add .
