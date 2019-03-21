@@ -1,0 +1,11 @@
+/>netsh wlan hostednetwork
+
+-->Habilitar compartir
+
+/>netsh wlan stop hostednetwork
+
+servicios -> Firewall de Windoes -> Tipo de inicio: Automático -> Aplicar -> Iniciar.
+
+/>netsh wlan start hostednetwork
+
+-->Habilitar compartir
