@@ -1,0 +1,24 @@
+﻿LogIn
+módulosAcceso // menuPrincipal
+ingresarCliente
+modificarCliente
+buscarCliente
+ingresarEmpleado
+buscarEmpleado
+modificarEmpleado
+contraseñaUsuario (Ingresar y modificar) // contraseña
+recuperarContraseña
+*agendarServicio:
+    tablaClientes
+    tablaServicios
+calendario
+agendarServicio*
+buscarProducto
+buscarServicio
+cotizarRefacción
+carrito
+ingresarServicio
+modificarServicio
+ingresarProducto
+modificarProducto
+alerta de Sistema
