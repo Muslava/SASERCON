@@ -1,0 +1,19 @@
+SERVICIOS:
+opc =opción 
+Scategoria 
+seguir 
+Scliente 
+rep 
+Stipo 
+Sdescripcion 
+Scosto 
+Sobservaciones 
+Ssstatus
+Slugar 
+Simportancia 
+SstatusPago
+Sduracion 
+Sfolio 
+encontrados 
+Sserv
+al 

@@ -1,0 +1,4 @@
+LOGIN:
+txtSolicitar_Contraseña
+txtSolicitar_Usuario 
+timmer
