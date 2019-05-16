@@ -58,30 +58,58 @@ public class menuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("<<ÍCONO>>");
+        jLabel1.setMaximumSize(new java.awt.Dimension(144, 144));
+        jLabel1.setMinimumSize(new java.awt.Dimension(144, 144));
+        jLabel1.setPreferredSize(new java.awt.Dimension(144, 144));
 
         jLabel2.setText("Ingresar Empleado");
 
         jLabel3.setText("<<ÍCONO>>");
+        jLabel3.setMaximumSize(new java.awt.Dimension(144, 144));
+        jLabel3.setMinimumSize(new java.awt.Dimension(144, 144));
+        jLabel3.setPreferredSize(new java.awt.Dimension(144, 144));
 
         jLabel4.setText("Buscar Empleado");
 
         jLabel5.setText("<<ÍCONO>>");
+        jLabel5.setMaximumSize(new java.awt.Dimension(144, 144));
+        jLabel5.setMinimumSize(new java.awt.Dimension(144, 144));
+        jLabel5.setPreferredSize(new java.awt.Dimension(144, 144));
 
         jLabel6.setText("Ingresar Cliente");
 
         jLabel7.setText("<<ÍCONO>>");
+        jLabel7.setMaximumSize(new java.awt.Dimension(144, 144));
+        jLabel7.setMinimumSize(new java.awt.Dimension(144, 144));
+        jLabel7.setPreferredSize(new java.awt.Dimension(144, 144));
 
         jLabel8.setText("Buscar Cliente");
 
         jLabel9.setText("<<Logo SASERCON>>");
+        jLabel9.setMaximumSize(new java.awt.Dimension(144, 144));
+        jLabel9.setMinimumSize(new java.awt.Dimension(144, 144));
+        jLabel9.setPreferredSize(new java.awt.Dimension(144, 144));
 
         jLabel10.setText("<<ÍCONO>>");
+        jLabel10.setMaximumSize(new java.awt.Dimension(144, 144));
+        jLabel10.setMinimumSize(new java.awt.Dimension(144, 144));
+        jLabel10.setPreferredSize(new java.awt.Dimension(144, 144));
 
         jLabel11.setText("<<ÍCONO>>");
+        jLabel11.setMaximumSize(new java.awt.Dimension(144, 144));
+        jLabel11.setMinimumSize(new java.awt.Dimension(144, 144));
+        jLabel11.setName(""); // NOI18N
+        jLabel11.setPreferredSize(new java.awt.Dimension(144, 144));
 
         jLabel12.setText("<<ÍCONO>>");
+        jLabel12.setMaximumSize(new java.awt.Dimension(144, 144));
+        jLabel12.setMinimumSize(new java.awt.Dimension(144, 144));
+        jLabel12.setPreferredSize(new java.awt.Dimension(144, 144));
 
         jLabel13.setText("<<ÍCONO>>");
+        jLabel13.setMaximumSize(new java.awt.Dimension(144, 144));
+        jLabel13.setMinimumSize(new java.awt.Dimension(144, 144));
+        jLabel13.setPreferredSize(new java.awt.Dimension(144, 144));
 
         jLabel14.setText("Buscar Producto");
 
@@ -96,6 +124,9 @@ public class menuPrincipal extends javax.swing.JFrame {
         jLabel19.setText("Cotizar Refacción");
 
         jLabel21.setText("<<ÍCONO>>");
+        jLabel21.setMaximumSize(new java.awt.Dimension(144, 144));
+        jLabel21.setMinimumSize(new java.awt.Dimension(144, 144));
+        jLabel21.setPreferredSize(new java.awt.Dimension(144, 144));
 
         jLabel22.setText("Asignar Contraseña");
 
@@ -104,10 +135,20 @@ public class menuPrincipal extends javax.swing.JFrame {
         jLabel24.setText("Salir");
 
         jLabel25.setText("<<ÍCONO>>");
+        jLabel25.setMaximumSize(new java.awt.Dimension(144, 144));
+        jLabel25.setMinimumSize(new java.awt.Dimension(144, 144));
+        jLabel25.setPreferredSize(new java.awt.Dimension(144, 144));
 
         jLabel26.setText("<<ÍCONO>>");
+        jLabel26.setMaximumSize(new java.awt.Dimension(144, 144));
+        jLabel26.setMinimumSize(new java.awt.Dimension(144, 144));
+        jLabel26.setPreferredSize(new java.awt.Dimension(144, 144));
+        jLabel26.setRequestFocusEnabled(false);
 
         jLabel27.setText("<<ÍCONO>>");
+        jLabel27.setMaximumSize(new java.awt.Dimension(144, 144));
+        jLabel27.setMinimumSize(new java.awt.Dimension(144, 144));
+        jLabel27.setPreferredSize(new java.awt.Dimension(144, 144));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -121,16 +162,16 @@ public class menuPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
-                                .addComponent(jLabel1))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel4))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel22))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jLabel25)))
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
@@ -141,8 +182,8 @@ public class menuPrincipal extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel6)
                                         .addComponent(jLabel8))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -150,95 +191,97 @@ public class menuPrincipal extends javax.swing.JFrame {
                                         .addGap(9, 9, 9)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(36, 36, 36)
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addComponent(jLabel15)
-                                                    .addComponent(jLabel11)
-                                                    .addComponent(jLabel21))
+                                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jLabel13))
+                                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                                         .addGap(62, 62, 62)
                                                         .addComponent(jLabel17)
-                                                        .addGap(0, 55, Short.MAX_VALUE))))
+                                                        .addGap(0, 0, Short.MAX_VALUE))))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel10)
+                                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(jLabel14))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel19)
                                                 .addGap(0, 0, Short.MAX_VALUE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
-                                                .addComponent(jLabel27)))
+                                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel24)
                                         .addGap(43, 43, 43))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(48, 48, 48)
-                        .addComponent(jLabel26)
+                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel12))
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
                             .addComponent(jLabel16))
-                        .addGap(49, 49, 49)
+                        .addGap(151, 151, 151)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
                             .addComponent(jLabel17)))
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel5))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel6))
                         .addGap(56, 56, 56)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel7))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel8))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
-                .addComponent(jLabel21)
+                            .addComponent(jLabel8)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(jLabel19))
                 .addGap(83, 83, 83)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
-                    .addComponent(jLabel26)
-                    .addComponent(jLabel27))
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
