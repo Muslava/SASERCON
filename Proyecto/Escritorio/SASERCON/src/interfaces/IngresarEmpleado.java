@@ -456,18 +456,31 @@ protected boolean IEvigente;
         try {
             PreparedStatement ps;
             ps = conec.prepareStatement(senSQL);
-            ps.setString(1, nom);
-            ps.setString(2, dir);
-            ps.setString(3, email);
+            ps.setString(1,IEmatricula);
+            ps.setString(2,IEcorreo);
+            ps.setString(3,IEnombre_de_empleado);
+            ps.setString(4,IEapellido_paterno_empleado);
+            ps.setString(5,IEapellido_materno_empleado);
+            ps.setString(6,IEempresa);
+            ps.setString(7,IEdireccion);
+            ps.setString(8,IEcurp);
+            ps.setString(9,IErfc);
+            ps.setString(10,IEnss);
+            ps.setString(11,IEcelular);
+            ps.setString(12,IEtelefono);
+            ps.setString(13,IEtelefono_de_emergencia);
+            ps.setString(14,IEnombre_del_contacto);
+            ps.setString(15,IEapellido_paterno_contacto);
+            ps.setString(16,IEapellido_materno_contacto);
+            ps.setString(17,IEcorreo_del_contacto);
+            ps.setString(18,IEvigente);
             int n = ps.executeUpdate();
             if (n > 0)  {
+                vaciar();
                 JOptionPane.showOptionDialog(this, "Se han guardado sus datos satisfactoriamente",
                         "MySQL Information", JOptionPane.INFORMATION_MESSAGE,
                         JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" 0K "},"0K");
-                txtNom.setText("");
-                txtDir.setText("");
-                txtEmail.setText("");
-                this.txtNom.requestFocus();
+
             }
         }
         catch( SQLException ex )    {
@@ -476,6 +489,10 @@ protected boolean IEvigente;
     }
     
     private void btnIEcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIEcancelarActionPerformed
+        vaciar();
+    }//GEN-LAST:event_btnIEcancelarActionPerformed
+
+    public void vaciar() {
         this.txtIEmatricula.setText("");
         this.txtIEcorreo.setText("");
         this.txtIEnombre_de_empleado.setText("");
@@ -494,8 +511,7 @@ protected boolean IEvigente;
         this.txtIEapellido_materno_contacto.setText("");
         this.txtIEcorreo_del_contacto.setText("");
         this.tgbIEvigente.setSelected(true);
-    }//GEN-LAST:event_btnIEcancelarActionPerformed
-
+    }
     private void btnIEregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIEregresarActionPerformed
         solo regresar
     }//GEN-LAST:event_btnIEregresarActionPerformed
