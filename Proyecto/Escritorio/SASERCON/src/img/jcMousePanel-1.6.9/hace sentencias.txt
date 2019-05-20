@@ -1,0 +1,5 @@
+cliente,direccion,direccioncliente-,cotizacion-,statuscotizacion-,clasificacionproducto-
+
+clasificaciondeproducto
+activo fijo
+activo circulante
