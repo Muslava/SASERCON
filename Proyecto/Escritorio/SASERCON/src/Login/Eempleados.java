@@ -249,7 +249,7 @@ public class Eempleados {
             opc=al.valint("Su opcion: ");
             switch (opc) {
                 case 1:
-                    Ematricula.add(al.matricula());
+                    //Ematricula.add(al.matricula());
                     System.out.println("\nLa matricula del empleado es:" +Ematricula.get(Ematricula.size()-1));
                     seguir=false;
                     break;

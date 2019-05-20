@@ -5,17 +5,23 @@
  */
 package interfaces;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author coner
  */
 public class menuPrincipal extends javax.swing.JFrame {
-
+Image MAsasercon=Toolkit.getDefaultToolkit().createImage("~\\src\\img\\LOGOSASERCONTRANSPARENTE.png");
     /**
      * Creates new form menuPrincipal
      */
     public menuPrincipal() {
         initComponents();
+        MAsasercon=MAsasercon.getScaledInstance(144, 144, 1);
+        this.lblMAsasercon.setIcon(new ImageIcon(MAsasercon));
     }
 
     /**
@@ -28,7 +34,7 @@ public class menuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        lblMAsasercon = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -45,10 +51,10 @@ public class menuPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel9.setText("<<Logo SASERCON>>");
-        jLabel9.setMaximumSize(new java.awt.Dimension(144, 144));
-        jLabel9.setMinimumSize(new java.awt.Dimension(144, 144));
-        jLabel9.setPreferredSize(new java.awt.Dimension(144, 144));
+        lblMAsasercon.setToolTipText("");
+        lblMAsasercon.setMaximumSize(new java.awt.Dimension(144, 144));
+        lblMAsasercon.setMinimumSize(new java.awt.Dimension(144, 144));
+        lblMAsasercon.setPreferredSize(new java.awt.Dimension(144, 144));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_perm_contact_cal_grey600_18dp_1.png"))); // NOI18N
         jButton1.setText("Ingresar Empleado");
@@ -116,10 +122,15 @@ public class menuPrincipal extends javax.swing.JFrame {
                                     .addComponent(jButton12))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(285, 285, 285)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jButton7)
-                                            .addComponent(jButton3))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(285, 285, 285)
+                                                .addComponent(jButton3))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(lblMAsasercon, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jButton7)))
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -132,10 +143,6 @@ public class menuPrincipal extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButton13)
-                                        .addContainerGap())
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(76, 76, 76)
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addContainerGap())))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,20 +167,19 @@ public class menuPrincipal extends javax.swing.JFrame {
                                 .addComponent(jButton7))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(172, 172, 172)
-                                .addComponent(jButton6))))
+                                .addComponent(jButton6)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 390, Short.MAX_VALUE)
+                        .addComponent(jButton13)
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(111, 111, 111)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton5)
-                            .addComponent(jButton8))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 378, Short.MAX_VALUE)
-                .addComponent(jButton13)
-                .addContainerGap())
+                            .addComponent(jButton8)
+                            .addComponent(lblMAsasercon, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(252, 252, 252)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
+                .addGap(468, 468, 468)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton9)
                     .addComponent(jButton10))
@@ -261,7 +267,7 @@ public class menuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblMAsasercon;
     // End of variables declaration//GEN-END:variables
 }
