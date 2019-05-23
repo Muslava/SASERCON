@@ -1,0 +1,12 @@
+btnMAingresar_empleado
+btnMAbuscar_empleado
+btnMAingresar_cliente
+btnMAbuscar_cliente
+btnMAingresar_producto
+btnMAbuscar_producto
+btnMAingresar_servicio
+btnMAbuscar_servicio
+btnMAagendar
+btnMAcotizar_refaccion
+btnMAasignar_contraseña
+btnMAmodificar_contraseña

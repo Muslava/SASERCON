@@ -55,8 +55,13 @@ public class Agenda {
         
     }
 
+    public void Generar_orden_trabajo() {
+    }
 
-static long milisegundos_di = 24 * 60 *60 * 100;
+    public void Asignar()   {
+    }
+    
+    static long milisegundos_di = 24 * 60 *60 * 100;
     
     public void FechaAyB() throws ParseException {
                         

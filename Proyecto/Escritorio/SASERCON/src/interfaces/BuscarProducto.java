@@ -74,11 +74,11 @@ public class BuscarProducto extends javax.swing.JFrame {
 
         jLabel4.setText("Marca");
 
-        jLabel5.setText("Codigo Fabricante");
+        jLabel5.setText("Código Fabricante");
 
         jLabel6.setText("Clave");
 
-        jLabel7.setText("Codigo Baraas");
+        jLabel7.setText("Código Barras");
 
         jButton1.setText("Buscar");
 

@@ -16,3 +16,7 @@ txtIEapellido_paterno_contacto
 txtIEapellido_materno_contacto
 txtIEcorreo_del_contacto
 tgbIEvigente
+fchIEagregar_foto
+dialogIEagregar_foto
+IEfi
+IEfoto

@@ -108,14 +108,6 @@ public class ALERTA {
         return matricula;
     }*/
 
-    public int matricula(int a)  {
-        do    {
-            if(a.matches("")&&vacio(variable)==false) seguir=false;
-            else System.out.println("\nEl dato ingresado no es correcto.");
-        }while(seguir=true);
-        return a;
-    }
-
     public String folio()  {
         //Letras validas para matricula
         char[] array = {'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'};

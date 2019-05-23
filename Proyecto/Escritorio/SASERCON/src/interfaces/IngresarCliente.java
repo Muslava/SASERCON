@@ -66,7 +66,7 @@ public class IngresarCliente extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnICcancelar = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
 
@@ -163,7 +163,12 @@ public class IngresarCliente extends javax.swing.JFrame {
 
         jButton3.setText("Modificar");
 
-        jButton4.setText("Cancelar");
+        btnICcancelar.setText("Cancelar");
+        btnICcancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnICcancelarActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Guardar");
 
@@ -273,7 +278,7 @@ public class IngresarCliente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(34, 34, 34)
-                .addComponent(jButton4)
+                .addComponent(btnICcancelar)
                 .addGap(29, 29, 29)
                 .addComponent(jButton5)
                 .addContainerGap())
@@ -358,7 +363,7 @@ public class IngresarCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jButton4)
+                    .addComponent(btnICcancelar)
                     .addComponent(jButton5))
                 .addContainerGap())
         );
@@ -403,6 +408,10 @@ public class IngresarCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void btnICcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnICcancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnICcancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -442,11 +451,11 @@ public class IngresarCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnICcancelar;
     private javax.swing.JLabel iCFoto;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
