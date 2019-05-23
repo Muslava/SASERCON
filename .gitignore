@@ -7,3 +7,5 @@ SASERCON DRIVE.lnk
 /Proyecto/Interfaces/asd/nbproject/private/
 /Proyecto/Interfaces/POO_1501_19/nbproject/private/
 *.class
+*.class
+/Proyecto/Escritorio/SASERCON/build/classes/
