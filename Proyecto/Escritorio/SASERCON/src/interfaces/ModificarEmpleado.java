@@ -5,6 +5,12 @@
  */
 package interfaces;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.sql.*;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
 /**
  *
  * @author coner
@@ -291,6 +297,32 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9ActionPerformed
 
+    public void Imagen() {
+        ConexionMySQL cmysql = new ConexionMySQL();
+        Connection conec = (Connection) cmysql.Conectar();
+        
+        ResultSet rs = null;
+        
+        try {
+            rs = ConexionMySQL.consultar("SELECT * FROM empleados");
+            Blob blob = rs.getBlob(3);
+            byte[] data = blob.getBytes(1, (int)blob.length());
+            BufferedImage img = null;
+            try	{
+                    img = ImageIO.read(new ByteArrayInputStream(data));
+            } catch(Exception ex)	{
+                JOptionPane.showMessageDialog(null, ex);
+            }
+
+            ImageIcon icono = new ImageIcon(img);
+            fila[1] = new JLabel(icono);
+        } catch(Exception ex)   {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+
+    }
+    
     /**
      * @param args the command line arguments
      */

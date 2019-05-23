@@ -32,5 +32,16 @@ public class ConexionMySQL {
           return enlace;  
             
         }
-    
+    public ResultSet consultar(String st)	{
+	Connection con = Conectar();
+	ResultSet rs = null;
+	try	{
+		PreparedStatement ps = con.prepareStatement(st);
+		rs = ps.executeQuery();
+	} catch(Exception ex)	{
+            JOptionPane.showMessageDialog(null, ex);
+	}
+	return rs;
+    }
+
 }

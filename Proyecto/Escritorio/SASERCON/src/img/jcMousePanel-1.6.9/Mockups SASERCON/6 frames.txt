@@ -1,4 +1,0 @@
-3 de contraseña ---- COMPLETADO
-carrito ------ COMPLETADO
-lista de clientes y servicios es casi la misma interfaz-----COMPLETADO
-tipos alertas----COMPLETADO
