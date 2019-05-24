@@ -1,0 +1,7 @@
+BD empresa varchar(10) -> varchar(25)
+BD estatusCotizacion smallint(10) -> varchar(10)
+BD servicios nombreServicio varchar(20) -> varchar(50)
+BD empleados -> correoEmpleado (POO)
+BD empleados +fotoEmpleado (POO)
+BD clientes +fotoCliente (POO)
+POO Apellido Paterno, Apellido Materno

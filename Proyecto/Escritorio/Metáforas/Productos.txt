@@ -1,0 +1,15 @@
+PRODUCTOS:
+Ppeso_maximo
+Pcodigo_de_barras
+Pnombre_del_producto 
+Pdescripcion_del_producto 
+Pmodelo 
+Pfamilia 
+Pmarca
+Pcodigo_fabricante 
+Punidad_de_peso
+Punidad_de_medida
+Pforma_de_entrega 
+Pclasificacion_del_producto 
+Pstatus 
+Prod
