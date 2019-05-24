@@ -9,12 +9,12 @@ package interfaces;
  *
  * @author coner
  */
-public class SASERCON extends javax.swing.JInternalFrame {
+public class ModulosAcceso extends javax.swing.JFrame {
 
     /**
-     * Creates new form SASERCON
+     * Creates new form ModulosAcceso
      */
-    public SASERCON() {
+    public ModulosAcceso() {
         initComponents();
     }
 
@@ -42,6 +42,8 @@ public class SASERCON extends javax.swing.JInternalFrame {
         btnMAasignar_contraseña = new javax.swing.JButton();
         btnMAmodificar_contraseña = new javax.swing.JButton();
         btnMAsalir = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnMAingresar_empleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_perm_contact_cal_grey600_18dp_1.png"))); // NOI18N
         btnMAingresar_empleado.setText("Ingresar Empleado");
@@ -223,7 +225,7 @@ public class SASERCON extends javax.swing.JInternalFrame {
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addGap(134, 134, 134)
                                 .addComponent(btnMAagendar)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblMAsasercon, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,6 +359,40 @@ public class SASERCON extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnMAsalirActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ModulosAcceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ModulosAcceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ModulosAcceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ModulosAcceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ModulosAcceso().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMAagendar;

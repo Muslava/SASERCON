@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -34,7 +38,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
@@ -44,7 +48,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnMAsalir" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
@@ -63,7 +67,7 @@
                                   <Component id="btnMAagendar" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="50" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="lblMAsasercon" min="-2" pref="314" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -94,13 +98,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnMAbuscar_producto" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnMAingresar_cliente" min="-2" pref="108" max="-2" attributes="0"/>
-                                      <Component id="btnMAingresar_empleado" min="-2" pref="108" max="-2" attributes="0"/>
+                                      <Component id="btnMAbuscar_producto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnMAingresar_cliente" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
+                                      <Component id="btnMAingresar_empleado" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
@@ -110,8 +114,8 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="btnMAbuscar_servicio" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btnMAbuscar_empleado" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnMAbuscar_servicio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnMAbuscar_empleado" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="btnMAingresar_producto" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -121,8 +125,8 @@
                           </Group>
                           <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnMAagendar" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnMAcotizar_producto" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnMAagendar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnMAcotizar_producto" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
