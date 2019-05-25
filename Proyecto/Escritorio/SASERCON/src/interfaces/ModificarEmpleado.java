@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import DMI.ConexionMySQL;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.sql.*;
@@ -304,7 +305,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         ResultSet rs = null;
         
         try {
-            rs = ConexionMySQL.consultar("SELECT * FROM empleados");
+            /*rs = ConexionMySQL.consultar("SELECT * FROM empleados");
             Blob blob = rs.getBlob(3);
             byte[] data = blob.getBytes(1, (int)blob.length());
             BufferedImage img = null;
@@ -315,7 +316,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
             }
 
             ImageIcon icono = new ImageIcon(img);
-            fila[1] = new JLabel(icono);
+            fila[1] = new JLabel(icono);*/
         } catch(Exception ex)   {
             JOptionPane.showMessageDialog(null, ex);
         }

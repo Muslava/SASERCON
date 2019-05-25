@@ -5,6 +5,8 @@
  */
 package interfaces;
 
+import DMI.ConexionMySQL;
+import DMI.Comprobacion;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.*;
