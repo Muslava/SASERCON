@@ -310,8 +310,8 @@ public class MódulosAcceso extends javax.swing.JFrame {
 
     private void btnMAbuscar_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAbuscar_empleadoActionPerformed
         BuscarEmpleado BE = new BuscarEmpleado();
-        this.dkpMAfondo.add(MA);
-        MA.show();
+        this.dkpMAfondo.add(BE);
+        BE.show();
     }//GEN-LAST:event_btnMAbuscar_empleadoActionPerformed
 
     private void btnMAbuscar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAbuscar_productoActionPerformed
