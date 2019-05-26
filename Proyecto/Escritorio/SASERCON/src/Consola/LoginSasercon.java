@@ -1,4 +1,4 @@
-package Login;
+package Consola;
 
 
 import javax.swing.JOptionPane;

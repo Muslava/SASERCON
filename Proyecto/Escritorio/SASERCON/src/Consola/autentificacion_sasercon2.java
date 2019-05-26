@@ -3,23 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Login;
+package Consola;
 
-
+import SASERCON.*;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author darki
  */
-public class autentificacion_sasercon extends javax.swing.JFrame {
+public class autentificacion_sasercon2 extends javax.swing.JFrame {
 int timer;
     /**
      * Creates new form autentificacion_sasercon
      */
-    public autentificacion_sasercon() {
+    public autentificacion_sasercon2() {
         initComponents();
-        txtRes2.setEnabled(false);
+        txtRes1.setEnabled(false);
     }
 
     /**
@@ -149,29 +149,28 @@ int timer;
         // TODO add your handling code here:
                 String Res1,res1,Res2,res2;
         
-        res1 = txtRes1.getText();
+        res2 = txtRes2.getText();
         
-        Res1 = "Benji";
-        
-        
-        if(res1.equals(Res1)){
-            JOptionPane.showMessageDialog(rootPane,"Respuesta correcta, responda la pregunta 2");
-            autentificacion_sasercon2 a = new autentificacion_sasercon2();
-            a.setVisible(true);
+        Res2 = "Programador";
+         
+        if(res2.equals(Res2)){
+            JOptionPane.showMessageDialog(null, "Respuesta correcta, ya puede modificar su contraseña", "Respuesta correcta", JOptionPane.WARNING_MESSAGE);
+            guardarNuevaContraseña_sasercon g = new guardarNuevaContraseña_sasercon();
+            g.setVisible(true);
             this.dispose();
+
             
         }
         
         else if(timer ==2){
-            JOptionPane.showMessageDialog(rootPane,"Ha excedido el numero de intentos, responda la pregunta 2");
-            autentificacion_sasercon2 a = new autentificacion_sasercon2();
-            a.setVisible(true);
+            JOptionPane.showMessageDialog(null, "Ha excedido el numero de intentos, Su usuario ha sido bloqueado", "Error", JOptionPane.ERROR_MESSAGE);
             this.dispose();
+            
         }
         
         else{
             JOptionPane.showMessageDialog(rootPane,"La respuesta es incorrecta, intentelo nuevamente. \n Quedan " + (2 - timer) + " Intentos");
-            txtRes1.setText(null);
+            txtRes2.setText(null);
             timer = timer + 1;
         }
     }//GEN-LAST:event_btnConfirmarResActionPerformed
@@ -197,20 +196,21 @@ int timer;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(autentificacion_sasercon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(autentificacion_sasercon2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(autentificacion_sasercon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(autentificacion_sasercon2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(autentificacion_sasercon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(autentificacion_sasercon2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(autentificacion_sasercon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(autentificacion_sasercon2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new autentificacion_sasercon().setVisible(true);
+                new autentificacion_sasercon2().setVisible(true);
             }
         });
     }

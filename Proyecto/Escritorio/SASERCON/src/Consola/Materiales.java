@@ -1,4 +1,4 @@
-package Login;
+package Consola;
 
 public class Materiales   {
     public String Mtipo;

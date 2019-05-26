@@ -13,7 +13,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 //import com.mysql.jdbc.Connection;
 public class ConexionMySQL {
-    public String db="TercerParcial";
+    public String db="SASERCON";
     public String url="jdbc:mysql://localhost:3306/"+db;
     public String usuario="root";
     public String pass="";
@@ -31,8 +31,9 @@ public class ConexionMySQL {
         }
           return enlace;  
             
-        }
-    public ResultSet consultar(String st)	{
+    }
+    
+    public  ResultSet consultar(String st)	{
 	Connection con = Conectar();
 	ResultSet rs = null;
 	try	{

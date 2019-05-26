@@ -1,4 +1,4 @@
-package Login;
+package Consola;
 
 public class INICIADOR  {
     public static void main(String[]args)   {
