@@ -1,0 +1,22 @@
+
+ol.a{
+  list-style-type: circle;
+  background: #a8ff33;
+  padding: 10px;
+}
+ol.a li{
+  background:#f7ff33;
+  padding: 5px;
+  margin-left: 35px;
+}
+ol.b{
+  list-style-type: square;      /*para puntos en las listas*/
+}
+ol.c{
+  list-style-type: upper-roman;   /*numeros romanos*/
+}ol.d{
+  list-style-type: lower-alpha;   /*lower-alpha-letras en  las listas*/
+}
+ol.e{
+  list-style-image: url("frutas.jpg");
+}

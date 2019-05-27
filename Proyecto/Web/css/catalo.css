@@ -1,0 +1,325 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    -moz-box-sizing: border-box;
+      box-sizing: border-box;}
+
+body{
+  background: white;
+  font-family:serif;
+}
+.contenedor{
+  width: 1200px;
+  margin: 0 auto;
+}
+.top-redes{
+   float: right;
+ }
+  .top-redes ul{
+
+ list-style:none;
+ }
+  .top-redes ul li{
+   float: right;
+ }
+  .top-redes ul li a{
+   text-decoration: none;
+   color: #363940;
+   padding: 10px 15px;
+   display: inline-block;
+
+ }
+  .top-redes ul li a:hover{
+   color: #8b919c;
+ }
+.contenedor1 img{
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid brown;
+  float:left;
+  width:250px;
+}
+
+  }
+  .subtitulo{
+     font-style: italic: 16px;
+     letter-spacing:1px;
+     color: black;
+     float: none;
+
+}
+  .MENU-PRINCIPAL {
+    margin-bottom: 0px;
+    border-top: 0px solid #f0f0f0;
+
+    text-align:left;
+    padding: 60px 10px;
+    width:700px;
+    font-size:20px;
+  }
+
+  .MENU-PRINCIPAL .contenedor ul{
+    list-style: none;
+    display: inline-block;
+
+  }
+  .MENU-PRINCIPAL .contenedor ul li{
+  display: inline-block;
+  }
+  .MENU-PRINCIPAL .contenedor ul li a{
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #363940;
+  }
+  .MENU-PRINCIPAL .contenedor ul li a:hover{
+    color:black;
+  }
+
+.imagen1{
+  padding: 10px;
+  margin: 10px;
+  border: 2px;
+  float: right;
+  width: 50px;
+
+
+  }
+  .menu{
+
+    margin-bottom: 0px;
+    border-top: 0px solid #f0f0f0;
+   border-bottom: 0px solid #f0f0f0;
+    text-align:left;
+    padding: 100px 60px;
+
+  }
+  .menu .pr{
+    margin-bottom: 50px;
+  }
+  .menu .el{
+    margin-bottom: 50px;
+  }
+  .menu .po{
+    margin-bottom: 50px;
+  }
+  .menu  .re{
+    margin-bottom: 50px;
+  }
+.menu .to{
+      margin-bottom: 50px;
+}
+.menu .tor{
+      margin-bottom: 50px;
+}
+
+  .menu ul a:hover{
+
+      font-size: 50px;
+      color: black;
+
+}
+#top{
+  position:relative;
+  margin:10px auto;
+  width:1000px;
+  height:192px;
+
+  }
+
+#top ul{
+  width:1010px;
+  height:192px;
+  }
+
+#top ul li{
+  float:left;
+  width:326px;
+  height:192px;
+  background:white;
+  margin-right:10px;
+
+
+  }
+
+#top0{
+  position:relative;
+  margin:10px auto;
+  width:1000px;
+  height:90px;
+  }
+
+#top0 ul{
+  width:1010px;
+  height:90px;
+  }
+
+#top0 ul li{
+  float:left;
+  width:326px;
+  height:90px;
+  background: white;
+  margin-right:10px;
+  }
+
+
+#top5{
+  position:relative;
+  margin:10px auto;
+  width:1000px;
+  height:90px;
+  }
+
+#top5 ul{
+  width:1010px;
+  height:90px;
+  }
+
+#top5 ul li{
+  float:left;
+  width:326px;
+  height:90px;
+  background:white;
+  margin-right:10px;
+  }
+
+
+
+
+#top2{
+  position:relative;
+  margin:10px auto;
+  width:1000px;
+  height:192px;
+  }
+
+#top2 ul{
+  width:1010px;
+  height:192px;
+  }
+
+#top2 ul li{
+  float:left;
+  width:326px;
+  height:192px;
+  background:white;
+  margin-right:10px;
+  }
+
+
+#top6{
+  position:relative;
+  margin:10px auto;
+  width:1000px;
+  height:90px;
+  }
+
+#top6 ul{
+  width:1010px;
+  height:90px;
+  }
+
+#top6 ul li{
+  float:left;
+  width:326px;
+  height:90px;
+  background:WHITE;
+  margin-right:10px;
+  }
+
+
+
+  #top3{
+  position:relative;
+  margin:10px auto;
+  width:1000px;
+  height:192px;
+  }
+
+#top3 ul{
+  width:1010px;
+  height:192px;
+  }
+
+#top3 ul li{
+  float:left;
+  width:326px;
+  height:192px;
+  background:white;
+  margin-right:10px;
+  }
+
+
+  #top4{
+  position:relative;
+  margin:10px auto;
+  width:1000px;
+  height:192px;
+  }
+
+#top4 ul{
+  width:1010px;
+  height:192px;
+  }
+
+#top4 ul li{
+  float:left;
+  width:326px;
+  height:192px;
+  background:white;
+  margin-right:10px;
+  }
+
+
+
+section{
+  position:relative;
+  margin:auto;
+  width:1000px;
+  height:453px;
+  background:#aaa;
+  }
+
+aside#izq{
+  position:absolute;
+  left:0;
+  top:0;
+  width:200px;
+  height:453px;
+  background:#333;
+  }
+
+article{
+  position:absolute;
+  left:200px;
+  top:0;
+  width:600px;
+  height:453px;
+  background:#666;
+  }
+
+aside#der{
+  position:absolute;
+  right:0;
+  top:0;
+  width:200px;
+  height:453px;
+  background:#333;
+  }
+
+.Final{
+  background: #fff;
+  padding: 40px;
+  border: 1px solid #f0f0f0;
+  text-align: center;
+  color: #9c9c9c;
+}
+.Final  a:hover {
+
+  font-size: 20px;
+  color: black;
+
+
+}

@@ -1,0 +1,305 @@
+  /*ESTILOS GENERALES*/
+  *{
+    margin: 0;
+    padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+    box-sizing: border-box; /*LOS ELEMENTOS NO AUMENTEN SU TAMAÑO*/
+  }
+
+  body{
+    font-family: serif;
+  /* background: url(../img/fondo.jpg) left top;*/
+  background-color: #29303e;
+
+}
+
+
+  .contenedor{
+    width: 1200px;
+    margin: 0 auto;
+  }
+
+  /*estilo al INICIO*/
+
+ .top-redes{
+    float: right;
+  }
+   .top-redes ul{
+
+  list-style:none;
+  }
+   .top-redes ul li{
+    float: right;
+  }
+   .top-redes ul li a{
+    text-decoration: none;
+    color: #363940;
+    padding: 10px 15px;
+    display: inline-block;
+
+  }
+   .top-redes ul li a:hover{
+    color: #f0f0f0;
+  }
+
+
+   .contenedor1 img{
+    padding: 1px;
+    margin: 5px;
+    border: 1px solid red;
+    float: left;
+    width: 250px;
+  }
+   .subtitulo{
+    font-style: italic: 16px;
+    letter-spacing: 1px;
+    color: white;
+    float:none;
+
+
+  }
+
+
+  .MENU-PRINCIPAL {
+    margin-bottom: 0px;
+    border-top: 0px solid #f0f0f0;
+
+    text-align:left;
+    padding: 60px 10px;
+    width:700px;
+    font-size:20px;
+  }
+
+  .MENU-PRINCIPAL .contenedor ul{
+    list-style: none;
+    display: inline-block;
+
+  }
+  .MENU-PRINCIPAL .contenedor ul li{
+  display: inline-block;
+  }
+  .MENU-PRINCIPAL .contenedor ul li a{/*colores del banner pincipal*/
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #ffffff;
+  }
+  .MENU-PRINCIPAL .contenedor ul li a:hover{
+    color: black;
+  }
+  .Medio .banner {
+    padding-bottom: 20px;
+
+
+  }
+  .Medio .banner .contenedor .banner-principal{
+    width: 100%;
+
+  }
+
+ /*INICIO DE SLIDE*/
+  .imagenes {
+  width: 80%;
+  max-width:   950px;
+  margin: 20px auto;
+  overflow:hidden;
+
+  }
+  .slides{
+    width: 100%;
+    height: 600px;
+    background-size: cover;
+
+
+  }
+  .slides {
+    width:  100%;
+    /*position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;             posisiones de textos
+  left: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;*/
+
+  }
+  .slidesjs-pagination-item {
+    background: #424242;
+    list-style: none;
+    overflow:hidden;}
+
+   .slidesjs-pagination-item {
+    float: left;
+  }
+  .slidesjs-pagination-item a{
+
+    display: block;
+    padding: 0px 66.7px;
+    color: #fff;
+    text-decoration: none;
+  }
+  .slidesjs-pagination-item a:hover {
+    background: #000;
+  }
+  .slides .active{
+    background: #000;
+  }
+  .slidesjs-navigation{
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0px 20px;
+    float: right;
+
+  }
+
+
+  .blog{
+    /*background: #f7f7f7;*/
+    background: url(../img/El.jpg) left top;
+    padding: 40px 0;
+
+  }
+  .blog .contenedor{
+    overflow: hidden;
+  }
+
+  .blog .contenedor .articulos-blog {
+    float: left;
+    width: 68%;
+  }
+.blog .contenedor .articulos-blog .articulo{
+  background:rgba(0,0,0,0.5);
+  padding: 60px 0;
+
+  margin-bottom: 20px;
+}
+.blog .contenedor .articulos-blog .articulo .fecha-articulo {
+color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.blog .contenedor .articulos-blog .articulo .titulo-articulo{
+color: #ffffff;
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.blog .contenedor .articulos-blog .articulo .categoria-articulo{
+color: #ffffff;
+  font-size: 19px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.blog .contenedor .articulos-blog .articulo img{
+  width: 100%;
+  margin-bottom: 100px;
+}
+.blog .contenedor .articulos-blog .articulo .texto-articulo{
+  padding: 0 20px;
+  text-align: justify;
+
+}
+.blog .contenedor .articulos-blog .articulo .texto-articulo p{
+margin-bottom: 20px;
+color: #ffffff;
+}
+
+.blog .contenedor .articulos-blog .articulo .boton {
+text-align: center;
+}
+
+.blog .contenedor .articulos-blog .articulo .boton a{
+  text-decoration: none;
+  display: inline-block;
+  padding: 15px 20px;
+  background: none;
+
+  color: #7d7d7d;
+}
+.blog .contenedor .articulos-blog .articulo .boton a:hover{
+  background: #7d7d7d;
+  color: #fff;
+}
+/*FINAL*/
+.aside{
+float: right;
+width: 28%;
+color:  #ffffff;
+}
+.aside .widget{
+  bbackground:rgba(0,0,0,0.5);
+  padding: 40px;
+  margin-bottom: 20px;
+
+}
+.aside .widget .autor-widget .foto-empresa {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.aside .widget .autor-widget .foto-empresa img{
+  width: 120px;
+  border-radius: 50%;
+
+}
+.aside .widget .autor-widget .datos-empresa{
+  text-align: center;
+
+}
+.aside .widget .autor-widget .foto-autor .nombre{
+  color: #ffff;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.aside .widget .autor-widget .foto-autor .Profecion{
+color: #9c9c9c;
+font-size: 16px;
+margin-bottom: 20px;
+}
+.aside .widget .autor-widget .datos-empresa .Info{
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.aside .widget .destacados-widget{
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  border: 10px;
+  width: 300px;
+}
+.aside .widget .destacados-widget .Titulo-destacados{
+  color: #ffffff;
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+.aside .widget .destacados-widget ul{
+  list-style: none;
+  text-align: left;
+  border-top: 1px solid #f0f0f0;
+}
+.aside .widget .destacados-widget ul li a {
+  color: #ffffff;
+  font-size: 16px;
+  display: block;
+  padding: 20px 0;
+  border-bottom: 1px solid #f0f0f0;
+  text-decoration: none;
+}
+.aside .widget .destacados-widget ul li a:hover {
+  text-decoration: underline;
+  color: #8b919c;
+}
+/*pie de pagina*/
+.Final{
+  background: #fff;
+  padding: 40px;
+  border: 1px solid #f0f0f0;
+  text-align: center;
+  color: #9c9c9c;
+}
