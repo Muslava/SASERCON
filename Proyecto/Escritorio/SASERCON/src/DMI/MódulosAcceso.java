@@ -225,7 +225,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
                                     .addComponent(btnMAbuscar_cliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnMAingresar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(dkpMAfondoLayout.createSequentialGroup()
-                                .addGap(95, 95, 95)
+                                .addGap(101, 101, 101)
                                 .addComponent(btnMAagendar)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 362, Short.MAX_VALUE)
                         .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +239,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
                                     .addComponent(btnMAbuscar_servicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dkpMAfondoLayout.createSequentialGroup()
                                 .addComponent(btnMAcotizar_producto)
-                                .addGap(85, 85, 85)))))
+                                .addGap(91, 91, 91)))))
                 .addContainerGap())
         );
         dkpMAfondoLayout.setVerticalGroup(
@@ -261,13 +261,13 @@ public class MódulosAcceso extends javax.swing.JFrame {
                     .addComponent(btnMAingresar_servicio))
                 .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dkpMAfondoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnMAcotizar_producto)
-                        .addGap(62, 62, 62))
+                        .addGap(74, 74, 74))
                     .addGroup(dkpMAfondoLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addGap(70, 70, 70)
                         .addComponent(btnMAagendar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)))
                 .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnMAasignar_contraseña)
                     .addComponent(btnMAsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,7 +279,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dkpMAfondo)
+            .addComponent(dkpMAfondo, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,6 +290,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+        boolean MAie = false;
     private void btnMAingresar_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAingresar_empleadoActionPerformed
         IngresarEmpleado IE = new IngresarEmpleado();
         this.dkpMAfondo.add(IE);

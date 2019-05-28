@@ -21,14 +21,22 @@ public class Login extends javax.swing.JFrame {
 
 protected String Lusuario;
 private static String Lcontra;
+private char[] Lccontra;
+private String Lscontra;
+ImageIcon Liilogo = new ImageIcon(getClass().getResource("/img/LOGOf.png"));
+Icon Lilogo = new ImageIcon(Liilogo.getImage().getScaledInstance(190, 190, Image.SCALE_DEFAULT));
+ImageIcon Liiusuario = new ImageIcon(getClass().getResource("/img/usuario.png"));
+Icon Liusuario = new ImageIcon(Liiusuario.getImage().getScaledInstance(36, 36, Image.SCALE_DEFAULT));
+ImageIcon Liipassword = new ImageIcon(getClass().getResource("/img/password.png"));
+Icon Lipassword = new ImageIcon(Liipassword.getImage().getScaledInstance(36, 36, Image.SCALE_DEFAULT));
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
-        ImageIcon logo = new ImageIcon(getClass().getResource("/img/LOGOf.png"));
-        Icon ilogo = new ImageIcon(logo.getImage().getScaledInstance(190, 190, Image.SCALE_DEFAULT));
-        lblLlogo.setIcon(ilogo);
+        lblLlogo.setIcon(Lilogo);
+        lblLiusuario.setIcon(Liusuario);
+        lblLipassword.setIcon(Lipassword);
     }
 
     /**
@@ -48,15 +56,25 @@ private static String Lcontra;
         lblLlogo = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         psfLcontra = new javax.swing.JPasswordField();
+        lblLiusuario = new javax.swing.JLabel();
+        lblLipassword = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(480, 400));
+        setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(232, 229, 224));
+
+        lblLusuario.setForeground(new java.awt.Color(120, 121, 124));
         lblLusuario.setText("Usuario:");
 
+        lblLcontra.setForeground(new java.awt.Color(120, 121, 124));
         lblLcontra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLcontra.setText("Contraseña:");
         lblLcontra.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        btnLaccesar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnLaccesar.setForeground(new java.awt.Color(102, 102, 102));
         btnLaccesar.setText("Accesar");
         btnLaccesar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnLaccesar.addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +99,7 @@ private static String Lcontra;
         lblLlogo.setPreferredSize(new java.awt.Dimension(155, 155));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(120, 121, 124));
         jLabel3.setText("Iniciar Sesión");
 
         psfLcontra.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -89,23 +108,36 @@ private static String Lcontra;
             }
         });
 
+        lblLiusuario.setMaximumSize(new java.awt.Dimension(36, 36));
+        lblLiusuario.setMinimumSize(new java.awt.Dimension(36, 36));
+        lblLiusuario.setPreferredSize(new java.awt.Dimension(36, 36));
+
+        lblLipassword.setMaximumSize(new java.awt.Dimension(36, 36));
+        lblLipassword.setMinimumSize(new java.awt.Dimension(36, 36));
+        lblLipassword.setPreferredSize(new java.awt.Dimension(36, 36));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(149, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLusuario, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblLcontra, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnLaccesar)
-                    .addComponent(psfLcontra, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(194, 194, 194))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(btnLaccesar)
+                        .addComponent(psfLcontra, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblLlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3))
+                    .addComponent(txtLusuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLiusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLipassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(149, 149, 149))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,33 +147,29 @@ private static String Lcontra;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLusuario)
-                    .addComponent(txtLusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblLiusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLusuario))
                 .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblLipassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(psfLcontra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblLcontra))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLaccesar)
-                .addGap(42, 42, 42))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(616, 439));
@@ -153,19 +181,24 @@ private static String Lcontra;
     }//GEN-LAST:event_btnLaccesarActionPerformed
 
     private void validar()  {
-        if(txtLusuario.getText().trim().equals(""))    {
+        if(txtLusuario.getText().trim().isEmpty() && !psfLcontra.getText().trim().isEmpty())    {
             this.lblLusuario.setForeground(red);
+            this.lblLcontra.setForeground(new java.awt.Color(120, 121, 124));
+            JOptionPane.showMessageDialog(null,"El usuario no debe quedar vacío.");
         }
-        else if(psfLcontra.getText().trim().equals("")) {
+        if(psfLcontra.getText().trim().isEmpty() && !txtLusuario.getText().trim().isEmpty()) {
             this.lblLcontra.setForeground(red);
+            this.lblLusuario.setForeground(new java.awt.Color(120, 121, 124));
+            JOptionPane.showMessageDialog(null,"La contraseña no debe quedar vacía.");
         }
-        else if(txtLusuario.getText().trim().equals("") && psfLcontra.getText().trim().equals("")) {
+        if(txtLusuario.getText().trim().isEmpty() && psfLcontra.getText().trim().isEmpty()) {
             this.lblLusuario.setForeground(red);
             this.lblLcontra.setForeground(red);
+            JOptionPane.showMessageDialog(null,"El usuario y contraseña no deben quedar vacíos.");
         }
         else    {
-            this.lblLusuario.setForeground(black);
-            this.lblLcontra.setForeground(black);
+            this.lblLusuario.setForeground(new java.awt.Color(120, 121, 124));
+            this.lblLcontra.setForeground(new java.awt.Color(120, 121, 124));
             Lusuario = txtLusuario.getText().trim();
             
             Connection con;
@@ -176,11 +209,9 @@ private static String Lcontra;
                 ResultSet rs = ps.executeQuery();
                 while (rs.next())   {
                     Lcontra = rs.getString("contraseña");
-                    /*System.out.println(contra);
-                    System.out.println(psfLcontra.getPassword());*/
-                    char[] passy = psfLcontra.getPassword();
-                    String p = new String(passy);
-                    if(p.equals(Lcontra))    {
+                    Lccontra = psfLcontra.getPassword();
+                    Lscontra = new String(Lccontra);
+                    if(Lscontra.equals(Lcontra))    {
                         MódulosAcceso ma = new MódulosAcceso();
                         ma.setVisible(true);
                         JOptionPane.showMessageDialog(null,"¡Bienvenido a SASERCON!");
@@ -256,6 +287,8 @@ private static String Lcontra;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblLcontra;
+    private javax.swing.JLabel lblLipassword;
+    private javax.swing.JLabel lblLiusuario;
     private javax.swing.JLabel lblLlogo;
     private javax.swing.JLabel lblLusuario;
     private javax.swing.JPasswordField psfLcontra;

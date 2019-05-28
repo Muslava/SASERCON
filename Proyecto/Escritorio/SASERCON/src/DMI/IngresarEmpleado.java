@@ -48,6 +48,7 @@ static Comprobacion c = new Comprobacion();
      */
     public IngresarEmpleado() {
         initComponents();
+        this.setIconifiable(true);
     }
 
     /**
@@ -723,7 +724,7 @@ static Comprobacion c = new Comprobacion();
                             .addComponent(jLabel40)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel3Layout.createSequentialGroup()
@@ -849,11 +850,11 @@ static Comprobacion c = new Comprobacion();
                 .addContainerGap()
                 .addComponent(btnIEregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnIEregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1006,7 +1007,7 @@ static Comprobacion c = new Comprobacion();
     }//GEN-LAST:event_btnIEfotoActionPerformed
 
     private void btnIEregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIEregresarActionPerformed
-        this.setVisible(false);
+        
     }//GEN-LAST:event_btnIEregresarActionPerformed
 
     private void txtIEtelefono1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIEtelefono1ActionPerformed

@@ -10,22 +10,27 @@ if(isset($_POST['boton']))  {
     $usr=$_POST['usuario'];
     $pwd=$_POST['contra'];
 
-    include("conexion.php");
+    include("abrir_conexion.php");        // realiza una conexión por mysqli
    
-    /*$sql = "SELECT * FROM usuario WHERE correo = '$usr' AND contraseña = '$pwd'";
+    $sql = "SELECT contraseña FROM usuario WHERE correo = '$usr'";
 
     $_SESSION['sesion_exito']=3;
-    $resultados = mysqli_query($conn,$sql);
-    echo $resultados['correo'];
-    while($consulta = mysqli_fetch_array($resultados))    {
-        $_SESSION['sesion_exito']=1;
+    
+    $result = mysqli_query($conn,"SELECT * FROM usuario;");
+    $row = mysqli_fetch_array($result,MYSQLI_NUM)
+	/*if(false){
+        if($row['contraseña'] == $pwd){
+            $_SESSION['sesion_exito'] = 1;
+            echo 'Has sido logueado correctamente ';
+            header('Location: catalo.html');
+        }else{
+        echo 'Password incorrecto';
+        }
+    }else{
+    echo 'Usuario no existente en la base de datos';
     }*/
-    
-    $_SESSION['sesion_exito']=3;
-    
-    $co = mysql_result(mysql_query("SELECT contraseña FROM usuario"));
-    
-    echo $co;
+	//mysqli_free_result($result);
+
     
     mysqli_close($conn);
     
@@ -41,7 +46,7 @@ if(isset($_POST['boton']))  {
   <head>
     <meta charset="utf-8">
     <title>SASERCON</title>
-    <!--link rel="stylesheet" href="css/login.css"-->
+    <link rel="stylesheet" href="css/login.css">
   </head>
   <body>
 
@@ -49,7 +54,7 @@ if(isset($_POST['boton']))  {
     <div class="login-box">
     <img src="img/sercon.png" class="avatar" alt="Avatar Image">
     <h1>Iniciar Sesion</h1>
-    <form name="Login" method="post" action="login.php">
+    <form name="Login" method="post" action="#">
       <!-- USERNAME INPUT location.href='catalo.html'-->
       <label for="username">Usuario</label>
       <input name="usuario" type="email" placeholder="Ingresa Usuario" required>
