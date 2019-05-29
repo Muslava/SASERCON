@@ -46,10 +46,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
         btnMAbuscar_servicio = new javax.swing.JButton();
         btnMAingresar_servicio = new javax.swing.JButton();
         btnMAingresar_producto = new javax.swing.JButton();
-        btnMAcotizar_producto = new javax.swing.JButton();
         btnMAagendar = new javax.swing.JButton();
-        btnMAasignar_contraseña = new javax.swing.JButton();
-        btnMAmodificar_contraseña = new javax.swing.JButton();
         btnMAsalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -135,16 +132,6 @@ public class MódulosAcceso extends javax.swing.JFrame {
             }
         });
 
-        btnMAcotizar_producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_credit_card_black_18dp.png"))); // NOI18N
-        btnMAcotizar_producto.setText("Cotizar Producto");
-        btnMAcotizar_producto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnMAcotizar_producto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnMAcotizar_producto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMAcotizar_productoActionPerformed(evt);
-            }
-        });
-
         btnMAagendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_dashboard_white_18dp.png"))); // NOI18N
         btnMAagendar.setText("Agendar");
         btnMAagendar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -152,27 +139,6 @@ public class MódulosAcceso extends javax.swing.JFrame {
         btnMAagendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMAagendarActionPerformed(evt);
-            }
-        });
-
-        btnMAasignar_contraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_lock_outline_grey600_18dp.png"))); // NOI18N
-        btnMAasignar_contraseña.setText("Asignar Contraseña");
-        btnMAasignar_contraseña.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnMAasignar_contraseña.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnMAasignar_contraseña.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMAasignar_contraseñaActionPerformed(evt);
-            }
-        });
-
-        btnMAmodificar_contraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_vpn_key_grey600_18dp.png"))); // NOI18N
-        btnMAmodificar_contraseña.setText("Modificar Contraseña");
-        btnMAmodificar_contraseña.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnMAmodificar_contraseña.setPreferredSize(new java.awt.Dimension(137, 100));
-        btnMAmodificar_contraseña.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnMAmodificar_contraseña.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMAmodificar_contraseñaActionPerformed(evt);
             }
         });
 
@@ -194,10 +160,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
         dkpMAfondo.setLayer(btnMAbuscar_servicio, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dkpMAfondo.setLayer(btnMAingresar_servicio, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dkpMAfondo.setLayer(btnMAingresar_producto, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dkpMAfondo.setLayer(btnMAcotizar_producto, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dkpMAfondo.setLayer(btnMAagendar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dkpMAfondo.setLayer(btnMAasignar_contraseña, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dkpMAfondo.setLayer(btnMAmodificar_contraseña, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dkpMAfondo.setLayer(btnMAsalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dkpMAfondoLayout = new javax.swing.GroupLayout(dkpMAfondo);
@@ -205,41 +168,32 @@ public class MódulosAcceso extends javax.swing.JFrame {
         dkpMAfondoLayout.setHorizontalGroup(
             dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dkpMAfondoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dkpMAfondoLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(btnMAasignar_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(btnMAmodificar_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(92, 92, 92)
+                        .addComponent(btnMAagendar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnMAsalir))
+                        .addComponent(btnMAsalir)
+                        .addGap(81, 81, 81))
                     .addGroup(dkpMAfondoLayout.createSequentialGroup()
                         .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(dkpMAfondoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnMAingresar_empleado)
-                                    .addComponent(btnMAbuscar_empleado))
-                                .addGap(46, 46, 46)
-                                .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnMAbuscar_cliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnMAingresar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(dkpMAfondoLayout.createSequentialGroup()
-                                .addGap(101, 101, 101)
-                                .addComponent(btnMAagendar)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 362, Short.MAX_VALUE)
+                            .addComponent(btnMAingresar_empleado)
+                            .addComponent(btnMAingresar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
                         .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMAingresar_producto)
+                            .addComponent(btnMAingresar_servicio))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 366, Short.MAX_VALUE)
+                        .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dkpMAfondoLayout.createSequentialGroup()
-                                .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnMAingresar_producto, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnMAbuscar_producto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnMAbuscar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(60, 60, 60)
-                                .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnMAingresar_servicio, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnMAbuscar_servicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnMAbuscar_servicio, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dkpMAfondoLayout.createSequentialGroup()
-                                .addComponent(btnMAcotizar_producto)
-                                .addGap(91, 91, 91)))))
+                                .addComponent(btnMAbuscar_empleado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnMAbuscar_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         dkpMAfondoLayout.setVerticalGroup(
@@ -247,32 +201,21 @@ public class MódulosAcceso extends javax.swing.JFrame {
             .addGroup(dkpMAfondoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(dkpMAfondoLayout.createSequentialGroup()
-                        .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnMAbuscar_producto)
-                            .addComponent(btnMAingresar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMAingresar_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnMAbuscar_servicio)
-                            .addComponent(btnMAbuscar_empleado)
-                            .addComponent(btnMAingresar_producto)
-                            .addComponent(btnMAbuscar_cliente)))
-                    .addComponent(btnMAingresar_servicio))
+                    .addComponent(btnMAbuscar_producto)
+                    .addComponent(btnMAingresar_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMAingresar_producto)
+                    .addComponent(btnMAbuscar_empleado))
+                .addGap(27, 27, 27)
                 .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(dkpMAfondoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnMAcotizar_producto)
-                        .addGap(74, 74, 74))
-                    .addGroup(dkpMAfondoLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(btnMAagendar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)))
-                .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnMAasignar_contraseña)
+                    .addComponent(btnMAbuscar_servicio)
+                    .addComponent(btnMAbuscar_cliente)
+                    .addComponent(btnMAingresar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMAingresar_servicio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
+                .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnMAsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMAmodificar_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(btnMAagendar))
+                .addGap(36, 36, 36))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -339,29 +282,11 @@ public class MódulosAcceso extends javax.swing.JFrame {
         IP.show();
     }//GEN-LAST:event_btnMAingresar_productoActionPerformed
 
-    private void btnMAcotizar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAcotizar_productoActionPerformed
-        CotizarProducto CR = new CotizarProducto();
-        this.dkpMAfondo.add(CR);
-        CR.show();
-    }//GEN-LAST:event_btnMAcotizar_productoActionPerformed
-
     private void btnMAagendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAagendarActionPerformed
         Agendar A = new Agendar();
         this.dkpMAfondo.add(A);
         A.show();
     }//GEN-LAST:event_btnMAagendarActionPerformed
-
-    private void btnMAasignar_contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAasignar_contraseñaActionPerformed
-        AsignarContraseña AC = new AsignarContraseña();
-        this.dkpMAfondo.add(AC);
-        AC.show();
-    }//GEN-LAST:event_btnMAasignar_contraseñaActionPerformed
-
-    private void btnMAmodificar_contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAmodificar_contraseñaActionPerformed
-        ModificarContraseña MC = new ModificarContraseña();
-        this.dkpMAfondo.add(MC);
-        MC.show();
-    }//GEN-LAST:event_btnMAmodificar_contraseñaActionPerformed
 
     private void btnMAsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAsalirActionPerformed
         this.dispose();
@@ -405,17 +330,14 @@ public class MódulosAcceso extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMAagendar;
-    private javax.swing.JButton btnMAasignar_contraseña;
     private javax.swing.JButton btnMAbuscar_cliente;
     private javax.swing.JButton btnMAbuscar_empleado;
     private javax.swing.JButton btnMAbuscar_producto;
     private javax.swing.JButton btnMAbuscar_servicio;
-    private javax.swing.JButton btnMAcotizar_producto;
     private javax.swing.JButton btnMAingresar_cliente;
     private javax.swing.JButton btnMAingresar_empleado;
     private javax.swing.JButton btnMAingresar_producto;
     private javax.swing.JButton btnMAingresar_servicio;
-    private javax.swing.JButton btnMAmodificar_contraseña;
     private javax.swing.JButton btnMAsalir;
     private javax.swing.JDesktopPane dkpMAfondo;
     // End of variables declaration//GEN-END:variables

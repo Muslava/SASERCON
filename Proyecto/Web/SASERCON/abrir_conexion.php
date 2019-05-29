@@ -31,13 +31,13 @@ mysqli_close($conn);
     $username = "root";
     $password = "";
     $dbname = "SASERCONWEB";
-    
+
     $conn = mysqli_connect($servername,$username,$password,$dbname);
-    
+
     if(!$conn)  {
         die("Connection failes:".mysqli_connect_error());
     }
     else    {
-        echo "Connection successful";   
+        echo "Connection successful";
     }
 ?>

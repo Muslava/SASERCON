@@ -12,11 +12,12 @@ if(isset($_POST["Agregar"]))   {
     $c7=$_POST['c7'];
 
     include("abrir_conexion.php");        // realiza una conexión por mysqli
-   
+
     $sql = "INSERT INTO usuario VALUES ('$c1','$c2','$c3','$c4','$c5','$c6','$c7')";
 
     if(mysqli_query($conn,$sql))    {
-        header('Location: https://www.facebook.com/');
+      echo "Creación correcta";
+        header('Location: login.php');
     } else  {
         echo "Error: ".$sql."<br>".mysqli_error($conn);
     }
@@ -31,6 +32,7 @@ if(isset($_POST["Agregar"]))   {
 <html lang="en" dir="ltr">
 <head>
 <title>SASERCON</title>
+<link rel="stylesheet" href="css/formulario.css">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 
 </head>
@@ -39,32 +41,37 @@ if(isset($_POST["Agregar"]))   {
   <div id="topbar">
     <div id="slidepanel">
       <div class="topbox">
-        <h2>Registro Para Nuevo Usuario</h2>
-
-      </div>
+        <div class="login-box">
 
 
 
+
+
+        <h1>REGISTRATE</h1>
 
         <form action="#" method="post">
-Matricula: <input type="text" name="c1"> <br><br>
+
 Nombre: <input type="text" name="c2"> <br><br>
 Apellido Paterno: <input type="text" name="c3"> <br><br>
 Apellido Materno: <input type="text" name="c4"> <br><br>
 Correo: <input type="text" name="c5"> <br><br>
 Contraseña: <input type="text" name="c6"> <br><br>
 
-Academia: <select name="c7">
-<option value="AC01">Informatica</option>
-<option value="AC02">Turismo</option>
-<option value="AC03">Contaduria</option>
-<option value="AC04">Administracion</option>
-</select><br>
+
+
+
 
 <input type="submit" value="Agregar" name="Agregar">
 <input Type="reset" values="Eliminar">
 
 </form>
+
+
+
+
+
+
+
 <div class="Final">
     <a href="index.html">Regresar a pagina principal</a>
 </div>

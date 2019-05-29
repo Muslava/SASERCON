@@ -10,7 +10,7 @@ body{
   font-family: serif;
   /*background: url(../img/El.jpg) left top;
 */
-background-color: GRAY;
+background-color: #29303e;
 }
 
 
@@ -44,9 +44,9 @@ list-style:none;
 
 
  .contenedor1 img{
-  padding: 10px;
+  padding: 1px;
   margin: 5px;
-  border: 1px solid brown;
+  border: 1px solid red;
   float: left;
   width: 250px;
 }
@@ -65,9 +65,9 @@ list-style:none;
   border-top: 0px solid #f0f0f0;
 
   text-align:left;
-  padding: 60px 0;
-  width:800px;
-  font-size:30px;
+  padding: 60px 10px;
+  width:700px;
+  font-size:20px;
 }
 
 .MENU-PRINCIPAL .contenedor ul{
@@ -97,7 +97,7 @@ display: inline-block;
 
 }
 .medio{
-  background-color: gray;
+  background:rgba(0,0,0,0,5);
   padding: 0px 10px;
 }
 .medio .informacion  p {
@@ -113,7 +113,7 @@ display: inline-block;
   padding: 30px 500px;
 }
 .somos {
-  float: left;
+  float: right;
 
 }
 .somos .empresa .quienes {

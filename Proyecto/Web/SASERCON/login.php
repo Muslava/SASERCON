@@ -4,37 +4,32 @@ session_start();
 ob_start();
 
 if(isset($_POST['boton']))  {
-    
+
     $_SESSION['sesion_exito']=2;
 
     $usr=$_POST['usuario'];
-    $pwd=$_POST['contra'];
 
     include("abrir_conexion.php");        // realiza una conexión por mysqli
-   
-    $sql = "SELECT contraseña FROM usuario WHERE correo = '$usr'";
 
     $_SESSION['sesion_exito']=3;
-    
-    $result = mysqli_query($conn,"SELECT * FROM usuario;");
-    $row = mysqli_fetch_array($result,MYSQLI_NUM)
-	/*if(false){
-        if($row['contraseña'] == $pwd){
+
+    include("abrir_conexion.php");
+    $res = mysqli_query($conn,"SELECT contrasena FROM usuario WHERE correo = '$usr'");
+    while($consulta = mysqli_fetch_array($res)) {
+        if($consulta['contrasena'] == $_POST['contra']){
             $_SESSION['sesion_exito'] = 1;
             echo 'Has sido logueado correctamente ';
-            header('Location: catalo.html');
+            header('Location: catalo.php');
         }else{
         echo 'Password incorrecto';
         }
-    }else{
-    echo 'Usuario no existente en la base de datos';
-    }*/
-	//mysqli_free_result($result);
+    }
+    //mysqli_free_result($result);
 
-    
+
     mysqli_close($conn);
-    
-    
+
+
     if($_SESSION['sesion_exito']<>1)    {
         header('Location: login.php');
     }
@@ -55,7 +50,7 @@ if(isset($_POST['boton']))  {
     <img src="img/sercon.png" class="avatar" alt="Avatar Image">
     <h1>Iniciar Sesion</h1>
     <form name="Login" method="post" action="#">
-      <!-- USERNAME INPUT location.href='catalo.html'-->
+      <!-- USERNAME INPUT location.href='catalo.php'-->
       <label for="username">Usuario</label>
       <input name="usuario" type="email" placeholder="Ingresa Usuario" required>
       <!-- PASSWORD INPUT -->
@@ -81,13 +76,13 @@ if(isset($_POST['boton']))  {
         </b>
         </p>
       <a href="#">Olvidaste tu Contraseña?</a><br>
-      <a href="formulario.html">Crear cuenta</a>
+      <a href="formulario.php">Crear cuenta</a>
     </form>
-  </div>
+
 
   <div class="Final">
       <a href="index.html">Regresar a pagina principal</a>
   </div>
-
+</div>
   </body>
 </html>
