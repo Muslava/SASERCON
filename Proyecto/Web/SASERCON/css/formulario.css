@@ -55,17 +55,19 @@ border: 3px solid WHITE;
 
 
 
-.Final{
-  background:rgba(0,0,0,0,  5);
-  padding: 40px;
 
-  text-align: center;
-  color: #9c9c9c;
+
+
+
+.Final{
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 80px;
+  color: darkgrey;
+
 }
 .Final  a:hover {
-
-  font-size: 20px;
-  color: black;
+  color: #fff;
 
 
 }
