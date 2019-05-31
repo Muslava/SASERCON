@@ -43,12 +43,14 @@ CREATE TABLE embalaje(
 	unidadPeso varchar(3),
 	pesoMaximo float(6,2),
 	pesoMinimo float(6,2),
-	tiempoEntrega smallint,
+	tiempoEntrega time,
+	unidadTiempoEntrega smallint,
 	formatoTransporte varchar(50),
 	advertenciaRiesgo varchar(200),
 	instruccionesManejo varchar(200),
 	cantidad float(4,2),
-	PRIMARY KEY (numero)
+	PRIMARY KEY (numero),
+	FOREIGN KEY (unidadTiempoEntrega) REFERENCES unidadTiempo(clave)
 );
 
 CREATE TABLE pais(
@@ -93,10 +95,6 @@ CREATE TABLE productos(
 	fechaAltaProducto date,
 	fechaProducto date,
 	umbralInventario smallint,
-	tiempoEntrega smallint,
-	unidadTiempoEntrega smallint,
-	formaTransporte varchar(50),
-	etiquetaCodigoBarras BLOB,
 	clasificacionProducto smallint,
 	codigoBarras varchar(13),
 	numeroEmbalaje smallint,
@@ -107,7 +105,6 @@ CREATE TABLE productos(
 	FOREIGN KEY (marca) REFERENCES marca(clave),
 	FOREIGN KEY (categoria) REFERENCES categoriaProductos(clave),
 	FOREIGN KEY (claveCiudadOrigen) REFERENCES ciudad(clave),
-	FOREIGN KEY (unidadTiempoEntrega) REFERENCES unidadTiempo(clave),
 	FOREIGN KEY (clasificacionProducto) REFERENCES clasificacionProducto(clave),
 	FOREIGN KEY (numeroEmbalaje) REFERENCES embalaje(numero),
 	FOREIGN KEY (claveCiudadOrigen) REFERENCES ciudad(clave)
@@ -211,11 +208,13 @@ CREATE TABLE formasPago(
 
 CREATE TABLE reciboPago(
 	formaPago smallint NOT NULL,
-	folioServicio smallint NOT NULL,
+	claveProducto smallint,
+	folioServicio smallint,
 	fechaEdicion date,
 	cantidadPagado float(9.2),
 	FOREIGN KEY (formaPago) REFERENCES formasPago(clave),
-	FOREIGN KEY (folioServicio) REFERENCES servicios(folio)
+	FOREIGN KEY (folioServicio) REFERENCES servicios(folio),
+	FOREIGN KEY (claveProducto) REFERENCES productos(clave)
 );
 
 
@@ -250,26 +249,41 @@ CREATE TABLE serviciosCotizacion(
 	FOREIGN KEY (folioServicios) REFERENCES servicios(folio)
 );
 
+CREATE TABLE preguntaSecreta(
+	clave smallint NOT NULL AUTO_INCREMENT,
+	preguntaSecreta varchar(45),
+	PRIMARY KEY (clave)
+);
+
+
+CREATE TABLE empresa(
+	clave smallint NOT NULL UNIQUE AUTO_INCREMENT,
+	nombre varchar (10),
+	PRIMARY KEY (clave)
+);
 
 CREATE TABLE cliente(
 	folio smallint not NULL UNIQUE AUTO_INCREMENT,
-	estatus varchar(10),
-	nombres  varchar(30),
-	apellidoPaterno varchar(20),
-	apellidoMaterno varchar(20),
-	contraseña varchar(20),
-	usuario varchar(35),
+	vigencia boolean,
+	nombreEmpresa varchar(30),
+	contrasena varchar(30),
 	fechaBaja DATE,
 	fechaAlta DATE,
-	correoContacto varchar(35),
+	correoEmpresarial varchar(35),
 	extension  varchar(3),
 	telefonoOficina  varchar(15),
 	nombreRepresentante varchar(30),
 	apellidoPaternoRepresentante varchar(30),
 	apellidoMaternoRepresentante varchar(30),
-	empresa  varchar(25),
+	correoRepresentante varchar(35),
+	empresa  smallint,
 	RFC  varchar(13),
-	PRIMARY KEY (folio)
+	preguntaSecretaUno smallint,
+	preguntaSecretaDos smallint,
+	PRIMARY KEY (folio),
+	FOREIGN KEY (empresa) REFERENCES empresa(clave),
+	FOREIGN KEY (preguntaSecretaUno) REFERENCES preguntaSecreta(clave),
+	FOREIGN KEY (preguntaSecretaDos) REFERENCES preguntaSecreta(clave)
 );
 
 CREATE TABLE clienteCotizacion(
@@ -296,11 +310,11 @@ CREATE TABLE tipoDireccion(
 
 CREATE TABLE direccion(
 	clave smallint NOT NULL UNIQUE AUTO_INCREMENT,
-	numeroExterior smallint,
-	numeroInterior smallint,
+	numeroExterior varchar(10),
+	numeroInterior varchar(10),
 	calle varchar(30),
 	colonia varchar(50),
-	codigoPostal varchar(5),
+	codigoPostal smallint,
 	tipo smallint,
 	alcaldia smallint,
 	PRIMARY KEY (clave),
@@ -329,20 +343,15 @@ CREATE TABLE puesto(
 	PRIMARY KEY (clave)
 );
 
-CREATE TABLE empresa(
-	clave smallint NOT NULL UNIQUE AUTO_INCREMENT,
-	nombre varchar (10),
-	PRIMARY KEY (clave)
-);
-
 CREATE TABLE empleado(
 	matricula smallint NOT NULL UNIQUE AUTO_INCREMENT,
 	nombreEmpleado varchar (30),
 	apellidoPaternoEmpleado varchar(20),
 	apellidoMaternoEmpleado varchar(20),
+	correoEmpleado varchar(35),
 	empresa smallint,
 	puesto smallint,
-	contraseña varchar(30),
+	contrasena varchar(30),
 	curp varchar(18),
 	numeroSeguroSocial varchar(12),
 	celular varchar(12),
@@ -353,6 +362,8 @@ CREATE TABLE empleado(
 	correoContacto varchar(35),
 	estadoActivo boolean,
 	telefono varchar(12),
+	fotoEmpleado BLOB,
+	RFC varchar(13),
 	PRIMARY KEY (matricula),
 	FOREIGN KEY (empresa) REFERENCES empresa(clave),
 	FOREIGN KEY (puesto) REFERENCES puesto(clave)
@@ -381,7 +392,7 @@ INSERT INTO fabricante (clave,fabricante) VALUES(
 
 INSERT INTO marca (clave,marca)
 VALUES
-(1,'Tetraflon'),(2,'Jogar'),(3,'Iesa'),(4,'Transbelt'),(5,'Schindler');
+(1,"Tetraflon"),(2,"Jogar"),(3,"Iesa"),(4,"Transbelt"),(5,"Schindler");
 
 INSERT INTO categoriaProductos(clave,categoria)
 VALUES (1,"Elevador"),(2,"Escaleras"),(3,"Derivado");
@@ -392,30 +403,30 @@ VALUES (1,"Meses"),(2,"Semanas"),(3,"Días");
 INSERT INTO clasificacionProducto values (1,"Activo Circulante");
 INSERT INTO clasificacionProducto values (2,"Activo No Circulante");
 
-INSERT INTO embalaje(numero,unidadPeso,pesoMaximo,pesoMinimo,tiempoEntrega,formatoTransporte,advertenciaRiesgo,instruccionesManejo,cantidad)
+INSERT INTO embalaje(numero,unidadPeso,pesoMaximo,pesoMinimo,tiempoEntrega,unidadTiempoEntrega,formatoTransporte,advertenciaRiesgo,instruccionesManejo,cantidad)
 VALUES (
-	1,"kg",25,10,2,"Local","Fragil","Manjear con precaucion y velcidad moderada",1),
-	(2,"gr",5000,500,2,"Local","Fragil","Manjear con precaucion y velcidad moderada",1),
-	(3,"kg",70,90,2,"Local","Fragil","Manjear con precaucion y velcidad moderada",1),
-	(4,"gr",900,100,2,"Local","Fragil","Manjear con precaucion y velcidad moderada",1),
-	(5,"kg",10,14,9,"Local","Fragil","Manjear con precaucion y velcidad moderada",1
+	1,"kg",25,10,"4:00:00",3,"Camión","Fragil","Manjear con precaucion y velcidad moderada",1),
+	(2,"gr",5000,500,"3:00:00",3,"Camión","Fragil","Manjear con precaucion y velcidad moderada",1),
+	(3,"kg",70,90,"1:00:00",3,"Camión","Fragil","Manjear con precaucion y velcidad moderada",1),
+	(4,"gr",900,100,"11:00:00",3,"Camión","Fragil","Manjear con precaucion y velcidad moderada",1),
+	(5,"kg",10,14,"11:00:00",3,"Camión","Fragil","Manjear con precaucion y velcidad moderada",1
 );
 
 
 INSERT INTO pais(clave,pais) VALUES(1,"México"),(2,"Estados Unidos"),(3,"Guatemala"),(4,"Belice");
 
-INSERT INTO estado(clave,estado,clavePais) VALUES(1,"Aguascalientes",1),(2,"Baja California",1),(3,"Baja California Sur",1),(4,"Campeche",1),(5,"Chihuahua",1),(6,"Chiapas",1),(7,"Coahuila",1),(8,"Colima",1),(9,"Durango",1),(10,"Guanajuato",1),(11,"Guerrero",1),(12,"Hidalgo",1),(13,"Jalisco",1),(14,"México",1),(15,"Michoacán",1),(16,"Morelos",1),(17,"Nayarit",1),(18,"Nuevo León",1),(19,"Oaxaca",1),(20,"Puebla",1),(21,"Querétaro",1),(22,"Quintana Roo",1),(23,"San Luis Potosí",1),(24,"Sinaloa",1),(25,"Sonora",1),(26,"Tabasco",1),(27,"Tamaulipas",1),(28,"Tlaxcala",1),(29,"Veracruz",1),(30,"Yucatán",1),(31,"Zacatecas",1),(32,"Ciudad de México",1);
+INSERT INTO estado(clave,estado,clavePais) VALUES(1,"Aguascalientes",1),(2,"BajaCalifornia",1),(3,"BajaCaliforniaSur",1),(4,"Campeche",1),(5,"Chihuahua",1),(6,"Chiapas",1),(7,"Coahuila",1),(8,"Colima",1),(9,"Durango",1),(10,"Guanajuato",1),(11,"Guerrero",1),(12,"Hidalgo",1),(13,"Jalisco",1),(14,"México",1),(15,"Michoacán",1),(16,"Morelos",1),(17,"Nayarit",1),(18,"NuevoLeón",1),(19,"Oaxaca",1),(20,"Puebla",1),(21,"Querétaro",1),(22,"QuintanaRoo",1),(23,"SanLuisPotosí",1),(24,"Sinaloa",1),(25,"Sonora",1),(26,"Tabasco",1),(27,"Tamaulipas",1),(28,"Tlaxcala",1),(29,"Veracruz",1),(30,"Yucatán",1),(31,"Zacatecas",1),(32,"CiudaddeMéxico",1),(33,"Alabama",2),(34,"Alaska",2),(35,"Arizona",2),(36,"Arkansas",2),(37,"California",2),(38,"CarolinadelNorte",2),(39,"CarolinadelSur",2),(40,"Colorado",2),(41,"Connecticut",2),(42,"DakotadelNorte",2),(43,"DakotadelSur",2),(44,"Delaware",2),(45,"Florida",2),(46,"Georgia",2),(47,"Hawái",2),(48,"Idaho",2),(49,"Illinois",2),(50,"Indiana",2),(51,"Iowa",2),(52,"Kansas",2),(53,"Kentucky",2),(54,"Luisiana",2),(55,"Maine",2),(56,"Maryland",2),(57,"Massachusetts",2),(58,"Míchigan",2),(59,"Minnesota",2),(60,"Misisipi",2),(61,"Misuri",2),(62,"Montana",2),(63,"Nebraska",2),(64,"Nevada",2),(65,"NuevaJersey",2),(66,"NuevaYork",2),(67,"NuevoHampshire",2),(68,"NuevoMéxico",2),(69,"Ohio",2),(70,"Oklahoma",2),(71,"Oregón",2),(72,"Pensilvania",2),(73,"RhodeIsland",2),(74,"Tennessee",2),(75,"Texas",2),(76,"Utah",2),(77,"Vermont",2),(78,"Virginia",2),(79,"VirginiaOccidental",2),(80,"Washington",2),(81,"Wisconsin",2),(82,"Wyoming",2);
 
 INSERT INTO ciudad(clave,nombre,claveEstado) VALUES(
-1,"Acapulco",3),(2,"Aguascalientes",3),(3,"Apodaca",3),(4,"Buenavista",3),(5,"Campeche",3),(6,"Cancún",3),(7,"Celaya",3),(8,"Chalco",3),(9,"Chetumal",3),(10,"Chicoloapan",3),(11,"Chihuahua",3),(12,"Chilpancingo",3),(13,"Chimalhuacán",3),(14,"Ciudad Acuña",3),(15,"Ciudad de México DF (CDMX)",3),(16,"Ciudad del Carmen",3),(17,"Ciudad López Mateos",3),(18,"Ciudad Madero",3),(19,"Ciudad Obregón",3),(20,"Ciudad Valles",3),(21,"Ciudad Victoria",3),(22,"Coatzacoalcos",3),(23,"Colima",3),(24,"Córdoba",3),(25,"Cuauhtémoc",3),(26,"Cuautitlán",3),(27,"Cuautitlán Izcalli",3),(28,"Cuautla",3),(29,"Cuernavaca",3),(30,"Culiacán",3),(31,"Delicias",3),(32,"Durango",3),(33,"Ecatepec",3),(34,"Ensenada",3),(35,"Fresnillo",3),(36,"General Escobedo",3),(37,"Gómez Palacio",3),(38,"Guadalajara",3),(39,"Guadalupe",3),(40,"Guadalupe",3),(41,"Guaymas",3),(42,"Hermosillo",3),(43,"Hidalgo del Parral",3),(44,"Iguala",3),(45,"Irapuato",3),(46,"Ixtapaluca",3),(47,"Jiutepec",3),(48,"Juárez",3),(49,"Juárez",3),(50,"La Paz",3),(51,"León",3),(52,"Los Mochis",3),(53,"Manzanillo",3),(54,"Matamoros",3),(55,"Mazatlán",3),(56,"Mérida",3),(57,"Mexicali",3),(58,"Minatitlán",3),(59,"Miramar",3),(60,"Monclova",3),(61,"Monterrey",3),(62,"Morelia",3),(63,"Naucalpan",3),(64,"Naucalpan de Juárez",3),(65,"Navojoa",3),(66,"Nezahualcóyotl",3),(67,"Nogales",3),(68,"Nuevo Laredo",3),(69,"Oaxaca de Juárez",3),(70,"Ojo de Agua",3),(71,"Orizaba",3),(72,"Pachuca",3),(73,"Piedras Negras",3),(74,"Playa del Carmen",3),(75,"Poza Rica de Hidalgo",3),(76,"Puebla",3),(77,"Puerto Vallarta",3),(78,"Querétaro",3),(79,"Reynosa",3),(80,"Salamanca",3),(81,"Saltillo",3),(82,"San Cristóbal de las Casas",3),(83,"San Francisco Coacalco",3),(84,"San Juan Bautista Tuxtepec",3),(85,"San Juan del Río",3),(86,"San Luis Potosí",3),(87,"San Luis Río Colorado",3),(88,"San Nicolás de los Garza",3),(89,"San Pablo de las Salinas",3),(90,"San Pedro Garza García",3),(91,"Santa Catarina",3),(92,"Soledad de Graciano Sánchez",3),(93,"Tampico",3),(94,"Tapachula",3),(95,"Tehuacán",3),(96,"Tepexpan",3),(97,"Tepic",3),(98,"Texcoco de Mora",3),(99,"Tijuana",3),(100,"Tlalnepantla",3),(101,"Tlaquepaque",3),(102,"Toluca",3),(103,"Tonalá",3),(104,"Torreón",3),(105,"Tulancingo de Bravo",3),(106,"Tuxtla",3),(107,"Uruapan",3),(108,"Veracruz",3),(109,"Veracruz",3),(110,"Villa de Álvarez",3),(111,"Villa Nicolás Romero",3),(112,"Villahermosa",3),(113,"Xalapa",3),(114,"Xico",3),(115,"Zacatecas",3),(116,"Zamora",3),(117,"Zapopan",3
+	1,"Acapulco",3),(2,"Aguascalientes",3),(3,"Apodaca",3),(4,"Buenavista",3),(5,"Campeche",3),(6,"Cancún",3),(7,"Celaya",3),(8,"Chalco",3),(9,"Chetumal",3),(10,"Chicoloapan",3),(11,"Chihuahua",3),(12,"Chilpancingo",3),(13,"Chimalhuacán",3),(14,"Ciudad Acuña",3),(15,"Ciudad de México DF (CDMX)",3),(16,"Ciudad del Carmen",3),(17,"Ciudad López Mateos",3),(18,"Ciudad Madero",3),(19,"Ciudad Obregón",3),(20,"Ciudad Valles",3),(21,"Ciudad Victoria",3),(22,"Coatzacoalcos",3),(23,"Colima",3),(24,"Córdoba",3),(25,"Cuauhtémoc",3),(26,"Cuautitlán",3),(27,"Cuautitlán Izcalli",3),(28,"Cuautla",3),(29,"Cuernavaca",3),(30,"Culiacán",3),(31,"Delicias",3),(32,"Durango",3),(33,"Ecatepec",3),(34,"Ensenada",3),(35,"Fresnillo",3),(36,"General Escobedo",3),(37,"Gómez Palacio",3),(38,"Guadalajara",3),(39,"Guadalupe",3),(40,"Guadalupe",3),(41,"Guaymas",3),(42,"Hermosillo",3),(43,"Hidalgo del Parral",3),(44,"Iguala",3),(45,"Irapuato",3),(46,"Ixtapaluca",3),(47,"Jiutepec",3),(48,"Juárez",3),(49,"Juárez",3),(50,"La Paz",3),(51,"León",3),(52,"Los Mochis",3),(53,"Manzanillo",3),(54,"Matamoros",3),(55,"Mazatlán",3),(56,"Mérida",3),(57,"Mexicali",3),(58,"Minatitlán",3),(59,"Miramar",3),(60,"Monclova",3),(61,"Monterrey",3),(62,"Morelia",3),(63,"Naucalpan",3),(64,"Naucalpan de Juárez",3),(65,"Navojoa",3),(66,"Nezahualcóyotl",3),(67,"Nogales",3),(68,"Nuevo Laredo",3),(69,"Oaxaca de Juárez",3),(70,"Ojo de Agua",3),(71,"Orizaba",3),(72,"Pachuca",3),(73,"Piedras Negras",3),(74,"Playa del Carmen",3),(75,"Poza Rica de Hidalgo",3),(76,"Puebla",3),(77,"Puerto Vallarta",3),(78,"Querétaro",3),(79,"Reynosa",3),(80,"Salamanca",3),(81,"Saltillo",3),(82,"San Cristóbal de las Casas",3),(83,"San Francisco Coacalco",3),(84,"San Juan Bautista Tuxtepec",3),(85,"San Juan del Río",3),(86,"San Luis Potosí",3),(87,"San Luis Río Colorado",3),(88,"San Nicolás de los Garza",3),(89,"San Pablo de las Salinas",3),(90,"San Pedro Garza García",3),(91,"Santa Catarina",3),(92,"Soledad de Graciano Sánchez",3),(93,"Tampico",3),(94,"Tapachula",3),(95,"Tehuacán",3),(96,"Tepexpan",3),(97,"Tepic",3),(98,"Texcoco de Mora",3),(99,"Tijuana",3),(100,"Tlalnepantla",3),(101,"Tlaquepaque",3),(102,"Toluca",3),(103,"Tonalá",3),(104,"Torreón",3),(105,"Tulancingo de Bravo",3),(106,"Tuxtla",3),(107,"Uruapan",3),(108,"Veracruz",3),(109,"Veracruz",3),(110,"Villa de Álvarez",3),(111,"Villa Nicolás Romero",3),(112,"Villahermosa",3),(113,"Xalapa",3),(114,"Xico",3),(115,"Zacatecas",3),(116,"Zamora",3),(117,"Zapopan",3
 );
 
-INSERT INTO productos (clave,nombre,descripcionProducto,modelo,familia,marca,codigoFabricante,numeroProductosEntrantes,peso,unidadMedida,stock,impuesto,precio,productoActivo,contraEntrega,categoria,fechaAltaProducto,fechaProducto,umbralInventario,tiempoEntrega,unidadTiempoEntrega,formaTransporte,etiquetaCodigoBarras,clasificacionProducto,codigoBarras,numeroEmbalaje,claveCiudadOrigen) VALUES(
-  1,"Freno paracaidas progresivo","Velocidad 2.5 M/S, carga máxima: 4000 KG, ancho de riel: 16 MM, 10 MM, incluye todos los accesorios.","AM50",5,5,2,10,250,"kg",1,5,2900.50,1,1,1,"2017-08-24","2018-08-20",2,3,3,"Camión",1,NULL,9381223100987,NULL,100),
-  (2,"Botonera","Botoneras de Cabina de columna, placa plana y montaje superficial.","BT10",6,5,2,100,20,"gr",50,10,4300,1,1,1,"2016-07-20","2016-08-20",2,"3:00:00",3,"Camión",1,NULL,9381223100087,NULL,100),
-	(3,"Puerta Elevador","Puertas de rellano Epoxi. Telescópica 2 hojas.","PE00",7,5,2,100,20,"kg",05,16,7800,1,1,1,"2018-09-29","2018-10-20",2,"1:00:00",3,"Camión",1,NULL,8381223100087,NULL,100),
-  (4,"Tarjeta de Control","Para elevadores Vvvvf, Hidraulicos,Una y dos velocidades","TC34",8,5,2,10,20,"gr",20,13,10500,1,1,1,"2018-08-29","2018-19-20",2,"11:00:00",3,"Camión",1,NULL,9981223100087,NULL,100),
-  (5,"Pistones Hidraulico","Incluye valvulas paracaidas","PH24",4,5,1,10,20,"gr",20,13,10500,1,1,1,"2018-08-29","2018-19-20",2,"11:00:00",3,"Camión",1,NULL,9981223100087,NULL,100
+INSERT INTO productos (clave,nombre,descripcionProducto,modelo,familia,marca,codigoFabricante,numeroProductosEntrantes,peso,unidadMedida,stock,impuesto,precio,productoActivo,contraEntrega,categoria,fechaAltaProducto,fechaProducto,umbralInventario,clasificacionProducto,codigoBarras,numeroEmbalaje,claveCiudadOrigen) VALUES(
+  1,"Freno paracaidas progresivo","Velocidad 2.5 M/S, carga máxima: 4000 KG, ancho de riel: 16 MM, 10 MM, incluye todos los accesorios.","AM50",5,5,2,10,250,"kg",1,5,2900.50,1,1,1,"2017-08-24","2018-08-20",2,NULL,9381223100987,NULL,100),
+  (2,"Botonera","Botoneras de Cabina de columna, placa plana y montaje superficial.","BT10",6,5,2,100,20,"gr",50,10,4300,1,1,1,"2016-07-20","2016-08-20",2,NULL,9381223100087,NULL,100),
+	(3,"Puerta Elevador","Puertas de rellano Epoxi. Telescópica 2 hojas.","PE00",7,5,2,100,20,"kg",05,16,7800,1,1,1,"2018-09-29","2018-10-20",2,NULL,8381223100087,NULL,100),
+  (4,"Tarjeta de Control","Para elevadores Vvvvf, Hidraulicos,Una y dos velocidades","TC34",8,5,2,10,20,"gr",20,13,10500,1,1,1,"2018-08-29","2018-19-20",2,NULL,9981223100087,NULL,100),
+  (5,"Pistones Hidraulico","Incluye valvulas paracaidas","PH24",4,5,1,10,20,"gr",20,13,10500,1,1,1,"2018-08-29","2018-19-20",2,NULL,9981223100087,NULL,100
 );
 
 INSERT INTO imagenProducto(clave,numero,descripcion,imagenVisual)
@@ -439,7 +450,7 @@ VALUES (3,"Cancelado");
 
 INSERT INTO categorias (clave,categoria)
 VALUES
-(1,'Ubicación de la maquina'),(2,'Nivel de aceite'),(3,'Freno de la maquina o motor'),(4,'Rieles'),(5,'Funcionamiento del control'),(6,'Regulador final de parada'),(7,'Señalización'),(8,'Operador de puertas'),(9,'Seguridades'),(10,'Funcionamiento de puertas de cabina');
+(1,"Ubicación de la maquina"),(2,"Nivel de aceite"),(3,"Freno de la maquina o motor"),(4,"Rieles"),(5,"Funcionamiento del control"),(6,"Regulador final de parada"),(7,"Señalización"),(8,"Operador de puertas"),(9,"Seguridades"),(10,"Funcionamiento de puertas de cabina");
 
 INSERT INTO servicios (folio,estatusPago,tipoServicio,fechaAgendada,fechaEntrega,fechaSalida,horaAgendada,horaEntrada,horaSalida,nombreServicio,prioridad,descripcion,costo,observaciones,duracionhorasMinutos,duracionEstimada,estatusServicio)
 VALUES (1,1,1,"2017-08-24","2017-08-24","2017-08-24","08:30:00","08:30:00","15:00:00","Condominio Arkansas 14",2,"Un (1) elevador marca SCHINDLER EXEL con una capacidad de 560 kg, equivalentes a 8 pasajeros, Con 12 salidas todas al frente",1500.00,"Después de hacer una inspección técnica a un (1) elevador de pasajeros marca SCHINDLER EXEL nos permitimos presentar a su consideración nuestro presupuesto por el servicio de MANTENIMIENTO PREVENTIVO","06:30:00","09:30:00",1);
@@ -489,9 +500,9 @@ VALUES(1,1,"2017-11-10",5400),(2,2,"2018-12-01", 5500),(2,3,"2017-04-24", 1400),
 INSERT INTO estatusCotizacion values (1,"Activo");
 INSERT INTO estatusCotizacion values (2,"Inactivo");
 
-INSERT INTO cotizacion values (1,1,5500.00,'2018-12-08');
-INSERT INTO cotizacion values (2,2,1500.00,'2017-04-24');
-INSERT INTO cotizacion values (3,2,1400.00,'2017-04-24 ');
+INSERT INTO cotizacion values (1,1,5500.00,"2018-12-08");
+INSERT INTO cotizacion values (2,2,1500.00,"2017-04-24");
+INSERT INTO cotizacion values (3,2,1400.00,"2017-04-24 ");
 
 INSERT INTO productosCotizacion(numeroCotizacion,claveProducto,cantidad)
 VALUES (1,2,5),(2,1,2),(3,1,1);
@@ -500,11 +511,24 @@ INSERT INTO serviciosCotizacion(numeroCotizacion,folioServicios,cantidad) VALUES
 	2,10,1),(2,3,3),(1,7,2
 );
 
-INSERT INTO cliente values (1,"activo","Alberto","Aguilera","Valadez","juanG69","juanAAV@gmail.com",NULL,'2019-06-13',"JG@outlook.com",215,"01 55 5541 7898","Ricardo","Polanco","Reyes","Forum B","AAVU800825569");
-INSERT INTO cliente values (2,"activo","Francisco","Lopez","Escamilla","Escan666","FLE@gmail.com",NULL,'2019-06-11',"contEscan@gmail.com",431,"01 55 5511 8766","Alfonso","Morales","Pacheco","Antara","FLCA965321009");
-INSERT INTO cliente values (3,"activo","Sergio","Meza","Mejorado","Smm155895","SetgioMM@gmail.com",NULL,'2019-05-09',"MmSergio@hotmail.com",894,"01 55 5591 8766","Gustavo","Tamez","Galvan","Perisur","SMMG788542016");
-INSERT INTO cliente values (4,"activo","Mauricio","Loza","Juarez","MauLJ","iMua_88@gmail.com",NULL,'2019-04-23',"LJmauricio@gmail.com",997,"01 55 5153 3553","Fernanda","Pacheco","Maya","Plaza Mundo E","MLJF889223605");
-INSERT INTO cliente values (5,"activo","Carlos","Olivera","Hidalgo","CarlooSh","carloSOlivera90@gmail.com",NULL,'2019-02-22',"OliveraCarlos@gmail.com",556,"01 55 5111 8766","Javier","Hidalgo","Grande","Plaza Toreo","COHJ114455237");
+INSERT INTO preguntaSecreta(preguntaSecreta) VALUES(
+	"¿Cuál fue el nombre de tu primera mascota?"),("¿Cómo se llama la ciudad donde naciste?"),("¿Cómo se llama tu amigo de la primaria?"),("¿Cuál es el trabajo de tus sueños?"
+);
+
+INSERT INTO Empresa (clave,nombre)
+VALUES (1,"SERCON");
+INSERT INTO Empresa (clave,nombre)
+VALUES (2,"ICC");
+INSERT INTO Empresa (clave,nombre)
+VALUES (3,"SAMSARA");
+INSERT INTO Empresa (clave,nombre)
+VALUES (4,"MABA");
+
+INSERT INTO cliente values (1,1,"Forum Buenavista","BuenaForo",NULL,"2019-06-13","contactoforumB@outlook.com",215,"01 55 5541 7898","Ricardo","Polanco","Reyes","reyespolanco@yahoo.com.mx",1,"AAVU800825569",1,2);
+INSERT INTO cliente values (2,1,"Plaza Antara","Pantara",NULL,"2019-06-11","contEscantara@gmail.com",431,"01 55 5511 8766","Alfonso","Morales","Pacheco","AMP_@gmail.com",2,"FLsCA965321009",1,3);
+INSERT INTO cliente values (3,1,"Plaza Perisur","PPerisur",NULL,"2019-05-09","pericontactosur@hotmail.com",894,"01 55 5591 8766","Gustavo","Tamez","Galvan","tavotava@outlook.com",3,"SMMG788542016",3,2);
+INSERT INTO cliente values (4,1,"Plaza Mundo E","MundoE_plaza",NULL,"2019-04-23","contactamundoE@gmail.com",997,"01 55 5153 3553","Fernanda","Pacheco","Maya","ferpacheco90@gmail.com",4,"MLJF889223605",4,2);
+INSERT INTO cliente values (5,1,"Plaza Toreo","Toreoplaza",NULL,"2019-02-22","toreoinfo@gmail.com",556,"01 55 5111 8766","Javier","Hidalgo","Grande","javigrandeh@hotmail.com",1,"COHJ114455237",4,1);
 
 INSERT INTO clienteCotizacion VALUES(
 	1,5),(3,3),(2,3
@@ -546,19 +570,21 @@ INSERT INTO alcaldia(clave,alcaldia,claveCiudad) VALUES(
 );
 
 INSERT INTO tipoDireccion (clave,Tipo)
-VALUES (1,"Entrega");
+VALUES (1,"Cliente");
 INSERT INTO tipoDireccion (clave,Tipo)
-VALUES (2,"Empleado");
+VALUES (2,"Fiscal");
 INSERT INTO tipoDireccion (clave,Tipo)
-VALUES (3,"Cliente");
+VALUES (3,"Entrega");
 INSERT INTO tipoDireccion (clave,Tipo)
-VALUES (4,"Servicio");
+VALUES (4,"Empleado");
+INSERT INTO tipoDireccion (clave,Tipo)
+VALUES (5,"Servicio");
 
-INSERT INTO direccion values (1,259,0,"Eje 1 Nte","Buenavista","06350",2,2437);
-INSERT INTO direccion values (2,843,NULL,"Av ejer. nacional","Granada","11520",2,2430);
-INSERT INTO direccion values (3,NULL,NULL,"Anillo Periferico","AdolfoLopez M","04500",2,2429);
-INSERT INTO direccion values (4,NULL,NULL,"Periférico. Blvd.","Manuel Ávila Camacho","54050",2,749);
-INSERT INTO direccion values (5,209,5,"Blvrd Manuel Ávila Camacho 5","Residencial Lomas de Sotelo","53390",2,702);
+INSERT INTO direccion values (1,"259","0","Eje 1 Nte","Buenavista",06350,2,2437);
+INSERT INTO direccion values (2,"843",NULL,"Av ejer. nacional","Granada",11520,2,2430);
+INSERT INTO direccion values (3,NULL,NULL,"Anillo Periferico","AdolfoLopez M",04500,2,2429);
+INSERT INTO direccion values (4,NULL,NULL,"Periférico. Blvd.","Manuel Ávila Camacho",54050,2,749);
+INSERT INTO direccion values (5,"209","5","Blvrd Manuel Ávila Camacho 5","Residencial Lomas de Sotelo",53390,2,702);
 
 INSERT INTO direccionCliente values (1,1);
 INSERT INTO direccionCliente values (2,2);
@@ -576,22 +602,13 @@ VALUES (2,"Secretaria");
 INSERT INTO puesto (clave,nombre)
 VALUES (3,"Técnico");
 
-INSERT INTO Empresa (clave,nombre)
-VALUES (1,"SERCON");
-INSERT INTO Empresa (clave,nombre)
-VALUES (2,"ICC");
-INSERT INTO Empresa (clave,nombre)
-VALUES (3,"SAMSARA");
-INSERT INTO Empresa (clave,nombre)
-VALUES (4,"MABA");
-
-INSERT INTO empleado (matricula,nombreEmpleado,ApellidoPaternoEmpleado,apellidoMaternoEmpleado,empresa,puesto,contraseña,curp,numeroSeguroSocial,telefonoEmergencia,nombreContacto,apellidoPaternoContacto,apellidoMaternoContacto,correoContacto,estadoActivo,telefono) VALUES(
-  1,'Juan','Sanchez','Lopez',1,3,"12345678A",'SALJ890929HHDFPIO0',"1234ABCD3210",0445541434593,'Aldo','Montes','Enriquez','aldo_me@gmail.com',1,53027329),
-  (2,'Christian','Urquiza','Aguirre',2,3,"12345678B",'URAC890929HHDFPIO0',"1234EFGH3210",0445541434593,'Aldo','Montes','Enriquez','aldo_me@gmail.com',1,53027329),
-  (3,'David','Mendoza','Castillo',1,3,"1234567CD",'MECD890929HHDFPIO0',"1234ABCD3210",0445541434593,'Aldo','Montes','Enriquez','aldo_me@gmail.com',1,53027329),
-  (4,'Brenda','Alcala','Calderon',3,2,"123456EFG",'ALCB930929HHDFPIO0',"1234ABCD3210",0445541434593,'Aldo','Montes','Enriquez','aldo_me@gmail.com',1,53027329),
-  (5,'Julio','Montaño',NULL,4,1,"1234HIJKL",'MOxJ890929HHDFPIO0',"1234ABCD3210",0445541434593,'Aldo','Montes','Enriquez','aldo_me@gmail.com',1,53027329),
-  (6,'Valentin','Rodriguez','Mellado',4,1,"12ABCDEFG",'ROMV890929HHDFPIO0',"1234ABCD3210",0445541434593,'Aldo','Montes','Enriquez','aldo_me@gmail.com',1,53027329
+INSERT INTO empleado VALUES(
+  1,"Juan","Sanchez","Lopez","juan@gmail.com",1,3,"12345678A","SALJ890929HHDFPIO0","1234ABCD3210",0445541434593,54366764,"Aldo","Montes","Enriquez","aldo_me@gmail.com",1,53027329,NULL,"SALJ890929H1P"),
+  (2,"Christian","Urquiza","Aguirre","christian@gmail.com",2,3,"12345678B","URAC890929HHDFPIO0","1234EFGH3210",0445541434593,55654654,"Aldo","Montes","Enriquez","aldo_me@gmail.com",1,53027329,NULL,"URAC890929JL1"),
+  (3,"David","Mendoza","Castillo","david@gmail.com",1,3,"1234567CD","MECD890929HHDFPIO0","1234ABCD3210",0445541434593,58477501,"Aldo","Montes","Enriquez","aldo_me@gmail.com",1,53027329,NULL,"MECD8909291IK"),
+  (4,"Brenda","Alcala","Calderon","brenda@gmail.com",3,2,"123456EFG","ALCB930929HHDFPIO0","1234ABCD3210",0445541434593,59782367,"Aldo","Montes","Enriquez","aldo_me@gmail.com",1,53027329,NULL,"ALCB930929PP3"),
+  (5,"Julio","Montaño","Salinas","julio@gmail.com",4,1,"1234HIJKL","MOxJ890929HHDFPIO0","1234ABCD3210",0445541434593,22234557,"Aldo","Montes","Enriquez","aldo_me@gmail.com",1,53027329,NULL,"MOxJ890929OP2"),
+  (6,"Valentin","Rodriguez","Mellado","valentin@gmail.com",4,1,"12ABCDEFG","ROMV890929HHDFPIO0","1234ABCD3210",0445541434593,27432340,"Aldo","Montes","Enriquez","aldo_me@gmail.com",1,53027329,NULL,"ROMV890929QLK"
 );
 
 INSERT INTO direccionEmpleado (claveDireccion,ClaveEmpleado)

@@ -13,13 +13,17 @@ import javax.swing.table.DefaultTableModel;
  * @author coner
  */
 public class BuscarEmpleado extends javax.swing.JInternalFrame {
+public int BEindice;
+    
 DefaultTableModel tbBEres;
+
+
     /**
      * Creates new form BuscarEmpleado
      */
     public BuscarEmpleado() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setIconifiable(true);
     }
 
     /**
@@ -34,7 +38,7 @@ DefaultTableModel tbBEres;
         btnIEregresar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        jTextField7 = new javax.swing.JTextField();
+        txtBEnss = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -43,17 +47,18 @@ DefaultTableModel tbBEres;
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txtBEmatricula = new javax.swing.JTextField();
+        txtBEnombre = new javax.swing.JTextField();
+        txtBEcorreo = new javax.swing.JTextField();
+        cboxBEempresa = new javax.swing.JComboBox<>();
+        txtBEdireccion = new javax.swing.JTextField();
+        txtBEcurp = new javax.swing.JTextField();
+        txtBErfc = new javax.swing.JTextField();
+        btnBEmodificar = new javax.swing.JButton();
+        btnBEbaja = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbBEconsulta = new javax.swing.JTable();
+        btnBEbuscar = new javax.swing.JButton();
 
         btnIEregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_arrow_back_grey600_18dp.png"))); // NOI18N
         btnIEregresar.addActionListener(new java.awt.event.ActionListener() {
@@ -80,16 +85,21 @@ DefaultTableModel tbBEres;
 
         jLabel1.setText("Matrícula:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Empresa" }));
+        cboxBEempresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Empresa", "SERCON", "ICC", "SAMSARA", "MABA" }));
 
-        jButton1.setText("Modificar Empleado");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBEmodificar.setText("Modificar Empleado");
+        btnBEmodificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBEmodificarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Eliminar Empleado");
+        btnBEbaja.setText("Dar de baja");
+        btnBEbaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBEbajaActionPerformed(evt);
+            }
+        });
 
         tbBEconsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,7 +112,19 @@ DefaultTableModel tbBEres;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbBEconsulta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbBEconsultaMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tbBEconsulta);
+
+        btnBEbuscar.setText("Buscar Empleado");
+        btnBEbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBEbuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,41 +137,42 @@ DefaultTableModel tbBEres;
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtBEmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel5)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtBEdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel3)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtBEcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cboxBEempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtBEnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel8)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField7))
+                            .addComponent(txtBEnss))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel7)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField6))
+                            .addComponent(txtBErfc))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel6)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtBEcurp, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnBEmodificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBEbaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBEbuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -158,42 +181,44 @@ DefaultTableModel tbBEres;
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBEmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBEnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBEcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboxBEempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBEdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBEcurp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBErfc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBEnss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(jButton1)
+                        .addGap(136, 136, 136)
+                        .addComponent(btnBEbuscar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addContainerGap(22, Short.MAX_VALUE))
+                        .addComponent(btnBEmodificar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBEbaja)
+                        .addContainerGap(26, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -228,16 +253,105 @@ DefaultTableModel tbBEres;
         this.setVisible(false);
     }//GEN-LAST:event_btnIEregresarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnBEmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBEmodificarActionPerformed
+        //if()    {
+            BuscarEmpleado ME = new BuscarEmpleado();
+            //this.dkpMAfondo.add(ME);
+            ME.show();
+        //}
+    }//GEN-LAST:event_btnBEmodificarActionPerformed
+
+    
+    //metodo para consultar datos
+    void consultarDatos(String dato)
+    {
+        //String[]encabezados={"ID", "NOMBRE","DIRECCION","E-MAIL"};
+        String[]encabezados={"NOMBRE","DIRECCION","E-MAIL"};
+        String[]filas=new String[3];
+        String senSQL="";
+        tbBEres=new DefaultTableModel(null,encabezados);
+        
+        ConexionMySQL cmysql=new ConexionMySQL();
+        Connection conec=cmysql.Conectar();
+        
+        senSQL="SELECT matricula, nombreEmpleado, apellidoPaternoEmpleado, apellidoMaternoEmpleado, correoEmpleado, empresa.nombre, puesto.nombre, curp, numeroSeguroSocial, celular, telefonoEmergencia, nombreContacto, apellidoPaternoContacto, apellidoMaternoContacto, correoContacto, estadoActivo, telefono, RFC"+
+        "FROM empleado, puesto, empresa"+
+        "WHERE empleado.empresa=empresa.clave AND puesto.clave=empleado.puesto AND ";
+        
+        senSQL="SELECT Nombre, Direccion, Email FROM agenda "
+                + "WHERE CONCAT(Nombre,' ',Direccion, ' ',Email) LIKE '%"+dato+"%'";
+        try{
+            Statement st=conec.createStatement();
+            ResultSet rs=st.executeQuery(senSQL);
+            
+            while(rs.next()){
+                //filas[0]=rs.getString("id");
+                filas[0]=rs.getString("Nombre");
+                filas[1]=rs.getString("Direccion");
+                filas[2]=rs.getString("Email");
+               
+                tbBEres.addRow(filas);
+            }
+            this.tbBEconsulta.setModel(tbBEres);
+            
+        }catch(SQLException ex){
+                JOptionPane.showMessageDialog(null,ex);
+        }
+    }
+
+    
+    
+    private void btnBEbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBEbajaActionPerformed
+        ConexionMySQL cmysql = new ConexionMySQL();
+        Connection conec = (Connection) cmysql.Conectar();
+        
+        String senSQL = "UPDATE empleado SET estadoActivo = 0 WHERE matricula = "+BEindice;
+        
+        try {
+            PreparedStatement ps = conec.prepareStatement(senSQL);
+            int n=ps.executeUpdate();
+            if (n>0)    {
+                JOptionPane.showOptionDialog(this, "Se dado de baja el empleado satisfactoriamente",
+                        "MySQL Information", JOptionPane.INFORMATION_MESSAGE,
+                        JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" 0K "},"0K");
+                actualizar();
+            }
+        } catch (Exception ex)  {
+            JOptionPane.showMessageDialog(null,ex,"Error",2);
+        }
+    }//GEN-LAST:event_btnBEbajaActionPerformed
+
+    private void btnBEbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBEbuscarActionPerformed
+        try {
+            
+        } catch(Exception ex)   {
+            
+        }
+    }//GEN-LAST:event_btnBEbuscarActionPerformed
+
+    private void tbBEconsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBEconsultaMouseClicked
+        int registro;
+        String ids;
+        try{
+            BEindice=tbBEconsulta.getSelectedRow();
+
+            String etiq="Modificar";
+            tbBEres=(DefaultTableModel) tbBEconsulta.getModel();
+            ids=(String) tbBEres.getValueAt(registro, 0);
+            EditarDatos(ids);
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null,ex,"Error System Information",0);
+        }
+    }//GEN-LAST:event_tbBEconsultaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBEbaja;
+    private javax.swing.JButton btnBEbuscar;
+    private javax.swing.JButton btnBEmodificar;
     private javax.swing.JButton btnIEregresar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cboxBEempresa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -249,13 +363,13 @@ DefaultTableModel tbBEres;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTable tbBEconsulta;
+    private javax.swing.JTextField txtBEcorreo;
+    private javax.swing.JTextField txtBEcurp;
+    private javax.swing.JTextField txtBEdireccion;
+    private javax.swing.JTextField txtBEmatricula;
+    private javax.swing.JTextField txtBEnombre;
+    private javax.swing.JTextField txtBEnss;
+    private javax.swing.JTextField txtBErfc;
     // End of variables declaration//GEN-END:variables
 }

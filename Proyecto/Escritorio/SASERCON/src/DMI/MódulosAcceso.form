@@ -44,39 +44,36 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                          <Component id="btnMAagendar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="btnMAingresar_empleado" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnMAingresar_cliente" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btnMAingresar_producto" pref="125" max="32767" attributes="0"/>
+                              <Component id="btnMAingresar_servicio" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="360" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btnMAbuscar_cliente" alignment="1" min="-2" pref="125" max="-2" attributes="0"/>
+                              <Component id="btnMAbuscar_empleado" alignment="1" min="-2" pref="125" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btnMAbuscar_servicio" max="32767" attributes="0"/>
+                              <Component id="btnMAbuscar_producto" pref="125" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                          <Component id="btnMAagendar" min="-2" pref="125" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnMAsalir" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnMAingresar_empleado" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnMAingresar_cliente" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnMAingresar_producto" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnMAingresar_servicio" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="366" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btnMAbuscar_cliente" min="-2" pref="115" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                  <Component id="btnMAbuscar_servicio" min="-2" pref="115" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btnMAbuscar_empleado" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnMAbuscar_producto" min="-2" pref="115" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -88,22 +85,24 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnMAbuscar_producto" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnMAingresar_empleado" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
-                      <Component id="btnMAingresar_producto" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnMAbuscar_empleado" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnMAingresar_empleado" alignment="0" pref="108" max="32767" attributes="0"/>
+                          <Component id="btnMAbuscar_producto" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="btnMAbuscar_empleado" min="-2" pref="108" max="-2" attributes="0"/>
+                      <Component id="btnMAingresar_producto" min="-2" pref="108" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnMAbuscar_servicio" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnMAbuscar_cliente" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnMAingresar_cliente" min="-2" pref="108" max="-2" attributes="0"/>
-                      <Component id="btnMAingresar_servicio" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnMAingresar_cliente" pref="108" max="32767" attributes="0"/>
+                      <Component id="btnMAingresar_servicio" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnMAbuscar_cliente" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnMAbuscar_servicio" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="210" max="32767" attributes="0"/>
+                  <EmptySpace pref="202" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnMAsalir" min="-2" pref="100" max="-2" attributes="0"/>
-                      <Component id="btnMAagendar" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnMAsalir" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="btnMAagendar" alignment="1" min="-2" pref="108" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               </Group>

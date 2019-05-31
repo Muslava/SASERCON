@@ -23,6 +23,7 @@ protected String Lusuario;
 private static String Lcontra;
 private char[] Lccontra;
 private String Lscontra;
+public int Lpuesto;
 ImageIcon Liilogo = new ImageIcon(getClass().getResource("/img/LOGOf.png"));
 Icon Lilogo = new ImageIcon(Liilogo.getImage().getScaledInstance(190, 190, Image.SCALE_DEFAULT));
 ImageIcon Liiusuario = new ImageIcon(getClass().getResource("/img/usuario.png"));
@@ -205,20 +206,24 @@ Icon Lipassword = new ImageIcon(Liipassword.getImage().getScaledInstance(36, 36,
             PreparedStatement ps;
             try {
                 con = ConexionMariaDB.getConexion("SASERCON");
-                ps = con.prepareStatement("SELECT contraseña FROM empleado WHERE matricula = '"+Lusuario+"';");
+                ps = con.prepareStatement("SELECT contraseña, puesto FROM empleado WHERE matricula = '"+Lusuario+"';");
                 ResultSet rs = ps.executeQuery();
                 while (rs.next())   {
+                    Lpuesto = rs.getInt("puesto");
                     Lcontra = rs.getString("contraseña");
                     Lccontra = psfLcontra.getPassword();
                     Lscontra = new String(Lccontra);
-                    if(Lscontra.equals(Lcontra))    {
+                    if(Lscontra.equals(Lcontra) && Lpuesto != 3)    {
                         MódulosAcceso ma = new MódulosAcceso();
                         ma.setVisible(true);
-                        JOptionPane.showMessageDialog(null,"¡Bienvenido a SASERCON!");
+                        JOptionPane.showMessageDialog(null,"¡Bienvenido a SASERCON!","¡Bienvenido!",1);
                         this.dispose();
                     }
+                    else if(Lpuesto == 3)   {
+                        JOptionPane.showMessageDialog(null,"El sistema es para directivos y secretarias.","Acceso denegado.",0);
+                    }
                     else    {
-                        JOptionPane.showMessageDialog(null,"El usuario o contraseña son incorrectos. Revise su matrícula y contraseña.");
+                        JOptionPane.showMessageDialog(null,"El usuario o contraseña son incorrectos. Revise su matrícula y contraseña.","Error.",2);
                     }
                 }
             
