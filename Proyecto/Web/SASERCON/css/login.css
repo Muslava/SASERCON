@@ -99,14 +99,14 @@ body {
   color: #000;
 }
 
-.login-box .Final{
+ .Final{
   text-decoration: none;
-  font-size: 12px;
-  line-height: 20px;
+  font-size: 15px;
+  line-height: 80px;
   color: darkgrey;
 }
 
-.login-box .Final  a:hover {
+ .Final  a:hover {
 
   color: #fff;
 

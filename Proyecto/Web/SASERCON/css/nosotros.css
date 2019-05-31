@@ -132,9 +132,9 @@ display: inline-block;
 
 
 .Final{
-  background: #fff;
+  background:rgba(0,0,0,0,  5);
   padding: 40px;
-  border: 1px solid #f0f0f0;
+
   text-align: center;
   color: #9c9c9c;
 }
