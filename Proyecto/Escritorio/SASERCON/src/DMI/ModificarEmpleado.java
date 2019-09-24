@@ -772,10 +772,10 @@ static Comprobacion c = new Comprobacion();
         String senSQL = "UPDATE empleado SET nombreEmpleado = ?, apellidoPaternoEmpleado = ?, apellidoMaternoEmpleado = ?,"+
                 "correoEmpleado = ?, empresa = ?, puesto = ?, curp = ?, numeroSeguroSocial = ?, celular = ?,"+
                 "telefonoEmergencia = ?, nombreContacto = ?, apellidoPaternoContacto = ?, apellidoMaternoContacto = ?,"+
-                "correoContacto = ?, estadoActivo = ?, telefono = ?, fotoEmpleado = ?, RFC = ? WHERE matricula = "+indice;
+                "correoContacto = ?, estadoActivo = ?, telefono = ?, fotoEmpleado = ?, RFC = ? WHERE matricula = ";//+indice;
         String senSQL2 = "UPDATE direccion SET numeroExterior = ?, numeroInterior = ?, calle = ?, colonia = ?, "+
                 "codigoPostal = ?, tipo = ?, alcaldia = ?"+
-                "WHERE direccion.clave = direccionEmpleado.direccion AND direccionEmpleado.claveEmpleado = empleado.matricula AND empleado.matricula = "+MEindice;
+                "WHERE direccion.clave = direccionEmpleado.direccion AND direccionEmpleado.claveEmpleado = empleado.matricula AND empleado.matricula = ";//+MEindice;
 
         try {
             PreparedStatement ps = conec.prepareStatement(senSQL);

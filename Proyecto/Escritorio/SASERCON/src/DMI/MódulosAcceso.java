@@ -5,8 +5,11 @@
  */
 package DMI;
 
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import javax.swing.ImageIcon;
 
 /**
@@ -15,6 +18,7 @@ import javax.swing.ImageIcon;
  */
 public class MódulosAcceso extends javax.swing.JFrame {
 
+    public int x, y;
     /**
      * Creates new form ModulosAcceso
      */
@@ -48,8 +52,13 @@ public class MódulosAcceso extends javax.swing.JFrame {
         btnMAingresar_producto = new javax.swing.JButton();
         btnMAagendar = new javax.swing.JButton();
         btnMAsalir = new javax.swing.JButton();
+        panMAmover = new javax.swing.JPanel();
+        lblMAmaxi_rest = new javax.swing.JLabel();
+        lblMAcerrar = new javax.swing.JLabel();
+        lblMAminimizar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         btnMAingresar_empleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_perm_contact_cal_grey600_18dp_1.png"))); // NOI18N
         btnMAingresar_empleado.setText("Ingresar Empleado");
@@ -73,6 +82,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
 
         btnMAbuscar_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_perm_identity_grey600_18dp.png"))); // NOI18N
         btnMAbuscar_cliente.setText("Buscar Cliente");
+        btnMAbuscar_cliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMAbuscar_cliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnMAbuscar_cliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnMAbuscar_cliente.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +93,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
 
         btnMAbuscar_empleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_dashboard_grey600_18dp.png"))); // NOI18N
         btnMAbuscar_empleado.setText("Buscar Empleado");
+        btnMAbuscar_empleado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMAbuscar_empleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnMAbuscar_empleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnMAbuscar_empleado.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +104,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
 
         btnMAbuscar_producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_perm_identity_black_18dp.png"))); // NOI18N
         btnMAbuscar_producto.setText("Buscar Producto");
+        btnMAbuscar_producto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMAbuscar_producto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnMAbuscar_producto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnMAbuscar_producto.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +115,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
 
         btnMAbuscar_servicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_add_to_photos_grey600_18dp.png"))); // NOI18N
         btnMAbuscar_servicio.setText("Buscar Servicio");
+        btnMAbuscar_servicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMAbuscar_servicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnMAbuscar_servicio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnMAbuscar_servicio.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +156,8 @@ public class MódulosAcceso extends javax.swing.JFrame {
         });
 
         btnMAsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_exit_to_app_grey600_18dp.png"))); // NOI18N
-        btnMAsalir.setText("Salir");
+        btnMAsalir.setText("Cerrar Sesión");
+        btnMAsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMAsalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnMAsalir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnMAsalir.addActionListener(new java.awt.event.ActionListener() {
@@ -151,6 +165,68 @@ public class MódulosAcceso extends javax.swing.JFrame {
                 btnMAsalirActionPerformed(evt);
             }
         });
+
+        panMAmover.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panMAmover.setOpaque(false);
+        panMAmover.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                panMAmoverMouseDragged(evt);
+            }
+        });
+        panMAmover.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panMAmoverMousePressed(evt);
+            }
+        });
+
+        lblMAmaxi_rest.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMAmaxi_rest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/icons8_maximize_window_32px.png"))); // NOI18N
+        lblMAmaxi_rest.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblMAmaxi_rest.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMAmaxi_restMouseClicked(evt);
+            }
+        });
+
+        lblMAcerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMAcerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/icons8_close_window_32px.png"))); // NOI18N
+        lblMAcerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblMAcerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMAcerrarMouseClicked(evt);
+            }
+        });
+
+        lblMAminimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMAminimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/icons8_minimize_window_32px.png"))); // NOI18N
+        lblMAminimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblMAminimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMAminimizarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panMAmoverLayout = new javax.swing.GroupLayout(panMAmover);
+        panMAmover.setLayout(panMAmoverLayout);
+        panMAmoverLayout.setHorizontalGroup(
+            panMAmoverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panMAmoverLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblMAminimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMAmaxi_rest, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMAcerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panMAmoverLayout.setVerticalGroup(
+            panMAmoverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panMAmoverLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(panMAmoverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMAmaxi_rest, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMAminimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMAcerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         dkpMAfondo.setLayer(btnMAingresar_empleado, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dkpMAfondo.setLayer(btnMAingresar_cliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -162,6 +238,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
         dkpMAfondo.setLayer(btnMAingresar_producto, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dkpMAfondo.setLayer(btnMAagendar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dkpMAfondo.setLayer(btnMAsalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dkpMAfondo.setLayer(panMAmover, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dkpMAfondoLayout = new javax.swing.GroupLayout(dkpMAfondo);
         dkpMAfondo.setLayout(dkpMAfondoLayout);
@@ -169,6 +246,12 @@ public class MódulosAcceso extends javax.swing.JFrame {
             dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dkpMAfondoLayout.createSequentialGroup()
                 .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dkpMAfondoLayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(btnMAagendar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMAsalir)
+                        .addGap(81, 81, 81))
                     .addGroup(dkpMAfondoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -185,32 +268,28 @@ public class MódulosAcceso extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnMAbuscar_servicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnMAbuscar_producto, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)))
-                    .addGroup(dkpMAfondoLayout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(btnMAagendar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnMAsalir)
-                        .addGap(81, 81, 81)))
+                            .addComponent(btnMAbuscar_producto, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))))
                 .addContainerGap())
+            .addComponent(panMAmover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         dkpMAfondoLayout.setVerticalGroup(
             dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dkpMAfondoLayout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(panMAmover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnMAingresar_empleado, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                        .addComponent(btnMAbuscar_producto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnMAingresar_empleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMAbuscar_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnMAbuscar_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMAingresar_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(13, 13, 13)
                 .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnMAingresar_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                    .addComponent(btnMAingresar_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnMAingresar_servicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnMAbuscar_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMAbuscar_servicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                    .addComponent(btnMAbuscar_servicio, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
                 .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnMAsalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMAagendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -228,7 +307,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
             .addComponent(dkpMAfondo)
         );
 
-        setSize(new java.awt.Dimension(978, 639));
+        setSize(new java.awt.Dimension(962, 600));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -289,7 +368,43 @@ public class MódulosAcceso extends javax.swing.JFrame {
 
     private void btnMAsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAsalirActionPerformed
         this.dispose();
+        Login L = new Login();
+        L.show();
     }//GEN-LAST:event_btnMAsalirActionPerformed
+
+    private void lblMAcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMAcerrarMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_lblMAcerrarMouseClicked
+
+    private void lblMAmaxi_restMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMAmaxi_restMouseClicked
+        if(this.getExtendedState()==this.MAXIMIZED_BOTH)  {
+            this.setExtendedState(this.NORMAL);
+            this.lblMAmaxi_rest.setIcon(new ImageIcon(getClass().getResource("../img/MódulosAcceso/icons8_maximize_window_32px.png")));
+        }
+        else    {
+            this.setExtendedState(this.MAXIMIZED_BOTH);
+            this.lblMAmaxi_rest.setIcon(new ImageIcon(getClass().getResource("../img/MódulosAcceso/icons8_restore_window_32px.png")));
+        }
+    }//GEN-LAST:event_lblMAmaxi_restMouseClicked
+
+    private void panMAmoverMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panMAmoverMouseDragged
+        //setCursor(new Cursor(Cursor.MOVE_CURSOR));
+        if(this.getExtendedState()==this.NORMAL)    {
+            Point mueve = MouseInfo.getPointerInfo().getLocation();
+            this.setLocation(mueve.x - x, mueve.y - y);
+        }
+    }//GEN-LAST:event_panMAmoverMouseDragged
+
+    private void lblMAminimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMAminimizarMouseClicked
+        this.setExtendedState(1);
+    }//GEN-LAST:event_lblMAminimizarMouseClicked
+
+    private void panMAmoverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panMAmoverMousePressed
+        if(this.getExtendedState()==this.NORMAL)    {
+            x = evt.getX();
+            y = evt.getY();
+        }
+    }//GEN-LAST:event_panMAmoverMousePressed
 
     /**
      * @param args the command line arguments
@@ -339,5 +454,9 @@ public class MódulosAcceso extends javax.swing.JFrame {
     private javax.swing.JButton btnMAingresar_servicio;
     private javax.swing.JButton btnMAsalir;
     private javax.swing.JDesktopPane dkpMAfondo;
+    private javax.swing.JLabel lblMAcerrar;
+    private javax.swing.JLabel lblMAmaxi_rest;
+    private javax.swing.JLabel lblMAminimizar;
+    private javax.swing.JPanel panMAmover;
     // End of variables declaration//GEN-END:variables
 }

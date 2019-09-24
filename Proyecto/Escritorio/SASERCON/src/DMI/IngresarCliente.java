@@ -501,8 +501,8 @@ static Comprobacion c = new Comprobacion();
             ps2.setInt(6,1);
             ps2.setInt(7,ICalcaldia);
             
-            PreparedStatement ps3 = conec.prepareStatement("INSERT INTO direccionCliente VALUES((select max(folio) from cliente),(select max(clave) from direccion))");
-            PreparedStatement ps4 = conec.prepareStatement("UPDATE cliente SET contrasena = (select max(folio)+1000) WHERE matricula=(select max(folio)) AND RFC='"+ICrfc+"'");
+            PreparedStatement ps3 = conec.prepareStatement("INSERT INTO direccionCliente VALUES((select max(clave) from direccion),(select max(folio) from cliente))");
+            PreparedStatement ps4 = conec.prepareStatement("UPDATE cliente SET contrasena = (select max(folio)+1000) WHERE folio=(select max(folio)) AND RFC='"+ICrfc+"'");
             int m = ps2.executeUpdate();
             int n = ps.executeUpdate();
             int o = ps3.executeUpdate();

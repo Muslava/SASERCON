@@ -24,20 +24,16 @@ private static String Lcontra;
 private char[] Lccontra;
 private String Lscontra;
 public int Lpuesto;
-ImageIcon Liilogo = new ImageIcon(getClass().getResource("/img/LOGOf.png"));
-Icon Lilogo = new ImageIcon(Liilogo.getImage().getScaledInstance(190, 190, Image.SCALE_DEFAULT));
-ImageIcon Liiusuario = new ImageIcon(getClass().getResource("/img/usuario.png"));
-Icon Liusuario = new ImageIcon(Liiusuario.getImage().getScaledInstance(36, 36, Image.SCALE_DEFAULT));
-ImageIcon Liipassword = new ImageIcon(getClass().getResource("/img/password.png"));
-Icon Lipassword = new ImageIcon(Liipassword.getImage().getScaledInstance(36, 36, Image.SCALE_DEFAULT));
+Comprobacion ALERTA = new Comprobacion();
+/*ImageIcon Liilogo = new ImageIcon(getClass().getResource("../img/LOGOf.png"));
+Icon Lilogo = new ImageIcon(Liilogo.getImage().getScaledInstance(190, 190, Image.SCALE_DEFAULT));*/
+int x, y;
+
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
-        lblLlogo.setIcon(Lilogo);
-        lblLiusuario.setIcon(Liusuario);
-        lblLipassword.setIcon(Lipassword);
     }
 
     /**
@@ -59,15 +55,28 @@ Icon Lipassword = new ImageIcon(Liipassword.getImage().getScaledInstance(36, 36,
         psfLcontra = new javax.swing.JPasswordField();
         lblLiusuario = new javax.swing.JLabel();
         lblLipassword = new javax.swing.JLabel();
+        lblLcerrar = new javax.swing.JLabel();
+        lblLminimizar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(480, 400));
+        setUndecorated(true);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(232, 229, 224));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
 
         lblLusuario.setForeground(new java.awt.Color(120, 121, 124));
-        lblLusuario.setText("Usuario:");
+        lblLusuario.setText("Correo:");
 
         lblLcontra.setForeground(new java.awt.Color(120, 121, 124));
         lblLcontra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -84,9 +93,9 @@ Icon Lipassword = new ImageIcon(Liipassword.getImage().getScaledInstance(36, 36,
             }
         });
 
-        txtLusuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLusuarioActionPerformed(evt);
+        txtLusuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtLusuarioFocusLost(evt);
             }
         });
         txtLusuario.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -95,6 +104,7 @@ Icon Lipassword = new ImageIcon(Liipassword.getImage().getScaledInstance(36, 36,
             }
         });
 
+        lblLlogo.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("../img/LogIn/LOGOf.png")).getImage().getScaledInstance(190, 190, Image.SCALE_DEFAULT)));
         lblLlogo.setMaximumSize(new java.awt.Dimension(155, 155));
         lblLlogo.setMinimumSize(new java.awt.Dimension(155, 155));
         lblLlogo.setPreferredSize(new java.awt.Dimension(155, 155));
@@ -109,13 +119,53 @@ Icon Lipassword = new ImageIcon(Liipassword.getImage().getScaledInstance(36, 36,
             }
         });
 
+        lblLiusuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLiusuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LogIn/usuario.png"))); // NOI18N
         lblLiusuario.setMaximumSize(new java.awt.Dimension(36, 36));
         lblLiusuario.setMinimumSize(new java.awt.Dimension(36, 36));
         lblLiusuario.setPreferredSize(new java.awt.Dimension(36, 36));
 
+        lblLipassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLipassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LogIn/password.png"))); // NOI18N
         lblLipassword.setMaximumSize(new java.awt.Dimension(36, 36));
         lblLipassword.setMinimumSize(new java.awt.Dimension(36, 36));
         lblLipassword.setPreferredSize(new java.awt.Dimension(36, 36));
+
+        lblLcerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLcerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LogIn/icons8_close_window_24px_3.png"))); // NOI18N
+        lblLcerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblLcerrar.setMaximumSize(new java.awt.Dimension(24, 24));
+        lblLcerrar.setMinimumSize(new java.awt.Dimension(24, 24));
+        lblLcerrar.setPreferredSize(new java.awt.Dimension(24, 24));
+        lblLcerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLcerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblLcerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblLcerrarMouseExited(evt);
+            }
+        });
+
+        lblLminimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLminimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LogIn/icons8_minimize_window_24px_1.png"))); // NOI18N
+        lblLminimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblLminimizar.setMaximumSize(new java.awt.Dimension(24, 24));
+        lblLminimizar.setMinimumSize(new java.awt.Dimension(24, 24));
+        lblLminimizar.setPreferredSize(new java.awt.Dimension(24, 24));
+        lblLminimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLminimizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblLminimizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblLminimizarMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -127,25 +177,37 @@ Icon Lipassword = new ImageIcon(Liipassword.getImage().getScaledInstance(36, 36,
                     .addComponent(lblLusuario, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblLcontra, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(btnLaccesar)
-                        .addComponent(psfLcontra, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblLlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3))
-                    .addComponent(txtLusuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(btnLaccesar)
+                            .addComponent(lblLlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addComponent(txtLusuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(psfLcontra, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLiusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblLipassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(149, 149, 149))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblLminimizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lblLcerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(lblLlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblLcerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblLminimizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(200, 200, 200))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblLlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jLabel3)
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -159,7 +221,7 @@ Icon Lipassword = new ImageIcon(Liipassword.getImage().getScaledInstance(36, 36,
                     .addComponent(lblLcontra))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLaccesar)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,19 +235,171 @@ Icon Lipassword = new ImageIcon(Liipassword.getImage().getScaledInstance(36, 36,
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(616, 439));
+        setSize(new java.awt.Dimension(600, 400));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLaccesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaccesarActionPerformed
-        validar();
-    }//GEN-LAST:event_btnLaccesarActionPerformed
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        x = evt.getX();
+        y = evt.getY();
+    }//GEN-LAST:event_jPanel1MousePressed
 
-    private void validar()  {
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        Point mueve = MouseInfo.getPointerInfo().getLocation();
+        this.setLocation(mueve.x - x, mueve.y - y);
+    }//GEN-LAST:event_jPanel1MouseDragged
+
+    private void lblLminimizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLminimizarMouseEntered
+        lblLminimizar.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_minimize_window_24px_4.png")));
+    }//GEN-LAST:event_lblLminimizarMouseEntered
+
+    private void lblLminimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLminimizarMouseClicked
+        this.setExtendedState(1);
+    }//GEN-LAST:event_lblLminimizarMouseClicked
+
+    private void lblLcerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLcerrarMouseEntered
+        lblLcerrar.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_close_window_24px_6.png")));
+    }//GEN-LAST:event_lblLcerrarMouseEntered
+
+    private void lblLcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLcerrarMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_lblLcerrarMouseClicked
+
+    /*txtLusuarioKeyTyped allows to log in the system clicking the enter button from psfLcontra password field
+      Use global variables: String Lusuario,Lcontra,Lscontra; Char Lccontra; Int Lpuesto
+      Use local variable: Char d */
+    private void psfLcontraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_psfLcontraKeyTyped
+        char d=evt.getKeyChar();
+        if(d == KeyEvent.VK_ENTER)  {
+
+            if(txtLusuario.getText().trim().isEmpty() && !psfLcontra.getText().trim().isEmpty())    {
+                this.lblLusuario.setForeground(red);
+                this.lblLcontra.setForeground(new java.awt.Color(120, 121, 124));
+                JOptionPane.showMessageDialog(null,"El usuario no debe quedar vacío.");
+            }
+            if(psfLcontra.getText().trim().isEmpty() && !txtLusuario.getText().trim().isEmpty()) {
+                this.lblLcontra.setForeground(red);
+                this.lblLusuario.setForeground(new java.awt.Color(120, 121, 124));
+                JOptionPane.showMessageDialog(null,"La contraseña no debe quedar vacía.");
+            }
+            if(txtLusuario.getText().trim().isEmpty() && psfLcontra.getText().trim().isEmpty()) {
+                this.lblLusuario.setForeground(red);
+                this.lblLcontra.setForeground(red);
+                JOptionPane.showMessageDialog(null,"El usuario y contraseña no deben quedar vacíos.");
+            }
+            else    {
+                this.lblLusuario.setForeground(new java.awt.Color(120, 121, 124));
+                this.lblLcontra.setForeground(new java.awt.Color(120, 121, 124));
+                Lusuario = txtLusuario.getText().trim();
+
+                Connection con;
+                PreparedStatement ps;
+                try {
+                    con = ConexionMariaDB.getConexion("SASERCON");
+                    ps = con.prepareStatement("SELECT contrasena, puesto FROM empleado WHERE correoEmpleado = '"+Lusuario+"';");
+                    ResultSet rs = ps.executeQuery();
+                    while (rs.next())   {
+                        Lpuesto = rs.getInt("puesto");
+                        Lcontra = rs.getString("contrasena");
+                        Lccontra = psfLcontra.getPassword();
+                        Lscontra = new String(Lccontra);
+                        if(Lscontra.equals(Lcontra) && Lpuesto != 3)    {
+                            MódulosAcceso ma = new MódulosAcceso();
+                            ma.setVisible(true);
+                            JOptionPane.showMessageDialog(null,"¡Bienvenido a SASERCON!","¡Bienvenido!",1);
+                            this.dispose();
+                        }
+                        else if(Lpuesto == 3)   {
+                            JOptionPane.showMessageDialog(null,"El sistema es para directivos y secretarias.","Acceso denegado.",0);
+                        }
+                        else    {
+                            JOptionPane.showMessageDialog(null,"El usuario o contraseña son incorrectos. Revise su matrícula y contraseña.","Error.",2);
+                        }
+                    }
+
+                    con.close();
+
+                } catch (Exception ex)   {
+                    JOptionPane.showMessageDialog(null,ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_psfLcontraKeyTyped
+
+    /*txtLusuarioKeyTyped allows to log in the system clicking the enter button from txtLusuario text box
+      Use global variables: String Lusuario,Lcontra,Lscontra; Char Lccontra; Int Lpuesto
+      Use local variable: Char d */
+    private void txtLusuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLusuarioKeyTyped
+        if(evt.equals(KeyEvent.VK_ENTER))  {
+            if(txtLusuario.getText().trim().isEmpty() && !psfLcontra.getText().trim().isEmpty())    {
+                this.lblLusuario.setForeground(red);
+                this.lblLcontra.setForeground(new java.awt.Color(120, 121, 124));
+                JOptionPane.showMessageDialog(null,"El usuario no debe quedar vacío.");
+            }
+            if(psfLcontra.getText().trim().isEmpty() && !txtLusuario.getText().trim().isEmpty()) {
+                this.lblLcontra.setForeground(red);
+                this.lblLusuario.setForeground(new java.awt.Color(120, 121, 124));
+                JOptionPane.showMessageDialog(null,"La contraseña no debe quedar vacía.");
+            }
+            if(txtLusuario.getText().trim().isEmpty() && psfLcontra.getText().trim().isEmpty()) {
+                this.lblLusuario.setForeground(red);
+                this.lblLcontra.setForeground(red);
+                JOptionPane.showMessageDialog(null,"El usuario y contraseña no deben quedar vacíos.");
+            }
+            else    {
+                this.lblLusuario.setForeground(new java.awt.Color(120, 121, 124));
+                this.lblLcontra.setForeground(new java.awt.Color(120, 121, 124));
+                Lusuario = txtLusuario.getText().trim();
+
+                Connection con;
+                PreparedStatement ps;
+                try {
+                    con = ConexionMariaDB.getConexion("SASERCON");
+                    ps = con.prepareStatement("SELECT contrasena, puesto FROM empleado WHERE matricula = '"+Lusuario+"';");
+                    ResultSet rs = ps.executeQuery();
+                    while (rs.next())   {
+                        Lpuesto = rs.getInt("puesto");
+                        Lcontra = rs.getString("contrasena");
+                        Lccontra = psfLcontra.getPassword();
+                        Lscontra = new String(Lccontra);
+                        if(Lscontra.equals(Lcontra) && Lpuesto != 3)    {
+                            MódulosAcceso ma = new MódulosAcceso();
+                            ma.setVisible(true);
+                            JOptionPane.showMessageDialog(null,"¡Bienvenido a SASERCON!","¡Bienvenido!",1);
+                            this.dispose();
+                        }
+                        else if(Lpuesto == 3)   {
+                            JOptionPane.showMessageDialog(null,"El sistema es para directivos y secretarias.","Acceso denegado.",0);
+                        }
+                        else    {
+                            JOptionPane.showMessageDialog(null,"El usuario o contraseña son incorrectos. Revise su matrícula y contraseña.","Error.",2);
+                        }
+                    }
+
+                    con.close();
+
+                } catch (Exception ex)   {
+                    JOptionPane.showMessageDialog(null,ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_txtLusuarioKeyTyped
+
+    private void txtLusuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLusuarioFocusLost
+        if(!ALERTA.valmail(txtLusuario.getText().trim()) && !txtLusuario.getText().trim().isEmpty())    {
+            this.lblLusuario.setForeground(red);
+            JOptionPane.showMessageDialog(null,"Se debe ingresar un correo válido.");
+        }
+    }//GEN-LAST:event_txtLusuarioFocusLost
+
+    /*btnLaccesarActionPerformed allows to log in the system
+      Use global variables: String Lusuario,Lcontra,Lscontra; Char Lccontra; Int Lpuesto
+      Doesn't use local variables. */
+    private void btnLaccesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaccesarActionPerformed
         if(txtLusuario.getText().trim().isEmpty() && !psfLcontra.getText().trim().isEmpty())    {
             this.lblLusuario.setForeground(red);
             this.lblLcontra.setForeground(new java.awt.Color(120, 121, 124));
-            JOptionPane.showMessageDialog(null,"El usuario no debe quedar vacío.");
+            JOptionPane.showMessageDialog(null,"El correo no debe quedar vacío.");
         }
         if(psfLcontra.getText().trim().isEmpty() && !txtLusuario.getText().trim().isEmpty()) {
             this.lblLcontra.setForeground(red);
@@ -195,22 +409,22 @@ Icon Lipassword = new ImageIcon(Liipassword.getImage().getScaledInstance(36, 36,
         if(txtLusuario.getText().trim().isEmpty() && psfLcontra.getText().trim().isEmpty()) {
             this.lblLusuario.setForeground(red);
             this.lblLcontra.setForeground(red);
-            JOptionPane.showMessageDialog(null,"El usuario y contraseña no deben quedar vacíos.");
+            JOptionPane.showMessageDialog(null,"El correo y contraseña no deben quedar vacíos.");
         }
         else    {
             this.lblLusuario.setForeground(new java.awt.Color(120, 121, 124));
             this.lblLcontra.setForeground(new java.awt.Color(120, 121, 124));
             Lusuario = txtLusuario.getText().trim();
-            
+
             Connection con;
             PreparedStatement ps;
             try {
                 con = ConexionMariaDB.getConexion("SASERCON");
-                ps = con.prepareStatement("SELECT contraseña, puesto FROM empleado WHERE matricula = '"+Lusuario+"';");
+                ps = con.prepareStatement("SELECT contrasena, puesto FROM empleado WHERE correoEmpleado = '"+Lusuario+"';");
                 ResultSet rs = ps.executeQuery();
                 while (rs.next())   {
                     Lpuesto = rs.getInt("puesto");
-                    Lcontra = rs.getString("contraseña");
+                    Lcontra = rs.getString("contrasena");
                     Lccontra = psfLcontra.getPassword();
                     Lscontra = new String(Lccontra);
                     if(Lscontra.equals(Lcontra) && Lpuesto != 3)    {
@@ -226,31 +440,22 @@ Icon Lipassword = new ImageIcon(Liipassword.getImage().getScaledInstance(36, 36,
                         JOptionPane.showMessageDialog(null,"El usuario o contraseña son incorrectos. Revise su matrícula y contraseña.","Error.",2);
                     }
                 }
-            
+
                 con.close();
-                
+
             } catch (Exception ex)   {
                 JOptionPane.showMessageDialog(null,ex);
             }
         }
-    }
+    }//GEN-LAST:event_btnLaccesarActionPerformed
 
-    private void txtLusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLusuarioActionPerformed
+    private void lblLcerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLcerrarMouseExited
+        lblLcerrar.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_close_window_24px_3.png")));
+    }//GEN-LAST:event_lblLcerrarMouseExited
 
-    }//GEN-LAST:event_txtLusuarioActionPerformed
-
-    private void txtLusuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLusuarioKeyTyped
-        if(evt.equals(KeyEvent.VK_ENTER))  {
-            validar();
-        }
-    }//GEN-LAST:event_txtLusuarioKeyTyped
-
-    private void psfLcontraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_psfLcontraKeyTyped
-        char d=evt.getKeyChar();
-        if(d == KeyEvent.VK_ENTER)  {
-            validar();
-        }
-    }//GEN-LAST:event_psfLcontraKeyTyped
+    private void lblLminimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLminimizarMouseExited
+        lblLminimizar.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_minimize_window_24px_1.png")));
+    }//GEN-LAST:event_lblLminimizarMouseExited
 
     /**
      * @param args the command line arguments
@@ -291,10 +496,12 @@ Icon Lipassword = new ImageIcon(Liipassword.getImage().getScaledInstance(36, 36,
     private javax.swing.JButton btnLaccesar;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblLcerrar;
     private javax.swing.JLabel lblLcontra;
     private javax.swing.JLabel lblLipassword;
     private javax.swing.JLabel lblLiusuario;
     private javax.swing.JLabel lblLlogo;
+    private javax.swing.JLabel lblLminimizar;
     private javax.swing.JLabel lblLusuario;
     private javax.swing.JPasswordField psfLcontra;
     private javax.swing.JTextField txtLusuario;
