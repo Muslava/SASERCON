@@ -5,9 +5,6 @@
  */
 package DMI;
 
-import DMI.ConexionMySQL;
-import DMI.Comprobacion;
-import static DMI.IngresarEmpleado.c;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.*;
@@ -30,6 +27,7 @@ public String MEapellido_materno_empleado;
 public String MEcorreo;
 public int MEempresa;
 public int MEpuesto;
+public static int MEmatricula;
 protected String MEcurp;
 protected String MErfc;
 protected String MEnss;
@@ -62,8 +60,9 @@ static Comprobacion c = new Comprobacion();
     /**
      * Creates new form ModificarEmpleado
      */
-    public ModificarEmpleado() {
+    public ModificarEmpleado(int mat) {
         initComponents();
+        this.MEmatricula = mat;
         this.setIconifiable(true);
         
         ConexionMySQL cmysql = new ConexionMySQL();
@@ -419,16 +418,16 @@ static Comprobacion c = new Comprobacion();
                                                     .addComponent(jLabel36)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                     .addComponent(txtMEapellido_paterno_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                                .addComponent(jLabel25)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(cboxMEempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                                 .addComponent(jLabel44)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(cboxMEpuesto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addComponent(jLabel27)))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                                .addComponent(jLabel25)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(cboxMEempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGap(18, 18, 18)
                                     .addComponent(btnMEfoto, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel3Layout.createSequentialGroup()

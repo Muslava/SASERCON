@@ -30,7 +30,7 @@ protected String IErfc;
 protected String IEnss;
 public String IEcelular;
 public String IEtelefono;
-protected String IEtelefono_de_emergencia;
+protected String IEtelefono_emergencia;
 public int IEpais;
 public int IEestado;
 public int IEciudad;
@@ -40,10 +40,10 @@ protected String IEnumero_interior;
 protected String IEcalle;
 protected String IEcolonia;
 protected int IEcodigo_postal;
-protected String IEnombre_del_contacto;
+protected String IEnombre_contacto;
 protected String IEapellido_paterno_contacto;
 protected String IEapellido_materno_contacto;
-protected String IEcorreo_del_contacto;
+protected String IEcorreo_contacto;
 protected boolean IEvigente;
 protected int IEmatricula;
 
@@ -105,11 +105,11 @@ static Comprobacion c = new Comprobacion();
         jLabel31 = new javax.swing.JLabel();
         txtIEtelefono = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
-        txtIEtelefono_de_emergencia = new javax.swing.JTextField();
+        txtIEtelefono_emergencia = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
-        txtIEnombre_del_contacto = new javax.swing.JTextField();
+        txtIEnombre_contacto = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
-        txtIEcorreo_del_contacto = new javax.swing.JTextField();
+        txtIEcorreo_contacto = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
         lblIEno_vigente = new javax.swing.JLabel();
         tgbIEvigente = new javax.swing.JToggleButton();
@@ -283,21 +283,9 @@ static Comprobacion c = new Comprobacion();
 
         jLabel41.setText("Número exterior:");
 
-        txtIEnumero_exterior.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIEnumero_exteriorActionPerformed(evt);
-            }
-        });
-
         jLabel42.setText("Número interior:");
 
         jLabel46.setText("Calle:");
-
-        txtIEcalle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIEcalleActionPerformed(evt);
-            }
-        });
 
         jLabel47.setText("Colonia:");
 
@@ -324,7 +312,7 @@ static Comprobacion c = new Comprobacion();
                         .addGap(10, 10, 10)
                         .addComponent(jLabel33)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtIEnombre_del_contacto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtIEnombre_contacto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel38)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -365,7 +353,7 @@ static Comprobacion c = new Comprobacion();
                         .addGap(10, 10, 10)
                         .addComponent(jLabel34)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtIEcorreo_del_contacto, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtIEcorreo_contacto, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -448,7 +436,7 @@ static Comprobacion c = new Comprobacion();
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtIEcelular, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtIEtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtIEtelefono_de_emergencia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtIEtelefono_emergencia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -508,7 +496,7 @@ static Comprobacion c = new Comprobacion();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel32)
-                    .addComponent(txtIEtelefono_de_emergencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIEtelefono_emergencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addComponent(jLabel45)
                 .addGap(18, 18, 18)
@@ -544,7 +532,7 @@ static Comprobacion c = new Comprobacion();
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
-                    .addComponent(txtIEnombre_del_contacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIEnombre_contacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel38)
                     .addComponent(txtIEapellido_paterno_contacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel39)
@@ -552,7 +540,7 @@ static Comprobacion c = new Comprobacion();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel34)
-                    .addComponent(txtIEcorreo_del_contacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIEcorreo_contacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -616,11 +604,11 @@ static Comprobacion c = new Comprobacion();
             ps.setString(7,IEcurp);
             ps.setString(8,IEnss);
             ps.setString(9,IEcelular);
-            ps.setString(10,IEtelefono_de_emergencia);
-            ps.setString(11,IEnombre_del_contacto);
+            ps.setString(10,IEtelefono_emergencia);
+            ps.setString(11,IEnombre_contacto);
             ps.setString(12,IEapellido_paterno_contacto);
             ps.setString(13,IEapellido_materno_contacto);
-            ps.setString(14,IEcorreo_del_contacto);
+            ps.setString(14,IEcorreo_contacto);
             ps.setBoolean(15,IEvigente);
             ps.setString(16,IEtelefono);
             ps.setBinaryStream(17,IEfoto);
@@ -692,11 +680,11 @@ static Comprobacion c = new Comprobacion();
         IEcurp = this.txtIEcurp.getText().trim();
         IEnss = this.txtIEnss.getText().trim();
         IEcelular = this.txtIEcelular.getText().trim();
-        IEtelefono_de_emergencia = this.txtIEtelefono_de_emergencia.getText().trim();
-        IEnombre_del_contacto = this.txtIEnombre_del_contacto.getText().trim();
+        IEtelefono_emergencia = this.txtIEtelefono_emergencia.getText().trim();
+        IEnombre_contacto = this.txtIEnombre_contacto.getText().trim();
         IEapellido_paterno_contacto = this.txtIEapellido_paterno_contacto.getText().trim();
         IEapellido_materno_contacto = this.txtIEapellido_materno_contacto.getText().trim();
-        IEcorreo_del_contacto = this.txtIEcorreo_del_contacto.getText().trim();
+        IEcorreo_contacto = this.txtIEcorreo_contacto.getText().trim();
         IEvigente = this.tgbIEvigente.isSelected();
         IEtelefono = this.txtIEtelefono.getText().trim();
         IErfc = this.txtIErfc.getText().trim();
@@ -713,8 +701,8 @@ static Comprobacion c = new Comprobacion();
         
         if(c.valtext(IEnombre_de_empleado)&&c.valtext(IEapellido_paterno_empleado)&&c.valtext(IEapellido_materno_empleado)&&
                 c.valmail(IEcorreo)&&IEempresa!=0&&IEpuesto!=0&&c.valcurp(IEcurp)&&c.valnss(IEnss)&&c.valcel(IEcelular)&&
-                c.valtel(IEtelefono_de_emergencia)&&c.valtext(IEnombre_del_contacto)&&c.valtext(IEapellido_paterno_contacto)&&
-                c.valtext(IEapellido_materno_contacto)&&c.valmail(IEcorreo_del_contacto)&&c.valtel(IEtelefono)&&
+                c.valtel(IEtelefono_emergencia)&&c.valtext(IEnombre_contacto)&&c.valtext(IEapellido_paterno_contacto)&&
+                c.valtext(IEapellido_materno_contacto)&&c.valmail(IEcorreo_contacto)&&c.valtel(IEtelefono)&&
                 c.valrfc(IErfc)&&c.valne(IEnumero_exterior)&&c.valni(IEnumero_interior)&&!c.vacio(IEcalle)&&
                 c.valtext(IEcolonia)&&c.valcp(this.txtIEcodigo_postal.getText().trim())&&IEalcaldia!=0)    {
             ingresar();
@@ -746,10 +734,10 @@ static Comprobacion c = new Comprobacion();
         if(!c.valcel(IEcelular))    {
             pr=pr+"\nCelular";
         }
-        if(!c.valtel(IEtelefono_de_emergencia))    {
+        if(!c.valtel(IEtelefono_emergencia))    {
             pr=pr+"\nTeléfono de emergencia";
         }
-        if(!c.valtext(IEnombre_del_contacto))    {
+        if(!c.valtext(IEnombre_contacto))    {
             pr=pr+"\nNombre del contacto";
         }
         if(!c.valtext(IEapellido_paterno_contacto))    {
@@ -758,7 +746,7 @@ static Comprobacion c = new Comprobacion();
         if(!c.valtext(IEapellido_materno_contacto))    {
             pr=pr+"\nApellido materno del contacto";
         }
-        if(!c.valmail(IEcorreo_del_contacto)) {
+        if(!c.valmail(IEcorreo_contacto)) {
             pr=pr+"\nCorreo del contacto";
         }
         if(!c.valtel(IEtelefono))   {
@@ -787,8 +775,8 @@ static Comprobacion c = new Comprobacion();
         }
         if(!(c.valtext(IEnombre_de_empleado)&&c.valtext(IEapellido_paterno_empleado)&&c.valtext(IEapellido_materno_empleado)&&
                 c.valmail(IEcorreo)&&IEempresa!=0&&IEpuesto!=0&&c.valcurp(IEcurp)&&c.valnss(IEnss)&&c.valcel(IEcelular)&&
-                c.valtel(IEtelefono_de_emergencia)&&c.valtext(IEnombre_del_contacto)&&c.valtext(IEapellido_paterno_contacto)&&
-                c.valtext(IEapellido_materno_contacto)&&c.valmail(IEcorreo_del_contacto)&&c.valtel(IEtelefono)&&
+                c.valtel(IEtelefono_emergencia)&&c.valtext(IEnombre_contacto)&&c.valtext(IEapellido_paterno_contacto)&&
+                c.valtext(IEapellido_materno_contacto)&&c.valmail(IEcorreo_contacto)&&c.valtel(IEtelefono)&&
                 c.valrfc(IErfc)&&c.valne(IEnumero_exterior)&&c.valni(IEnumero_interior)&&!c.vacio(IEcalle)&&
                 c.valtext(IEcolonia)&&c.valcp(this.txtIEcodigo_postal.getText().trim())&&IEalcaldia!=0))    {
             JOptionPane.showMessageDialog(null, "Revice los siguientes campos e inténtelo de nuevo: "+pr, "Datos incorrectos", 2);
@@ -807,14 +795,6 @@ static Comprobacion c = new Comprobacion();
     private void txtIEtelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIEtelefonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIEtelefonoActionPerformed
-
-    private void txtIEnumero_exteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIEnumero_exteriorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIEnumero_exteriorActionPerformed
-
-    private void txtIEcalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIEcalleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIEcalleActionPerformed
 
     private void txtIEapellido_paterno_contactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIEapellido_paterno_contactoActionPerformed
         // TODO add your handling code here:
@@ -917,15 +897,15 @@ static Comprobacion c = new Comprobacion();
     private javax.swing.JTextField txtIEcodigo_postal;
     private javax.swing.JTextField txtIEcolonia;
     private javax.swing.JTextField txtIEcorreo;
-    private javax.swing.JTextField txtIEcorreo_del_contacto;
+    private javax.swing.JTextField txtIEcorreo_contacto;
     private javax.swing.JTextField txtIEcurp;
+    private javax.swing.JTextField txtIEnombre_contacto;
     private javax.swing.JTextField txtIEnombre_de_empleado;
-    private javax.swing.JTextField txtIEnombre_del_contacto;
     private javax.swing.JTextField txtIEnss;
     private javax.swing.JTextField txtIEnumero_exterior;
     private javax.swing.JTextField txtIEnumero_interior;
     private javax.swing.JTextField txtIErfc;
     private javax.swing.JTextField txtIEtelefono;
-    private javax.swing.JTextField txtIEtelefono_de_emergencia;
+    private javax.swing.JTextField txtIEtelefono_emergencia;
     // End of variables declaration//GEN-END:variables
 }

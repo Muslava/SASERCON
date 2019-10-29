@@ -5,18 +5,20 @@
  */
 package DMI;
 
+import java.awt.Component;
 import java.sql.*;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 /**
  *
  * @author coner
  */
 public class BuscarEmpleado extends javax.swing.JInternalFrame {
 public int BEindice;
-    
-DefaultTableModel tbBEres;
-
+public DefaultTableModel tbBEres;
 
     /**
      * Creates new form BuscarEmpleado
@@ -24,7 +26,7 @@ DefaultTableModel tbBEres;
     public BuscarEmpleado() {
         initComponents();
         this.setIconifiable(true);
-        //tbBEconsulta.boo
+        spanBEres.getVerticalScrollBar().setUnitIncrement(16);
     }
 
     /**
@@ -38,12 +40,11 @@ DefaultTableModel tbBEres;
 
         btnIEregresar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
+        panBE = new javax.swing.JPanel();
         txtBEnss = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -52,14 +53,12 @@ DefaultTableModel tbBEres;
         txtBEnombre = new javax.swing.JTextField();
         txtBEcorreo = new javax.swing.JTextField();
         cboxBEempresa = new javax.swing.JComboBox<>();
-        txtBEdireccion = new javax.swing.JTextField();
         txtBEcurp = new javax.swing.JTextField();
         txtBErfc = new javax.swing.JTextField();
         btnBEmodificar = new javax.swing.JButton();
         btnBEbaja = new javax.swing.JButton();
         btnBEbuscar = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        spanBEres = new javax.swing.JScrollPane();
         tbBEconsulta = new javax.swing.JTable();
 
         setTitle("Buscar Empleado");
@@ -72,15 +71,13 @@ DefaultTableModel tbBEres;
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Empleado"));
+        panBE.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Empleado"));
 
         jLabel8.setText("NSS:");
 
         jLabel7.setText("RFC:");
 
         jLabel6.setText("CURP:");
-
-        jLabel5.setText("Dirección:");
 
         jLabel4.setText("Empresa:");
 
@@ -115,126 +112,120 @@ DefaultTableModel tbBEres;
 
         tbBEconsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Sus resultados se mostrarán aquí:"
             }
-        ));
-        tbBEconsulta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbBEconsultaMouseClicked(evt);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(tbBEconsulta);
+        tbBEconsulta.getTableHeader().setReorderingAllowed(false);
+        spanBEres.setViewportView(tbBEconsulta);
+        if (tbBEconsulta.getColumnModel().getColumnCount() > 0) {
+            tbBEconsulta.getColumnModel().getColumn(0).setResizable(false);
+        }
 
-        jScrollPane2.setViewportView(jScrollPane3);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panBELayout = new javax.swing.GroupLayout(panBE);
+        panBE.setLayout(panBELayout);
+        panBELayout.setHorizontalGroup(
+            panBELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panBELayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtBEdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(panBELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panBELayout.createSequentialGroup()
+                        .addGroup(panBELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spanBEres, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panBELayout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtBEcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cboxBEempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtBEcurp, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtBEnss))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtBErfc, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(panBELayout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtBEmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(panBELayout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtBEnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panBELayout.createSequentialGroup()
+                        .addGroup(panBELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panBELayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cboxBEempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panBELayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtBEcurp, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panBELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panBELayout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtBEnss))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panBELayout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtBErfc, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panBELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnBEbuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBEmodificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBEbaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBEbuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(42, 42, 42))))
+                            .addComponent(btnBEbaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(59, 59, 59))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panBELayout.setVerticalGroup(
+            panBELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panBELayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panBELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtBEmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panBELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtBEnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panBELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtBEcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panBELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panBELayout.createSequentialGroup()
+                        .addGroup(panBELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(cboxBEempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panBELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txtBEcurp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panBELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtBErfc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panBELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtBEnss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panBELayout.createSequentialGroup()
                         .addComponent(btnBEbuscar)
                         .addGap(18, 18, 18)
                         .addComponent(btnBEmodificar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnBEbaja))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(cboxBEempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtBEdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtBEcurp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(txtBErfc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtBEnss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addComponent(btnBEbaja)))
+                .addGap(18, 18, 18)
+                .addComponent(spanBEres, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jScrollPane1.setViewportView(jPanel1);
+        jScrollPane1.setViewportView(panBE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -271,26 +262,38 @@ DefaultTableModel tbBEres;
       Doesn't use global variables.
       Doesn't use local variables. */
     private void btnBEmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBEmodificarActionPerformed
-        //if()    {
-            BuscarEmpleado ME = new BuscarEmpleado();
-            //this.dkpMAfondo.add(ME);
+        try {
+            BEindice=Integer.parseInt(tbBEconsulta.getValueAt(tbBEconsulta.getSelectedRow(),0).toString());
+            ModificarEmpleado ME = new ModificarEmpleado(BEindice);
+            JDesktopPane desktopPane = getDesktopPane();
+            desktopPane.add(ME);
             ME.show();
-        //}
+        } catch(Exception e)    {
+            JOptionPane.showMessageDialog(null,"No tiene nada seleccionado.","Selección vacía",2);
+        }
     }//GEN-LAST:event_btnBEmodificarActionPerformed
 
     
     /*consultarDatos consults data from the database
       Doesn't use global variables.
       Doesn't use local variables. */
-    void consultarDatos()
+    private void consultarDatos()
     {
-        String[]encabezados={"Matricula","Nombre","Apellidos", "Direccion","Correo","Empresa","Puesto","CURP","NSS","Celular","Teléfono","RFC","Tel Emergencia","Nombre del contacto","Apellidos del Contacto","Correo del Contacto","Activo"};
-        String[]filas=new String[17];
+        String[]encabezados={"Matricula","Nombre","Apellidos", "Direccion","Correo","Empresa","Puesto","CURP","NSS","Celular","Teléfono","RFC","Tel Emergencia","Contacto de Referencia","Correo del Contacto","Estado"};
+        String[]filas=new String[16];
         
         tbBEres=new DefaultTableModel(null,encabezados);
         
         ConexionMySQL cmysql=new ConexionMySQL();
         Connection conec=cmysql.Conectar();
+        
+        String empresa = "";
+        if(cboxBEempresa.getSelectedIndex()!=0)    {
+           empresa = String.valueOf(cboxBEempresa.getSelectedItem());
+        }
+        if(cboxBEempresa.getSelectedIndex()==0)    {
+           empresa = "";
+        }
         
         String senSQL="SELECT empleado.matricula as \"Matricula\",\n" +
             "empleado.nombreEmpleado as \"Nombre\",\n" +
@@ -304,41 +307,24 @@ DefaultTableModel tbBEres;
             "empleado.numeroSeguroSocial as \"NSS\", empleado.celular as \"Celular\",\n" +
             "empleado.telefono as \"Telefono\", empleado.RFC as \"RFC\",\n" +
             "empleado.telefonoEmergencia as \"Tel Emergencia\",\n" +
-            "empleado.nombreContacto as \"Nombre del Contacto\",\n" +
-            "CONCAT(COALESCE(empleado.apellidoPaternoContacto,''), ' ',\n" +
-            "  COALESCE(empleado.apellidoMaternoContacto,'')) as \"Apellidos del Contacto\",\n" +
+            "CONCAT(COALESCE(empleado.nombreContacto,''), ' ',\n" +
+            "  COALESCE(empleado.apellidoPaternoContacto,''), ' ',\n" +
+            "  COALESCE(empleado.apellidoMaternoContacto,'')) as \"Contacto de Referencia\",\n" +
             "empleado.correoContacto as \"Correo del Contacto\",\n" +
             "empleado.estadoActivo as \"Activo\"\n" +
             "FROM empleado, empresa, puesto, direccionEmpleado, direccion, alcaldia, ciudad\n" +
             "WHERE empleado.empresa=empresa.clave\n" +
             "AND puesto.clave=empleado.puesto AND empleado.matricula=direccionEmpleado.claveEmpleado\n" +
             "AND direccion.clave=direccionEmpleado.claveDireccion AND alcaldia.clave=direccion.alcaldia\n" +
-            "AND ciudad.clave=alcaldia.claveCiudad AND CONCAT(COALESCE(empleado.matricula,''), ' ',\n" +
-            "  COALESCE(empleado.nombreEmpleado,''), ' ', COALESCE(empleado.apellidoPaternoEmpleado,''), ' ',\n" +
-            "  COALESCE(empleado.apellidoMaternoEmpleado,''), ' ', COALESCE(direccion.numeroExterior,''), ' ',\n" +
-            "  COALESCE(direccion.numeroInterior,''), ' ', COALESCE(direccion.calle,''), ' ',\n" +
-            "  COALESCE(direccion.colonia,''), ' ', COALESCE(direccion.codigoPostal,''), ' ',\n" +
-            "  COALESCE(alcaldia.alcaldia,''), ' ', COALESCE(ciudad.nombre,''), ' ',\n" +
-            "  COALESCE(empleado.correoEmpleado,''), ' ', COALESCE(empresa.nombre,''), ' ',\n" +
-            "  COALESCE(puesto.nombre,''), ' ', COALESCE(empleado.curp,''), ' ',\n" +
-            "  COALESCE(empleado.numeroSeguroSocial,''), ' ', COALESCE(empleado.celular,''), ' ',\n" +
-            "  COALESCE(empleado.telefono,''), ' ', COALESCE(empleado.RFC,''), ' ',\n" +
-            "  COALESCE(empleado.telefonoEmergencia,''), ' ', COALESCE(empleado.nombreContacto,''), ' ',\n" +
-            "  COALESCE(empleado.apellidoPaternoContacto,''), ' ', COALESCE(empleado.apellidoMaternoContacto,''), ' ',\n" +
-            "  COALESCE(empleado.correoContacto,''), ' ', COALESCE(empleado.estadoActivo,''))\n" +
-            "LIKE CONCAT(COALESCE(empleado.matricula,''), ' ', COALESCE(empleado.nombreEmpleado,''), ' ',\n" +
-            "  COALESCE(empleado.apellidoPaternoEmpleado,''), ' ', COALESCE(empleado.apellidoMaternoEmpleado,''), ' ',\n" +
-            "  COALESCE(direccion.numeroExterior,''), ' ', COALESCE(direccion.numeroInterior,''), ' ',\n" +
-            "  COALESCE(direccion.calle,''), ' ', COALESCE(direccion.colonia,''), ' ',\n" +
-            "  COALESCE(direccion.codigoPostal,''), ' ', COALESCE(alcaldia.alcaldia,''), ' ',\n" +
-            "  COALESCE(ciudad.nombre,''), ' ', COALESCE(empleado.correoEmpleado,''), ' ',\n" +
-            "  COALESCE(empresa.nombre,''), ' ', COALESCE(puesto.nombre,''), ' ',\n" +
-            "  COALESCE(empleado.curp,''), ' ', COALESCE(empleado.numeroSeguroSocial,''), ' ',\n" +
-            "  COALESCE(empleado.celular,''), ' ', COALESCE(empleado.telefono,''), ' ',\n" +
-            "  COALESCE(empleado.RFC,''), ' ', COALESCE(empleado.telefonoEmergencia,''), ' ',\n" +
-            "  COALESCE(empleado.nombreContacto,''), ' ', COALESCE(empleado.apellidoPaternoContacto,''), ' ',\n" +
-            "  COALESCE(empleado.apellidoMaternoContacto,''), ' ', COALESCE(empleado.correoContacto,''), ' ',\n" +
-            "  COALESCE(empleado.estadoActivo,''))\n" +
+            "AND ciudad.clave=alcaldia.claveCiudad" +
+            //LIKE
+            "  AND Matricula LIKE '%"+txtBEmatricula.getText()+"%'\n" +
+            "  AND CONCAT(COALESCE(empleado.nombreEmpleado,''),' ',COALESCE(empleado.apellidoPaternoEmpleado,''),' ', COALESCE(empleado.apellidoMaternoEmpleado,'')) LIKE '%"+txtBEnombre.getText()+"%'\n" +
+            "  AND empleado.correoEmpleado LIKE '%"+txtBEcorreo.getText()+"%'\n" +
+            "  AND empresa.nombre LIKE '%"+empresa+"%'\n" +
+            "  AND empleado.curp LIKE '%"+txtBEcurp.getText()+"%'\n" +
+            "  AND empleado.RFC LIKE '%"+txtBErfc.getText()+"%'\n" +
+            "  AND empleado.numeroSeguroSocial LIKE '%"+txtBEnss.getText()+"%'\n" +
             "ORDER BY empleado.matricula;";
         
         try{
@@ -359,14 +345,46 @@ DefaultTableModel tbBEres;
                 filas[10]=rs.getString("Telefono");
                 filas[11]=rs.getString("RFC");
                 filas[12]=rs.getString("Tel Emergencia");
-                filas[13]=rs.getString("Nombre del Contacto");
-                filas[14]=rs.getString("Apellidos del Contacto");
-                filas[15]=rs.getString("Correo del Contacto");
-                filas[16]=rs.getString("Activo");
-               
+                filas[13]=rs.getString("Contacto de Referencia");
+                filas[14]=rs.getString("Correo del Contacto");
+                if(rs.getString("Activo").equals("0"))   {
+                    filas[15]="Inactivo";
+                }
+                if(rs.getString("Activo").equals("1"))   {
+                    filas[15]="Activo";
+                }
                 tbBEres.addRow(filas);
             }
             this.tbBEconsulta.setModel(tbBEres);
+            this.tbBEconsulta.setDefaultEditor(Object.class, null);
+            
+            // Ajustar el tamaño de las columnas
+            tbBEconsulta.setAutoResizeMode(tbBEconsulta.AUTO_RESIZE_OFF);
+            /*TableColumnAdjuster tca = new TableColumnAdjuster(tbBEconsulta);
+            tca.adjustColumns();*/
+            for (int column = 0; column < tbBEconsulta.getColumnCount(); column++)
+            {
+                TableColumn tableColumn = tbBEconsulta.getColumnModel().getColumn(column);
+                int preferredWidth = tableColumn.getMinWidth();
+                int maxWidth = tableColumn.getMaxWidth();
+
+                for (int row = 0; row < tbBEconsulta.getRowCount(); row++)
+                {
+                    TableCellRenderer cellRenderer = tbBEconsulta.getCellRenderer(row, column);
+                    Component c = tbBEconsulta.prepareRenderer(cellRenderer, row, column);
+                    int width = c.getPreferredSize().width + tbBEconsulta.getIntercellSpacing().width;
+                    preferredWidth = Math.max(preferredWidth, width);
+
+                    //  We've exceeded the maximum width, no need to check other rows
+
+                    if (preferredWidth >= maxWidth)
+                    {
+                        preferredWidth = maxWidth;
+                        break;
+                    }
+                }
+                tableColumn.setPreferredWidth( preferredWidth );
+            }
             
         }catch(SQLException ex){
                 JOptionPane.showMessageDialog(null,ex);
@@ -377,23 +395,37 @@ DefaultTableModel tbBEres;
       Doesn't use global variables.
       Doesn't use local variables. */
     private void btnBEbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBEbajaActionPerformed
+        BEindice=Integer.parseInt(tbBEconsulta.getValueAt(tbBEconsulta.getSelectedRow(),0).toString());
+        System.out.println(BEindice);
         ConexionMySQL cmysql = new ConexionMySQL();
         Connection conec = (Connection) cmysql.Conectar();
-        
-        String senSQL = "UPDATE empleado SET estadoActivo = 0 WHERE matricula = "+BEindice;
-        
         try {
-            PreparedStatement ps = conec.prepareStatement(senSQL);
-            int n=ps.executeUpdate();
-            if (n>0)    {
-                JOptionPane.showOptionDialog(this, "Se dado de baja el empleado satisfactoriamente",
-                        "MySQL Information", JOptionPane.INFORMATION_MESSAGE,
-                        JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" 0K "},"0K");
-                //consultarDatos();
+            String senSQL = "UPDATE empleado SET estadoActivo = 0 WHERE matricula = "+BEindice;
+            String a = tbBEconsulta.getValueAt(tbBEconsulta.getSelectedRow(),15).toString();
+            if(a.equals("Activo"))    {
+                try {
+                    PreparedStatement ps = conec.prepareStatement(senSQL);
+                    int n=ps.executeUpdate();
+                    if (n>0)    {
+                        JOptionPane.showOptionDialog(this, "Se dado de baja el empleado satisfactoriamente",
+                                "MySQL Information", JOptionPane.INFORMATION_MESSAGE,
+                                JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" 0K "},"0K");
+                        consultarDatos();
+                    }
+                } catch (Exception ex)  {
+                    JOptionPane.showMessageDialog(null,ex,"Error",0);
+                }
             }
-        } catch (Exception ex)  {
-            JOptionPane.showMessageDialog(null,ex,"Error",2);
+            if(a.equals("Inactivo"))    {
+                JOptionPane.showOptionDialog(this, "El empleado seleccionado actualmente está inactivo.",
+                            "MySQL Information", JOptionPane.INFORMATION_MESSAGE,
+                            JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" 0K "},"0K");
+            }
+        } catch(Exception e)    {
+            JOptionPane.showMessageDialog(null,"No tiene nada seleccionado.","Selección vacía",2);
+            System.out.println(e);
         }
+        
     }//GEN-LAST:event_btnBEbajaActionPerformed
 
     /*btnBEbuscarActionPerformed 
@@ -402,25 +434,6 @@ DefaultTableModel tbBEres;
     private void btnBEbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBEbuscarActionPerformed
         consultarDatos();
     }//GEN-LAST:event_btnBEbuscarActionPerformed
-
-    /*tbBEconsultaMouseClicked 
-      Doesn't use global variables.
-      Doesn't use local variables. */
-    private void tbBEconsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBEconsultaMouseClicked
-        /*int registro;
-        String ids;
-        try{
-            BEindice=tbBEconsulta.getSelectedRow();
-
-            String etiq="Modificar";
-            tbBEres=(DefaultTableModel) tbBEconsulta.getModel();
-            ids=(String) tbBEres.getValueAt(registro, 0);
-            EditarDatos(ids);
-        }
-        catch(Exception ex){
-            JOptionPane.showMessageDialog(null,ex,"Error System Information",0);
-        }*/
-    }//GEN-LAST:event_tbBEconsultaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -433,18 +446,15 @@ DefaultTableModel tbBEres;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JPanel panBE;
+    private javax.swing.JScrollPane spanBEres;
     private javax.swing.JTable tbBEconsulta;
     private javax.swing.JTextField txtBEcorreo;
     private javax.swing.JTextField txtBEcurp;
-    private javax.swing.JTextField txtBEdireccion;
     private javax.swing.JTextField txtBEmatricula;
     private javax.swing.JTextField txtBEnombre;
     private javax.swing.JTextField txtBEnss;

@@ -5,25 +5,29 @@
  */
 package DMI;
 
-import java.awt.Cursor;
+import java.awt.Color;
+import java.sql.*;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author coner
  */
 public class MódulosAcceso extends javax.swing.JFrame {
-
-    public int x, y;
+    boolean MAie = false;
+    public static int x, y, MAmatricula;
     /**
      * Creates new form ModulosAcceso
      */
-    public MódulosAcceso() {
+    public MódulosAcceso(int mat) {
         initComponents();
+        this.setIconImage(new ImageIcon(getClass().getResource("/img/LOGOfdktp.png")).getImage());
+        this.MAmatricula = mat;
     }
 
     /**
@@ -300,18 +304,17 @@ public class MódulosAcceso extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dkpMAfondo, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(dkpMAfondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dkpMAfondo)
+            .addComponent(dkpMAfondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         setSize(new java.awt.Dimension(962, 600));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-        boolean MAie = false;
     private void btnMAingresar_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAingresar_empleadoActionPerformed
         IngresarEmpleado IE = new IngresarEmpleado();
         this.dkpMAfondo.add(IE);
@@ -367,6 +370,16 @@ public class MódulosAcceso extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMAagendarActionPerformed
 
     private void btnMAsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAsalirActionPerformed
+        ConexionMySQL cmysql = new ConexionMySQL();
+        Connection conn = (Connection) cmysql.Conectar();
+        try {
+            String senSQL = "INSERT INTO bitacoraAccesos(matriculaEmpleado,fechaIngreso) VALUES ("+MAmatricula+",NOW());";
+            PreparedStatement ps = conn.prepareStatement(senSQL);
+            ps.executeUpdate();
+        }
+        catch(Exception e) {
+            JOptionPane.showMessageDialog(null,e);
+        }
         this.dispose();
         Login L = new Login();
         L.show();
@@ -436,8 +449,9 @@ public class MódulosAcceso extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new MódulosAcceso().setVisible(true);
+                new MódulosAcceso(MAmatricula).setVisible(true);
             }
         });
     }
