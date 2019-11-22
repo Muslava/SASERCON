@@ -62,12 +62,11 @@ static Comprobacion c = new Comprobacion();
         initComponents();
         this.setIconifiable(true);
         
-        ConexionMySQL cmysql = new ConexionMySQL();
-        Connection conec = (Connection) cmysql.Conectar();
-        
         try {
+            ConexionMySQL cmysql = new ConexionMySQL();
+            Connection conec = (Connection) cmysql.Conectar();
             Statement st=conec.createStatement();
-            ResultSet rs = st.executeQuery("SELECT pais FROM pais");
+            ResultSet rs = st.executeQuery("SELECT pais FROM pais;");
             while (rs.next())   {
                 this.cboxIEpais.addItem(rs.getString("pais"));
             }
@@ -149,7 +148,9 @@ static Comprobacion c = new Comprobacion();
         cboxIEalcaldia = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
 
+        setIconifiable(true);
         setMaximizable(true);
+        setTitle("Ingresar empleado");
 
         btnIEregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_arrow_back_grey600_18dp.png"))); // NOI18N
         btnIEregresar.addActionListener(new java.awt.event.ActionListener() {
@@ -157,8 +158,6 @@ static Comprobacion c = new Comprobacion();
                 btnIEregresarActionPerformed(evt);
             }
         });
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingresar empleado"));
 
         jLabel23.setText("Nombre:");
 
@@ -218,7 +217,7 @@ static Comprobacion c = new Comprobacion();
             }
         });
 
-        btnIEfoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_assignment_ind_grey600_36dp.png"))); // NOI18N
+        btnIEfoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/Módulos/add_photo.png"))); // NOI18N
         btnIEfoto.setText("Foto");
         btnIEfoto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnIEfoto.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -342,13 +341,12 @@ static Comprobacion c = new Comprobacion();
                             .addComponent(jLabel47, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel48, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtIEcodigo_postal, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtIEcolonia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                                .addComponent(txtIEnumero_interior, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtIEcalle, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtIEnumero_exterior, javax.swing.GroupLayout.Alignment.LEADING))))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtIEcodigo_postal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(txtIEnumero_interior, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtIEcalle, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtIEcolonia, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtIEnumero_exterior)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel34)
@@ -437,7 +435,7 @@ static Comprobacion c = new Comprobacion();
                             .addComponent(txtIEcelular, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtIEtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtIEtelefono_emergencia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -586,15 +584,15 @@ static Comprobacion c = new Comprobacion();
     
     public void ingresar()  {
         
-        ConexionMySQL cmysql = new ConexionMySQL();
-        Connection conec = (Connection) cmysql.Conectar();
-        
-        String senSQL = "INSERT INTO empleado (nombreEmpleado,apellidoPaternoEmpleado,apellidoMaternoEmpleado,correoEmpleado,empresa,puesto,curp,numeroSeguroSocial,celular,telefonoEmergencia,nombreContacto,apellidoPaternoContacto,apellidoMaternoContacto,correoContacto,estadoActivo,telefono,fotoEmpleado,RFC) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        String senSQL2 = "INSERT INTO direccion (numeroExterior,numeroInterior,calle,colonia,codigoPostal,tipo,alcaldia) VALUES(?,?,?,?,?,?,?)";
-
         try {
-            
+            ConexionMySQL cmysql = new ConexionMySQL();
+            Connection conec = (Connection) cmysql.Conectar();
+
+            String senSQL = "INSERT INTO empleado (nombreEmpleado,apellidoPaternoEmpleado,apellidoMaternoEmpleado,correoEmpleado,empresa,puesto,curp,numeroSeguroSocial,celular,telefonoEmergencia,nombreContacto,apellidoPaternoContacto,apellidoMaternoContacto,correoContacto,estadoActivo,telefono,fotoEmpleado,RFC) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String senSQL2 = "INSERT INTO direccion (numeroExterior,numeroInterior,calle,colonia,codigoPostal,tipo,alcaldia) VALUES(?,?,?,?,?,?,?)";
+
             PreparedStatement ps = conec.prepareStatement(senSQL);
+        
             ps.setString(1,IEnombre_de_empleado);
             ps.setString(2,IEapellido_paterno_empleado);
             ps.setString(3,IEapellido_materno_empleado);

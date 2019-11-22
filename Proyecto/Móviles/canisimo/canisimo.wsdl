@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions
+  xmlns:dog="http://localhost/canisimo/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+  name="canisimo"
+  targetNamespace="http://localhost/canisimo/">
+
+  <wsdl:types>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="Library">
+          <xsd:complexType name="producto">
+              <xsd:sequence>
+                  <xsd:element name="clave" type="xsd:integer"></xsd:element>
+                  <xsd:element name="nombre" type="xsd:string"></xsd:element>
+                  <!--xsd:element name="descripcionProducto" type="xsd:string"></xsd:element>
+                  <xsd:element name="modelo" type="xsd:string"></xsd:element>
+                  <xsd:element name="familia" type="xsd:string"></xsd:element>
+                  <xsd:element name="marca" type="xsd:string"></xsd:element>
+                  <xsd:element name="codigoFabricante" type="xsd:integer"></xsd:element>
+                  <xsd:element name="numeroProductosEntrantes" type="xsd:integer"></xsd:element>
+                  <xsd:element name="peso" type="xsd:string"></xsd:element>
+                  <xsd:element name="unidadMedida" type="xsd:string"></xsd:element>
+                  <xsd:element name="stock" type="xsd:string"></xsd:element>
+                  <xsd:element name="impuesto" type="xsd:string"></xsd:element>
+                  <xsd:element name="precio" type="xsd:integer"></xsd:element>
+                  <xsd:element name="productoActivo" type="xsd:string"></xsd:element>
+                  <xsd:element name="contraEntrega" type="xsd:string"></xsd:element>
+                  <xsd:element name="categoria" type="xsd:string"></xsd:element>
+                  <xsd:element name="fechaAltaProducto" type="xsd:string"></xsd:element>
+                  <xsd:element name="fechaProducto" type="xsd:string"></xsd:element>
+                  <xsd:element name="umbralInventario" type="xsd:integer"></xsd:element>
+                  <xsd:element name="clasificacionProducto" type="xsd:string"></xsd:element>
+                  <xsd:element name="codigoBarras" type="xsd:integer"></xsd:element>
+                  <xsd:element name="numeroEmbalaje" type="xsd:integer"></xsd:element>
+                  <xsd:element name="claveCiudadOrigen" type="xsd:string"></xsd:element-->
+                </xsd:sequence>
+          </xsd:complexType>
+      </xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="loginRequest">
+    <wsdl:part name="mail" type="xsd:string"/>
+    <wsdl:part name="password" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="loginResponse">
+    <wsdl:part name="permission" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="getNameRequest">
+    <wsdl:part name="matricula" type="xsd:integer"/>
+  </wsdl:message>
+  <wsdl:message name="getNameResponse">
+    <wsdl:part name="name" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getInventarioRequest">
+    <wsdl:part name="matricula" type="xsd:integer"/>
+  </wsdl:message>
+  <wsdl:message name="getInventarioResponse">
+    <wsdl:part name="product" type="xsd:producto"/>
+  </wsdl:message>
+
+  <wsdl:portType name="canisimo">
+    <wsdl:operation name="login">
+      <wsdl:input wsam:Action="loginAction" message="dog:loginRequest"/>
+      <wsdl:output message="dog:loginResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getName">
+      <wsdl:input message="dog:getNameRequest"/>
+      <wsdl:output message="dog:getNameResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getInventario">
+      <wsdl:input message="dog:getInventarioRequest"/>
+      <wsdl:output message="dog:getInventarioResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="canisimoSOAP" type="dog:canisimo">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="login">
+      <soap:operation soapAction="http://localhost/canisimo/server.php"/>
+      <wsdl:input>
+        <soap:body namespace="http://localhost/canisimo/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body namespace="http://localhost/canisimo/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getName">
+      <soap:operation soapAction="http://localhost/canisimo/server.php"/>
+      <wsdl:input>
+        <soap:body namespace="http://localhost/canisimo" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body namespace="http://localhost/canisimo" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInventario">
+      <soap:operation soapAction="http://localhost/canisimo/server.php"/>
+      <wsdl:input>
+        <soap:body namespace="http://localhost/canisimo" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body namespace="http://localhost/canisimo" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="canisimo">
+    <wsdl:port binding="dog:canisimoSOAP" name="canisimoSOAP">
+      <soap:address location="http://localhost/canisimo/server.php"/>
+    </wsdl:port>
+  </wsdl:service>
+
+</wsdl:definitions>

@@ -9,9 +9,6 @@
           <Dimension value="[390, 355]"/>
         </Property>
         <Property name="undecorated" type="boolean" value="true"/>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[390, 355]"/>
-        </Property>
         <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[390, 355]"/>
         </Property>
@@ -403,9 +400,6 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[480, 400]"/>
-    </Property>
     <Property name="undecorated" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
@@ -430,12 +424,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panLLogin" alignment="1" max="-2" attributes="0"/>
+          <Component id="panLLogin" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panLLogin" alignment="1" max="-2" attributes="0"/>
+          <Component id="panLLogin" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -445,6 +439,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="e0" green="e5" red="e8" type="rgb"/>
         </Property>
+        <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
       <Events>
         <EventHandler event="mouseDragged" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="panLLoginMouseDragged"/>
@@ -453,60 +448,58 @@
 
       <Layout>
         <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+          <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace pref="147" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblLcontra" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblLusuario" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblLcontra" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblLcorreo" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="2" attributes="0">
+                              <Component id="btnLaccesar" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="psfLcontra" alignment="2" min="-2" pref="185" max="-2" attributes="0"/>
+                              <Component id="txtLcorreo" alignment="2" min="-2" pref="185" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblLlogo" alignment="2" min="-2" pref="190" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblLiusuario" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="lblLipassword" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lblLrecuperar_contra" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="lblLminimizar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="lblLcerrar" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="txtLcorreo" alignment="2" min="-2" pref="185" max="-2" attributes="0"/>
-                      <Component id="psfLcontra" alignment="2" min="-2" pref="185" max="-2" attributes="0"/>
-                      <Component id="btnLaccesar" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblLlogo" alignment="2" min="-2" pref="190" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblLiusuario" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="lblLipassword" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="lblLrecuperar_contra" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblLminimizar" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="lblLcerrar" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lblLcerrar" alignment="0" max="-2" attributes="0"/>
-                              <Component id="lblLminimizar" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="lblLlogo" min="-2" pref="190" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="lblLlogo" min="-2" pref="190" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
                       <Component id="txtLcorreo" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblLusuario" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblLcorreo" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="lblLiusuario" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
@@ -517,6 +510,13 @@
                   </Group>
                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Component id="btnLaccesar" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="lblLcerrar" alignment="0" max="-2" attributes="0"/>
+                      <Component id="lblLminimizar" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="lblLrecuperar_contra" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -525,7 +525,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblLusuario">
+        <Component class="javax.swing.JLabel" name="lblLcorreo">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="7c" green="79" red="78" type="rgb"/>
@@ -624,7 +624,7 @@
               <Image iconType="3" name="/img/LogIn/icons8_close_window_24px_3.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -640,7 +640,7 @@
               <Image iconType="3" name="/img/LogIn/icons8_minimize_window_24px_1.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -654,8 +654,16 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="66" red="33" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&#xbf;Olvidaste tu contrase&#xf1;a?"/>
+            <Property name="text" type="java.lang.String" value="&lt;HTML&gt;&#xbf;Olvidaste tu contrase&#xf1;a?&lt;/HTML&gt;"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblLrecuperar_contraMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblLrecuperar_contraMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblLrecuperar_contraMouseExited"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

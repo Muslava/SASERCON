@@ -5,12 +5,9 @@
  */
 package DMI;
 
-/**
- *
- * @author darki
- */
 import java.sql.*;
-import javax.swing.JOptionPane;
+import java.util.logging.Level;
+//import javax.swing.JOptionPane;
 //import com.mysql.jdbc.Connection;
 public class ConexionMySQL {
     public String db="SASERCON";
@@ -25,9 +22,14 @@ public class ConexionMySQL {
         Connection enlace=null;
         try{
             Class.forName("org.gjt.mm.mysql.Driver");
+            
+            System.out.println("Connecting to a selected database...");
             enlace=(Connection)DriverManager.getConnection(this.url,this.usuario,this.pass);
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, ex);
+            System.out.println("Connected database successfully...");
+            
+        }catch(Exception e){
+            System.out.println("Error de enlace ConexionMySQL" +e);
+            java.util.logging.Logger.getLogger(ConexionMySQL.class.getName()).log(Level.SEVERE, null, e);
         }
           return enlace;  
             
@@ -39,8 +41,9 @@ public class ConexionMySQL {
 	try	{
 		PreparedStatement ps = con.prepareStatement(st);
 		rs = ps.executeQuery();
-	} catch(Exception ex)	{
-            JOptionPane.showMessageDialog(null, ex);
+	} catch(Exception e)	{
+            System.out.println("Error de consulta ConexionMySQL" +e);
+            java.util.logging.Logger.getLogger(ConexionMySQL.class.getName()).log(Level.SEVERE, null, e);
 	}
 	return rs;
     }

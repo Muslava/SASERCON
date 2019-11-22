@@ -19,16 +19,13 @@ import com.google.crypto.tink.aead.AeadKeyTemplates;
 import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import java.awt.Frame.*;
 
 /**
  *
@@ -45,11 +42,11 @@ private final String keysetFilename = "my_keyset.json";
     }
 
     public boolean valtext(String a)    {
-        return a.matches("[^0-9]*")&&vacio(a)==false;
+        return a.matches("[a-zA-Z]*")&&vacio(a)==false;
     }
     
     public boolean valint(String a) {
-        return a.matches("[^a-zA-Z]*")&&vacio(a)==false;
+        return a.matches("[0-9]*")&&vacio(a)==false;
     }
 
     public boolean valchar(String a)    {
@@ -121,12 +118,12 @@ private final String keysetFilename = "my_keyset.json";
             return ciphertext;
         }
         catch(GeneralSecurityException e) {
-            //Logger.getLogger(encriptacion.class.getName()).log(Level.SEVERS, null, ex);
+            Logger.getLogger(Comprobacion.class.getName()).log(Level.SEVERE, null, e);
             System.out.println("Security error: "+e);
             return "ERROR".getBytes();
         }
         catch(IOException e) {
-            //Logger.getLogger(archivos.class.getName()).log(Level.MEDIUM, null, ex);
+            Logger.getLogger(Comprobacion.class.getName()).log(Level.WARNING, null, e);
             System.out.println("File io error: "+e);
             System.out.println("Retrying...");
             NuevoKH();

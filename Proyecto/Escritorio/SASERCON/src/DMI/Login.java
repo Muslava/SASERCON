@@ -11,11 +11,12 @@ import java.sql.*;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
+import java.util.Arrays;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import net.java.balloontip.*;
 import net.java.balloontip.styles.*;
-import net.java.balloontip.utils.*;
 
 /**
  *
@@ -30,7 +31,6 @@ private int Lcodigo;
 public int Lpuesto, Lmatricula, Lcont=0;
 public int[] Lintentos = new int[40];
 public int X1, Y1;
-BalloonTip btLvalida;
 Comprobacion ALERTA = new Comprobacion();
 MódulosAcceso ma = new MódulosAcceso(Lmatricula);
 
@@ -79,7 +79,7 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
         lblLcerrar2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         panLLogin = new javax.swing.JPanel();
-        lblLusuario = new javax.swing.JLabel();
+        lblLcorreo = new javax.swing.JLabel();
         lblLcontra = new javax.swing.JLabel();
         btnLaccesar = new javax.swing.JButton();
         txtLcorreo = new javax.swing.JTextField();
@@ -95,7 +95,6 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
         dialogAsignarContrasenha.setAlwaysOnTop(true);
         dialogAsignarContrasenha.setMinimumSize(new java.awt.Dimension(390, 355));
         dialogAsignarContrasenha.setUndecorated(true);
-        dialogAsignarContrasenha.setPreferredSize(new java.awt.Dimension(390, 355));
         dialogAsignarContrasenha.setSize(new java.awt.Dimension(390, 355));
 
         panLpreguntas.setBorder(javax.swing.BorderFactory.createTitledBorder("Preguntas Secretas"));
@@ -347,11 +346,11 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(480, 400));
         setUndecorated(true);
         setResizable(false);
 
         panLLogin.setBackground(new java.awt.Color(232, 229, 224));
+        panLLogin.setName(""); // NOI18N
         panLLogin.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 panLLoginMouseDragged(evt);
@@ -363,8 +362,8 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
             }
         });
 
-        lblLusuario.setForeground(new java.awt.Color(120, 121, 124));
-        lblLusuario.setText("Correo:");
+        lblLcorreo.setForeground(new java.awt.Color(120, 121, 124));
+        lblLcorreo.setText("Correo:");
 
         lblLcontra.setForeground(new java.awt.Color(120, 121, 124));
         lblLcontra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -416,7 +415,7 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
 
         lblLcerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLcerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LogIn/icons8_close_window_24px_3.png"))); // NOI18N
-        lblLcerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblLcerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblLcerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblLcerrarMouseClicked(evt);
@@ -431,7 +430,7 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
 
         lblLminimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLminimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LogIn/icons8_minimize_window_24px_1.png"))); // NOI18N
-        lblLminimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblLminimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblLminimizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblLminimizarMouseClicked(evt);
@@ -445,54 +444,64 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
         });
 
         lblLrecuperar_contra.setForeground(new java.awt.Color(51, 102, 255));
-        lblLrecuperar_contra.setText("¿Olvidaste tu contraseña?");
+        lblLrecuperar_contra.setText("<HTML>¿Olvidaste tu contraseña?</HTML>");
+        lblLrecuperar_contra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblLrecuperar_contra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLrecuperar_contraMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblLrecuperar_contraMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblLrecuperar_contraMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout panLLoginLayout = new javax.swing.GroupLayout(panLLogin);
         panLLogin.setLayout(panLLoginLayout);
         panLLoginLayout.setHorizontalGroup(
-            panLLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panLLoginLayout.createSequentialGroup()
+            panLLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(panLLoginLayout.createSequentialGroup()
                 .addContainerGap(147, Short.MAX_VALUE)
                 .addGroup(panLLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLcontra, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblLusuario, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panLLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(txtLcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(psfLcontra, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLaccesar)
-                    .addComponent(jLabel3)
-                    .addComponent(lblLlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panLLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLiusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLipassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(157, 157, 157))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panLLoginLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(panLLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblLrecuperar_contra)
-                    .addComponent(lblLminimizar))
-                .addGap(0, 0, 0)
-                .addComponent(lblLcerrar))
+                    .addGroup(panLLoginLayout.createSequentialGroup()
+                        .addGroup(panLLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblLcontra, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblLcorreo, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panLLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(btnLaccesar)
+                            .addComponent(psfLcontra, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtLcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(lblLlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panLLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panLLoginLayout.createSequentialGroup()
+                                .addGroup(panLLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblLiusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblLipassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(157, 157, 157))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panLLoginLayout.createSequentialGroup()
+                                .addComponent(lblLrecuperar_contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panLLoginLayout.createSequentialGroup()
+                        .addComponent(lblLminimizar)
+                        .addGap(0, 0, 0)
+                        .addComponent(lblLcerrar))))
         );
         panLLoginLayout.setVerticalGroup(
             panLLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panLLoginLayout.createSequentialGroup()
-                .addGroup(panLLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panLLoginLayout.createSequentialGroup()
-                        .addGroup(panLLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblLcerrar)
-                            .addComponent(lblLminimizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(200, 200, 200))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panLLoginLayout.createSequentialGroup()
-                        .addComponent(lblLlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGap(30, 30, 30)
+                .addComponent(lblLlogo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addGap(20, 20, 20)
                 .addGroup(panLLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(txtLcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLusuario)
+                    .addComponent(lblLcorreo)
                     .addComponent(lblLiusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(panLLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -501,8 +510,13 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
                     .addComponent(lblLcontra))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLaccesar)
+                .addGap(19, 19, 19))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panLLoginLayout.createSequentialGroup()
+                .addGroup(panLLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblLcerrar)
+                    .addComponent(lblLminimizar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblLrecuperar_contra)
+                .addComponent(lblLrecuperar_contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -510,108 +524,16 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panLLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panLLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panLLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panLLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(600, 400));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void panLLoginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panLLoginMousePressed
-        X1 = evt.getX();
-        Y1 = evt.getY();
-    }//GEN-LAST:event_panLLoginMousePressed
-
-    private void panLLoginMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panLLoginMouseDragged
-        Point mueve = MouseInfo.getPointerInfo().getLocation();
-        this.setLocation(mueve.x - X1, mueve.y - Y1);
-    }//GEN-LAST:event_panLLoginMouseDragged
-
-    private void lblLminimizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLminimizarMouseEntered
-        lblLminimizar.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_minimize_window_24px_4.png")));
-    }//GEN-LAST:event_lblLminimizarMouseEntered
-
-    private void lblLminimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLminimizarMouseClicked
-        this.setExtendedState(1);
-    }//GEN-LAST:event_lblLminimizarMouseClicked
-
-    private void lblLcerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLcerrarMouseEntered
-        lblLcerrar.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_close_window_24px_6.png")));
-    }//GEN-LAST:event_lblLcerrarMouseEntered
-
-    private void lblLcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLcerrarMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_lblLcerrarMouseClicked
-
-    /*txtLcorreoKeyTyped allows to log in the system clicking the enter button from psfLcontra password field
-      Use global variables: String Lcorreo,Lcontra,Lscontra; Char Lccontra; Int Lpuesto
-      Use local variable: Char d */
-    private void psfLcontraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_psfLcontraKeyTyped
-        char d=evt.getKeyChar();
-        if(d == KeyEvent.VK_ENTER)  {
-            Acceder();
-        }
-    }//GEN-LAST:event_psfLcontraKeyTyped
-
-    /*txtLcorreoKeyTyped allows to log in the system clicking the enter button from txtLcorreo text box
-      Use global variables: String Lcorreo,Lcontra,Lscontra; Char Lccontra; Int Lpuesto
-      Use local variable: Char d */
-    private void txtLcorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLcorreoKeyTyped
-        char d=evt.getKeyChar();
-        if(d == KeyEvent.VK_ENTER)  {
-            Acceder();
-        }
-    }//GEN-LAST:event_txtLcorreoKeyTyped
-
-    private void txtLcorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLcorreoFocusLost
-        btLvalida = new BalloonTip(
-            this.txtLcorreo,
-            new JLabel("Se debe ingresar un correo válido."),
-            new ModernBalloonStyle(3/*Contorno*/, 2/*Padding*/,
-                    new Color(146, 150, 153),   //Color1
-                    new Color(191, 192, 194),   //Color2
-                    new Color(178, 179, 179)),  //Contorno
-            BalloonTip.Orientation.LEFT_BELOW,
-            BalloonTip.AttachLocation.ALIGNED,
-            30, 5,
-            false
-        );
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-        }
-        if(!ALERTA.valmail(txtLcorreo.getText().trim()) && !txtLcorreo.getText().trim().isEmpty())    {
-            this.lblLusuario.setForeground(red);
-            this.lblLiusuario.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_user_filled_30px_1.png")));
-            btLvalida.setVisible(true);
-            TimingUtils.showTimedBalloon(btLvalida, 3000);
-            //FadingUtils.fadeInBalloon(btLvalida, btLvalida.setVisible(false), 300, 24);
-        }
-        if(ALERTA.valmail(txtLcorreo.getText().trim()) && txtLcorreo.getText().trim().isEmpty())    {
-            this.lblLusuario.setForeground(new java.awt.Color(120, 121, 124));
-            this.lblLiusuario.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_user_filled_30px.png")));
-            btLvalida.setVisible(false);
-        }
-    }//GEN-LAST:event_txtLcorreoFocusLost
-
-    /*btnLaccesarActionPerformed allows to log in the system
-      Use global variables: String Lcorreo,Lcontra,Lscontra; Char Lccontra; Int Lpuesto
-      Doesn't use local variables. */
-    private void btnLaccesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaccesarActionPerformed
-        Acceder();
-    }//GEN-LAST:event_btnLaccesarActionPerformed
-
-    private void lblLcerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLcerrarMouseExited
-        lblLcerrar.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_close_window_24px_3.png")));
-    }//GEN-LAST:event_lblLcerrarMouseExited
-
-    private void lblLminimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLminimizarMouseExited
-        lblLminimizar.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_minimize_window_24px_1.png")));
-    }//GEN-LAST:event_lblLminimizarMouseExited
 
     private void lblLcerrar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLcerrar1MouseClicked
         dialogAsignarContrasenha.dispose();
@@ -632,11 +554,6 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
             if(Lcodigo == Integer.parseInt(txtLcodigo.getText().trim()))  {
                 dialogRecuperarContrasenha.dispose();
                 dialogAsignarContrasenha.setVisible(true);
-                /*if(Lcont==5)    {
-                // "En caso de no acertar en 5 ocasiones con la respuesta correcta, el usuario quedará
-                // bloqueado y solo con autorización del Director se le podrá enviar por correo."
-                   JOptionPane.showMessageDialog(null, "Su cuenta ha sido bloqueada, favor de contactar a ", "Cuenta bloqueada", JOptionPane.WARNING_MESSAGE);
-                }*/
             }
             else    {
                 JOptionPane.showMessageDialog(null,"Revise que el código corresponda con el enviado a su correo.","Código inválido",2);
@@ -660,16 +577,17 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
     }//GEN-LAST:event_lblLcerrar2MouseExited
 
     private void btnLguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLguardarActionPerformed
-        if(psfLnueva_contra.getPassword().toString().length() >= 8) {
-            if(psfLnueva_contra.getPassword().toString().equals(psfLconfirmar_contra.getPassword().toString()))   {
+        if(Arrays.toString(psfLnueva_contra.getPassword()).length() >= 8) {
+            if(Arrays.toString(psfLnueva_contra.getPassword()).equals(Arrays.toString(psfLconfirmar_contra.getPassword())))   {
                 Connection con;
                 PreparedStatement ps;
                 try {
-                    con = ConexionMariaDB.getConexion("SASERCON");
+                    ConexionMySQL cmysql = new ConexionMySQL();
+                    con = (Connection) cmysql.Conectar();
                     ps = con.prepareStatement("UPDATE empleado SET contrasena = "+ALERTA.getSHA3(new String(psfLnueva_contra.getPassword()))+" INTO empleado WHERE correoEmpleado = '"+Lcorreo+"';");
                     int n=ps.executeUpdate();
                     if (n>0)    {
-                        JOptionPane.showOptionDialog(this, "Se dado de baja el empleado satisfactoriamente",
+                        JOptionPane.showOptionDialog(this, "Se ha actualizado la contraseña satisfactoriamente.",
                                 "MySQL Information", JOptionPane.INFORMATION_MESSAGE,
                                 JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" 0K "},"0K");
                         this.dispose();
@@ -703,11 +621,6 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
                 if(Lcodigo == Integer.parseInt(txtLcodigo.getText().trim()))  {
                     dialogRecuperarContrasenha.dispose();
                     dialogAsignarContrasenha.setVisible(true);
-                    /*if(Lcont==5)    {
-                    // "En caso de no acertar en 5 ocasiones con la respuesta correcta, el usuario quedará
-                    // bloqueado y solo con autorización del Director se le podrá enviar por correo."
-                       JOptionPane.showMessageDialog(null, "Su cuenta ha sido bloqueada, favor de contactar a ", "Cuenta bloqueada", JOptionPane.WARNING_MESSAGE);
-                    }*/
                 }
                 else    {
                     JOptionPane.showMessageDialog(null,"Revise que el código corresponda con el enviado a su correo.","Código inválido",2);
@@ -719,9 +632,122 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
         }
     }//GEN-LAST:event_btnLconfirmarKeyTyped
 
+    private void panLLoginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panLLoginMousePressed
+        X1 = evt.getX();
+        Y1 = evt.getY();
+    }//GEN-LAST:event_panLLoginMousePressed
+
+    private void panLLoginMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panLLoginMouseDragged
+        Point mueve = MouseInfo.getPointerInfo().getLocation();
+        this.setLocation(mueve.x - X1, mueve.y - Y1);
+    }//GEN-LAST:event_panLLoginMouseDragged
+
+    private void lblLrecuperar_contraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLrecuperar_contraMouseExited
+        lblLrecuperar_contra.setText("<HTML>¿Olvidaste tu contraseña?</HTML>");
+    }//GEN-LAST:event_lblLrecuperar_contraMouseExited
+
+    private void lblLrecuperar_contraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLrecuperar_contraMouseEntered
+        lblLrecuperar_contra.setText("<HTML><U>¿Olvidaste tu contraseña?</U></HTML>");
+    }//GEN-LAST:event_lblLrecuperar_contraMouseEntered
+
+    private void lblLminimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLminimizarMouseExited
+        lblLminimizar.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_minimize_window_24px_1.png")));
+    }//GEN-LAST:event_lblLminimizarMouseExited
+
+    private void lblLminimizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLminimizarMouseEntered
+        lblLminimizar.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_minimize_window_24px_4.png")));
+    }//GEN-LAST:event_lblLminimizarMouseEntered
+
+    private void lblLminimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLminimizarMouseClicked
+        this.setExtendedState(1);
+    }//GEN-LAST:event_lblLminimizarMouseClicked
+
+    private void lblLcerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLcerrarMouseExited
+        lblLcerrar.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_close_window_24px_3.png")));
+    }//GEN-LAST:event_lblLcerrarMouseExited
+
+    private void lblLcerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLcerrarMouseEntered
+        lblLcerrar.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_close_window_24px_6.png")));
+    }//GEN-LAST:event_lblLcerrarMouseEntered
+
+    private void lblLcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLcerrarMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_lblLcerrarMouseClicked
+
+    /*txtLcorreoKeyTyped allows to log in the system clicking the enter button from psfLcontra password field
+      Use global variables: String Lcorreo,Lcontra,Lscontra; Char Lccontra; Int Lpuesto
+      Use local variable: Char d */
+    private void psfLcontraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_psfLcontraKeyTyped
+        char d=evt.getKeyChar();
+        if(d == KeyEvent.VK_ENTER)  {
+            Acceder();
+        }
+    }//GEN-LAST:event_psfLcontraKeyTyped
+
+    /*txtLcorreoKeyTyped allows to log in the system clicking the enter button from txtLcorreo text box
+      Use global variables: String Lcorreo,Lcontra,Lscontra; Char Lccontra; Int Lpuesto
+      Use local variable: Char d */
+    private void txtLcorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLcorreoKeyTyped
+        char d=evt.getKeyChar();
+        if(d == KeyEvent.VK_ENTER)  {
+            Acceder();
+        }
+    }//GEN-LAST:event_txtLcorreoKeyTyped
+
+    private void txtLcorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLcorreoFocusLost
+        if(!ALERTA.valmail(txtLcorreo.getText().trim()) && !txtLcorreo.getText().trim().isEmpty())    {
+            this.lblLcorreo.setForeground(red);
+            this.lblLiusuario.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_user_filled_30px_1.png")));
+            balloontip(this.txtLcorreo, "Se debe ingresar un correo válido.",30,10).setVisible(true);
+        }
+        /*if(ALERTA.valmail(txtLcorreo.getText().trim()) && txtLcorreo.getText().trim().isEmpty())    {
+            this.lblLusuario.setForeground(new java.awt.Color(120, 121, 124));
+            this.lblLiusuario.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_user_filled_30px.png")));
+        }*/
+    }//GEN-LAST:event_txtLcorreoFocusLost
+
+    /*btnLaccesarActionPerformed allows to log in the system
+      Use global variables: String Lcorreo,Lcontra,Lscontra; Char Lccontra; Int Lpuesto
+      Doesn't use local variables. */
+    private void btnLaccesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaccesarActionPerformed
+        Acceder();
+    }//GEN-LAST:event_btnLaccesarActionPerformed
+
+    private void lblLrecuperar_contraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLrecuperar_contraMouseClicked
+        int resp = JOptionPane.showConfirmDialog(null, "¿Olvidaste tu contraseña?", "Recuperar contraseña", 2);
+        if (resp==0)  {
+            Lcodigo = (int)(Math.random() * 99999999 + 10000000);
+            String aa = ALERTA.enviarCorreo(Lcorreo, Lcodigo);
+            if(aa.equals(""))   {
+                JOptionPane.showMessageDialog(null, "Correo enviado con éxito.", "Envío exitoso", JOptionPane.INFORMATION_MESSAGE);
+                dialogRecuperarContrasenha.setVisible(true);
+            }
+            else    {
+                JOptionPane.showMessageDialog(null, "Error al enviar correo: "+aa, "Error de correo", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_lblLrecuperar_contraMouseClicked
+
+    public BalloonTip balloontip(Component com, String tx, int gp, int pest)    {
+        BalloonTip btLvalida = new BalloonTip(
+            (JComponent) com,
+            new JLabel(tx),
+            new ModernBalloonStyle(2/*Contorno*/, 1/*Padding*/,
+                new Color(146, 150, 153),   //Color1
+                new Color(191, 192, 194),   //Color2
+                new Color(178, 179, 179)),  //Contorno
+            BalloonTip.Orientation.LEFT_BELOW,
+            BalloonTip.AttachLocation.SOUTH,
+            gp, // Espacio entre inicio del globo y la pestaña
+            pest, // Tamaño de la pestaña
+            true
+        );
+        return btLvalida;
+    }
+    
     private void Acceder()  {
         if(txtLcorreo.getText().trim().isEmpty() && !psfLcontra.getText().trim().isEmpty())    {
-            this.lblLusuario.setForeground(red);
+            this.lblLcorreo.setForeground(red);
             this.lblLiusuario.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_user_filled_30px_1.png")));
             this.lblLcontra.setForeground(new java.awt.Color(120, 121, 124));
             this.lblLipassword.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_key_30px.png")));
@@ -730,19 +756,19 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
         if(psfLcontra.getText().trim().isEmpty() && !txtLcorreo.getText().trim().isEmpty()) {
             this.lblLcontra.setForeground(red);
             this.lblLipassword.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_key_30px_1.png")));
-            this.lblLusuario.setForeground(new java.awt.Color(120, 121, 124));
+            this.lblLcorreo.setForeground(new java.awt.Color(120, 121, 124));
             this.lblLiusuario.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_user_filled_30px.png")));
             JOptionPane.showMessageDialog(null,"La contraseña no debe quedar vacía.");
         }
         if(txtLcorreo.getText().trim().isEmpty() && psfLcontra.getText().trim().isEmpty()) {
-            this.lblLusuario.setForeground(red);
+            this.lblLcorreo.setForeground(red);
             this.lblLcontra.setForeground(red);
             this.lblLipassword.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_key_30px_1.png")));
             this.lblLiusuario.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_user_filled_30px_1.png")));
             JOptionPane.showMessageDialog(null,"El correo y contraseña no deben quedar vacíos.");
         }
         else    {
-            this.lblLusuario.setForeground(new java.awt.Color(120, 121, 124));
+            this.lblLcorreo.setForeground(new java.awt.Color(120, 121, 124));
             this.lblLcontra.setForeground(new java.awt.Color(120, 121, 124));
             this.lblLipassword.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_key_30px.png")));
             this.lblLiusuario.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_user_filled_30px.png")));
@@ -751,7 +777,8 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
             Connection con;
             PreparedStatement ps, ps2;
             try {
-                con = ConexionMariaDB.getConexion("SASERCON");
+                ConexionMySQL cmysql = new ConexionMySQL();
+                con = (Connection) cmysql.Conectar();
                 ps = con.prepareStatement("SELECT matricula FROM empleado WHERE correoEmpleado = '"+Lcorreo+"' AND estadoActivo = 1;");
                 ResultSet rs = ps.executeQuery();
                 // Comprueba si el correo está registrado
@@ -805,7 +832,7 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
                     }
                 }
                 else    {
-                    JOptionPane.showMessageDialog(null,"El correo no está registrado o está dado de baja, favor de verificarlo.","Correo no registrado",2);
+                    JOptionPane.showMessageDialog(null,"El correo no está registrado o está dado de baja, favor de verificar.","Correo no registrado",2);
                 }
                 con.close();
             } catch (Exception ex)   {
@@ -872,12 +899,12 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
     private javax.swing.JLabel lblLcerrar1;
     private javax.swing.JLabel lblLcerrar2;
     private javax.swing.JLabel lblLcontra;
+    private javax.swing.JLabel lblLcorreo;
     private javax.swing.JLabel lblLipassword;
     private javax.swing.JLabel lblLiusuario;
     private javax.swing.JLabel lblLlogo;
     private javax.swing.JLabel lblLminimizar;
     private javax.swing.JLabel lblLrecuperar_contra;
-    private javax.swing.JLabel lblLusuario;
     private javax.swing.JPanel panLLogin;
     private javax.swing.JPanel panLcontraseña;
     private javax.swing.JPanel panLpreguntas;

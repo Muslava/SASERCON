@@ -5,12 +5,14 @@
  */
 package DMI;
 
-import java.awt.Color;
 import java.sql.*;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -54,17 +56,25 @@ public class MódulosAcceso extends javax.swing.JFrame {
         btnMAbuscar_servicio = new javax.swing.JButton();
         btnMAingresar_servicio = new javax.swing.JButton();
         btnMAingresar_producto = new javax.swing.JButton();
-        btnMAagendar = new javax.swing.JButton();
         btnMAsalir = new javax.swing.JButton();
-        panMAmover = new javax.swing.JPanel();
-        lblMAmaxi_rest = new javax.swing.JLabel();
-        lblMAcerrar = new javax.swing.JLabel();
-        lblMAminimizar = new javax.swing.JLabel();
+        lblMAtoken = new javax.swing.JLabel();
+        mbarMAmenu = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        mitemMAingresar_cliente = new javax.swing.JMenuItem();
+        mitemMAingresar_producto = new javax.swing.JMenuItem();
+        mitemMAingresar_empleado = new javax.swing.JMenuItem();
+        mitemMAingresar_servicio = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        mitemMAbuscar_cliente = new javax.swing.JMenuItem();
+        mitemMAbuscar_producto = new javax.swing.JMenuItem();
+        mitemMAbuscar_empleado = new javax.swing.JMenuItem();
+        mitemMAbuscar_servicio = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        btnMAingresar_empleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_perm_contact_cal_grey600_18dp_1.png"))); // NOI18N
+        btnMAingresar_empleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/Módulos/add_employee.png"))); // NOI18N
         btnMAingresar_empleado.setText("Ingresar Empleado");
         btnMAingresar_empleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnMAingresar_empleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -74,7 +84,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
             }
         });
 
-        btnMAingresar_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_account_circle_grey600_18dp.png"))); // NOI18N
+        btnMAingresar_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/Módulos/add_client.png"))); // NOI18N
         btnMAingresar_cliente.setText("Ingresar Cliente");
         btnMAingresar_cliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnMAingresar_cliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -84,7 +94,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
             }
         });
 
-        btnMAbuscar_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_perm_identity_grey600_18dp.png"))); // NOI18N
+        btnMAbuscar_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/Módulos/search_client.png"))); // NOI18N
         btnMAbuscar_cliente.setText("Buscar Cliente");
         btnMAbuscar_cliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMAbuscar_cliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -95,7 +105,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
             }
         });
 
-        btnMAbuscar_empleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_dashboard_grey600_18dp.png"))); // NOI18N
+        btnMAbuscar_empleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/Módulos/search_employee.png"))); // NOI18N
         btnMAbuscar_empleado.setText("Buscar Empleado");
         btnMAbuscar_empleado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMAbuscar_empleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -106,7 +116,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
             }
         });
 
-        btnMAbuscar_producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_perm_identity_black_18dp.png"))); // NOI18N
+        btnMAbuscar_producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/Módulos/search_product.png"))); // NOI18N
         btnMAbuscar_producto.setText("Buscar Producto");
         btnMAbuscar_producto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMAbuscar_producto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -117,7 +127,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
             }
         });
 
-        btnMAbuscar_servicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_add_to_photos_grey600_18dp.png"))); // NOI18N
+        btnMAbuscar_servicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/Módulos/search_service.png"))); // NOI18N
         btnMAbuscar_servicio.setText("Buscar Servicio");
         btnMAbuscar_servicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMAbuscar_servicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -128,7 +138,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
             }
         });
 
-        btnMAingresar_servicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_credit_card_grey600_18dp.png"))); // NOI18N
+        btnMAingresar_servicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/Módulos/add_service.png"))); // NOI18N
         btnMAingresar_servicio.setText("Ingresar Servicio");
         btnMAingresar_servicio.setDoubleBuffered(true);
         btnMAingresar_servicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -139,7 +149,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
             }
         });
 
-        btnMAingresar_producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_add_shopping_cart_grey600_18dp.png"))); // NOI18N
+        btnMAingresar_producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/Módulos/add_product.png"))); // NOI18N
         btnMAingresar_producto.setText("Ingresar Producto");
         btnMAingresar_producto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnMAingresar_producto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -149,17 +159,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
             }
         });
 
-        btnMAagendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_dashboard_white_18dp.png"))); // NOI18N
-        btnMAagendar.setText("Agendar");
-        btnMAagendar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnMAagendar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnMAagendar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMAagendarActionPerformed(evt);
-            }
-        });
-
-        btnMAsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_exit_to_app_grey600_18dp.png"))); // NOI18N
+        btnMAsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/Módulos/exit.png"))); // NOI18N
         btnMAsalir.setText("Cerrar Sesión");
         btnMAsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMAsalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -170,67 +170,19 @@ public class MódulosAcceso extends javax.swing.JFrame {
             }
         });
 
-        panMAmover.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panMAmover.setOpaque(false);
-        panMAmover.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                panMAmoverMouseDragged(evt);
-            }
-        });
-        panMAmover.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                panMAmoverMousePressed(evt);
-            }
-        });
-
-        lblMAmaxi_rest.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMAmaxi_rest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/icons8_maximize_window_32px.png"))); // NOI18N
-        lblMAmaxi_rest.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblMAmaxi_rest.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblMAtoken.setForeground(new java.awt.Color(204, 204, 204));
+        lblMAtoken.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMAtoken.setText("Agendar");
+        lblMAtoken.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        lblMAtoken.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblMAtoken.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblMAtoken.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        lblMAtoken.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/Módulos/token.png")));
+        lblMAtoken.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMAmaxi_restMouseClicked(evt);
+                lblMAtokenMouseClicked(evt);
             }
         });
-
-        lblMAcerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMAcerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/icons8_close_window_32px.png"))); // NOI18N
-        lblMAcerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblMAcerrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMAcerrarMouseClicked(evt);
-            }
-        });
-
-        lblMAminimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMAminimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/icons8_minimize_window_32px.png"))); // NOI18N
-        lblMAminimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblMAminimizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMAminimizarMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panMAmoverLayout = new javax.swing.GroupLayout(panMAmover);
-        panMAmover.setLayout(panMAmoverLayout);
-        panMAmoverLayout.setHorizontalGroup(
-            panMAmoverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panMAmoverLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblMAminimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblMAmaxi_rest, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblMAcerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        panMAmoverLayout.setVerticalGroup(
-            panMAmoverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panMAmoverLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(panMAmoverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMAmaxi_rest, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMAminimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMAcerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
 
         dkpMAfondo.setLayer(btnMAingresar_empleado, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dkpMAfondo.setLayer(btnMAingresar_cliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -240,9 +192,8 @@ public class MódulosAcceso extends javax.swing.JFrame {
         dkpMAfondo.setLayer(btnMAbuscar_servicio, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dkpMAfondo.setLayer(btnMAingresar_servicio, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dkpMAfondo.setLayer(btnMAingresar_producto, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dkpMAfondo.setLayer(btnMAagendar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dkpMAfondo.setLayer(btnMAsalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dkpMAfondo.setLayer(panMAmover, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dkpMAfondo.setLayer(lblMAtoken, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dkpMAfondoLayout = new javax.swing.GroupLayout(dkpMAfondo);
         dkpMAfondo.setLayout(dkpMAfondoLayout);
@@ -251,70 +202,252 @@ public class MódulosAcceso extends javax.swing.JFrame {
             .addGroup(dkpMAfondoLayout.createSequentialGroup()
                 .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dkpMAfondoLayout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(btnMAagendar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnMAsalir)
-                        .addGap(81, 81, 81))
-                    .addGroup(dkpMAfondoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnMAingresar_empleado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnMAingresar_cliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(42, 42, 42)
+                        .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnMAingresar_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnMAingresar_empleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(40, 40, 40)
                         .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnMAingresar_producto, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                            .addComponent(btnMAingresar_servicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 360, Short.MAX_VALUE)
-                        .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnMAbuscar_cliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMAbuscar_empleado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnMAingresar_servicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(dkpMAfondoLayout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(lblMAtoken, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 341, Short.MAX_VALUE)
+                .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dkpMAfondoLayout.createSequentialGroup()
+                        .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnMAbuscar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMAbuscar_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(40, 40, 40)
                         .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnMAbuscar_servicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnMAbuscar_producto, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))))
+                            .addComponent(btnMAbuscar_producto, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dkpMAfondoLayout.createSequentialGroup()
+                        .addComponent(btnMAsalir)
+                        .addGap(81, 81, 81)))
                 .addContainerGap())
-            .addComponent(panMAmover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         dkpMAfondoLayout.setVerticalGroup(
             dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dkpMAfondoLayout.createSequentialGroup()
-                .addComponent(panMAmover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(50, 50, 50)
                 .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnMAingresar_empleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnMAbuscar_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnMAbuscar_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMAingresar_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnMAbuscar_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMAingresar_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMAingresar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMAbuscar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
-                .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnMAingresar_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMAingresar_servicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMAbuscar_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMAbuscar_servicio, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnMAbuscar_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnMAingresar_servicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMAbuscar_servicio, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                        .addComponent(btnMAingresar_empleado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
                 .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnMAsalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMAagendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblMAtoken, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36))
         );
+
+        // Botón minimizar
+        lblMAminimizar = new javax.swing.JLabel();
+        lblMAminimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMAminimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/icons8_minimize_window_24px.png"))); // NOI18N
+        lblMAminimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblMAminimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ventana(1);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblMAminimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/icons8_minimize_window_24pxB.png")));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMAminimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/icons8_minimize_window_24px.png")));
+            }
+        });
+
+        // Botón maximizar-restaurar
+        lblMAmaxi_rest = new javax.swing.JLabel();
+        lblMAmaxi_rest.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMAmaxi_rest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/icons8_maximize_window_24px.png"))); // NOI18N
+        lblMAmaxi_rest.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblMAmaxi_rest.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ventana(2);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ventana(4);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ventana(5);
+            }
+        });
+
+        // Botón cerrar
+        lblMAcerrar = new javax.swing.JLabel();
+        lblMAcerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMAcerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/icons8_close_window_24px.png"))); // NOI18N
+        lblMAcerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblMAcerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ventana(3);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblMAcerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/icons8_close_window_24pxB.png")));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMAcerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/icons8_close_window_24px.png")));
+            }
+        });
+        mbarMAmenu.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                mbarMAmenuMouseDragged(evt);
+            }
+        });
+        mbarMAmenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                mbarMAmenuMousePressed(evt);
+            }
+        });
+
+        jMenu1.setText("File");
+        mbarMAmenu.add(jMenu1);
+
+        jMenu2.setText("Ingresar");
+
+        mitemMAingresar_cliente.setText("Cliente");
+        mitemMAingresar_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitemMAingresar_clienteActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mitemMAingresar_cliente);
+
+        mitemMAingresar_producto.setText("Producto");
+        mitemMAingresar_producto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitemMAingresar_productoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mitemMAingresar_producto);
+
+        mitemMAingresar_empleado.setText("Empleado");
+        mitemMAingresar_empleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitemMAingresar_empleadoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mitemMAingresar_empleado);
+
+        mitemMAingresar_servicio.setText("Servicio");
+        mitemMAingresar_servicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitemMAingresar_servicioActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mitemMAingresar_servicio);
+
+        mbarMAmenu.add(jMenu2);
+
+        jMenu3.setText("Buscar");
+
+        mitemMAbuscar_cliente.setText("Cliente");
+        mitemMAbuscar_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitemMAbuscar_clienteActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mitemMAbuscar_cliente);
+
+        mitemMAbuscar_producto.setText("Producto");
+        mitemMAbuscar_producto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitemMAbuscar_productoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mitemMAbuscar_producto);
+
+        mitemMAbuscar_empleado.setText("Empleado");
+        mitemMAbuscar_empleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitemMAbuscar_empleadoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mitemMAbuscar_empleado);
+
+        mitemMAbuscar_servicio.setText("Servicio");
+        mitemMAbuscar_servicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitemMAbuscar_servicioActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mitemMAbuscar_servicio);
+
+        mbarMAmenu.add(jMenu3);
+
+        setJMenuBar(mbarMAmenu);
+        mbarMAmenu.add(Box.createHorizontalGlue());
+        mbarMAmenu.add(lblMAminimizar);
+        mbarMAmenu.add(lblMAmaxi_rest);
+        mbarMAmenu.add(lblMAcerrar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dkpMAfondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(dkpMAfondo)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dkpMAfondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(dkpMAfondo)
         );
 
-        setSize(new java.awt.Dimension(962, 600));
+        setSize(new java.awt.Dimension(941, 600));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /*ventana changes the three very left icone from the menu bar
+    Use global variables: doesn't use global variables
+    Use local variable: int i */
+    private void ventana(int i)  {
+        switch(i)    {
+            case 1:
+                this.setExtendedState(1);
+                break;
+            case 2:
+                if(this.getExtendedState()==this.MAXIMIZED_BOTH)  {
+                    this.setExtendedState(this.NORMAL);
+                    this.lblMAmaxi_rest.setIcon(new ImageIcon(getClass().getResource("../img/MódulosAcceso/icons8_maximize_window_24px.png")));
+                }
+                else    {
+                    this.setExtendedState(this.MAXIMIZED_BOTH);
+                    this.lblMAmaxi_rest.setIcon(new ImageIcon(getClass().getResource("../img/MódulosAcceso/icons8_restore_window_24px.png")));
+                }
+                break;
+            case 3:
+                System.exit(0);
+                break;
+            case 4:
+                if(this.getExtendedState()==this.MAXIMIZED_BOTH)  {
+                    this.lblMAmaxi_rest.setIcon(new ImageIcon(getClass().getResource("../img/MódulosAcceso/icons8_restore_window_24pxB.png")));
+                }
+                else    {
+                    this.lblMAmaxi_rest.setIcon(new ImageIcon(getClass().getResource("../img/MódulosAcceso/icons8_maximize_window_24pxB.png")));
+                }
+                break;
+            case 5:
+                if(this.getExtendedState()==this.MAXIMIZED_BOTH)  {
+                    this.lblMAmaxi_rest.setIcon(new ImageIcon(getClass().getResource("../img/MódulosAcceso/icons8_restore_window_24px.png")));
+                }
+                else    {
+                    this.lblMAmaxi_rest.setIcon(new ImageIcon(getClass().getResource("../img/MódulosAcceso/icons8_maximize_window_24px.png")));
+                }
+                break;
+        }
+    }
+    
     private void btnMAingresar_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAingresar_empleadoActionPerformed
         IngresarEmpleado IE = new IngresarEmpleado();
         this.dkpMAfondo.add(IE);
@@ -363,12 +496,6 @@ public class MódulosAcceso extends javax.swing.JFrame {
         IP.show();
     }//GEN-LAST:event_btnMAingresar_productoActionPerformed
 
-    private void btnMAagendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAagendarActionPerformed
-        Agendar A = new Agendar();
-        this.dkpMAfondo.add(A);
-        A.show();
-    }//GEN-LAST:event_btnMAagendarActionPerformed
-
     private void btnMAsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAsalirActionPerformed
         ConexionMySQL cmysql = new ConexionMySQL();
         Connection conn = (Connection) cmysql.Conectar();
@@ -378,46 +505,82 @@ public class MódulosAcceso extends javax.swing.JFrame {
             ps.executeUpdate();
         }
         catch(Exception e) {
-            JOptionPane.showMessageDialog(null,e);
+            JOptionPane.showMessageDialog(null,"Problema de conexión con el servidor.");
+            Logger.getLogger(MódulosAcceso.class.getName()).log(Level.WARNING, null, e);
         }
         this.dispose();
         Login L = new Login();
         L.show();
     }//GEN-LAST:event_btnMAsalirActionPerformed
 
-    private void lblMAcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMAcerrarMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_lblMAcerrarMouseClicked
-
-    private void lblMAmaxi_restMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMAmaxi_restMouseClicked
-        if(this.getExtendedState()==this.MAXIMIZED_BOTH)  {
-            this.setExtendedState(this.NORMAL);
-            this.lblMAmaxi_rest.setIcon(new ImageIcon(getClass().getResource("../img/MódulosAcceso/icons8_maximize_window_32px.png")));
+    private void mbarMAmenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mbarMAmenuMousePressed
+        if(this.getExtendedState()==this.NORMAL)    {
+            x = evt.getX();
+            y = evt.getY();
         }
-        else    {
-            this.setExtendedState(this.MAXIMIZED_BOTH);
-            this.lblMAmaxi_rest.setIcon(new ImageIcon(getClass().getResource("../img/MódulosAcceso/icons8_restore_window_32px.png")));
-        }
-    }//GEN-LAST:event_lblMAmaxi_restMouseClicked
+    }//GEN-LAST:event_mbarMAmenuMousePressed
 
-    private void panMAmoverMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panMAmoverMouseDragged
+    private void mbarMAmenuMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mbarMAmenuMouseDragged
         //setCursor(new Cursor(Cursor.MOVE_CURSOR));
         if(this.getExtendedState()==this.NORMAL)    {
             Point mueve = MouseInfo.getPointerInfo().getLocation();
             this.setLocation(mueve.x - x, mueve.y - y);
         }
-    }//GEN-LAST:event_panMAmoverMouseDragged
+    }//GEN-LAST:event_mbarMAmenuMouseDragged
 
-    private void lblMAminimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMAminimizarMouseClicked
-        this.setExtendedState(1);
-    }//GEN-LAST:event_lblMAminimizarMouseClicked
+    private void mitemMAingresar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitemMAingresar_clienteActionPerformed
+        IngresarCliente IC = new IngresarCliente();
+        this.dkpMAfondo.add(IC);
+        IC.show();
+    }//GEN-LAST:event_mitemMAingresar_clienteActionPerformed
 
-    private void panMAmoverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panMAmoverMousePressed
-        if(this.getExtendedState()==this.NORMAL)    {
-            x = evt.getX();
-            y = evt.getY();
-        }
-    }//GEN-LAST:event_panMAmoverMousePressed
+    private void mitemMAbuscar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitemMAbuscar_clienteActionPerformed
+        BuscarCliente BC = new BuscarCliente();
+        this.dkpMAfondo.add(BC);
+        BC.show();
+    }//GEN-LAST:event_mitemMAbuscar_clienteActionPerformed
+
+    private void lblMAtokenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMAtokenMouseClicked
+        Agendar A = new Agendar();
+        this.dkpMAfondo.add(A);
+        A.show();
+    }//GEN-LAST:event_lblMAtokenMouseClicked
+
+    private void mitemMAingresar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitemMAingresar_productoActionPerformed
+        IngresarProducto IP = new IngresarProducto();
+        this.dkpMAfondo.add(IP);
+        IP.show();
+    }//GEN-LAST:event_mitemMAingresar_productoActionPerformed
+
+    private void mitemMAingresar_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitemMAingresar_empleadoActionPerformed
+        IngresarEmpleado IE = new IngresarEmpleado();
+        this.dkpMAfondo.add(IE);
+        IE.show();
+    }//GEN-LAST:event_mitemMAingresar_empleadoActionPerformed
+
+    private void mitemMAingresar_servicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitemMAingresar_servicioActionPerformed
+        IngresarServicio IS = new IngresarServicio();
+        this.dkpMAfondo.add(IS);
+        IS.show();
+    }//GEN-LAST:event_mitemMAingresar_servicioActionPerformed
+
+    private void mitemMAbuscar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitemMAbuscar_productoActionPerformed
+        BuscarProducto BP = new BuscarProducto();
+        this.dkpMAfondo.add(BP);
+        BP.show();
+    }//GEN-LAST:event_mitemMAbuscar_productoActionPerformed
+
+    private void mitemMAbuscar_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitemMAbuscar_empleadoActionPerformed
+        BuscarEmpleado BE = new BuscarEmpleado();
+        this.dkpMAfondo.add(BE);
+        BE.show();
+    }//GEN-LAST:event_mitemMAbuscar_empleadoActionPerformed
+
+    private void mitemMAbuscar_servicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitemMAbuscar_servicioActionPerformed
+        BuscarServicio BS = new BuscarServicio();
+        this.dkpMAfondo.add(BS);
+        BS.show();
+    }//GEN-LAST:event_mitemMAbuscar_servicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -455,9 +618,11 @@ public class MódulosAcceso extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    private javax.swing.JLabel lblMAminimizar;
+    private javax.swing.JLabel lblMAmaxi_rest;
+    private javax.swing.JLabel lblMAcerrar;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnMAagendar;
     private javax.swing.JButton btnMAbuscar_cliente;
     private javax.swing.JButton btnMAbuscar_empleado;
     private javax.swing.JButton btnMAbuscar_producto;
@@ -468,9 +633,18 @@ public class MódulosAcceso extends javax.swing.JFrame {
     private javax.swing.JButton btnMAingresar_servicio;
     private javax.swing.JButton btnMAsalir;
     private javax.swing.JDesktopPane dkpMAfondo;
-    private javax.swing.JLabel lblMAcerrar;
-    private javax.swing.JLabel lblMAmaxi_rest;
-    private javax.swing.JLabel lblMAminimizar;
-    private javax.swing.JPanel panMAmover;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JLabel lblMAtoken;
+    public javax.swing.JMenuBar mbarMAmenu;
+    private javax.swing.JMenuItem mitemMAbuscar_cliente;
+    private javax.swing.JMenuItem mitemMAbuscar_empleado;
+    private javax.swing.JMenuItem mitemMAbuscar_producto;
+    private javax.swing.JMenuItem mitemMAbuscar_servicio;
+    private javax.swing.JMenuItem mitemMAingresar_cliente;
+    private javax.swing.JMenuItem mitemMAingresar_empleado;
+    private javax.swing.JMenuItem mitemMAingresar_producto;
+    private javax.swing.JMenuItem mitemMAingresar_servicio;
     // End of variables declaration//GEN-END:variables
 }
