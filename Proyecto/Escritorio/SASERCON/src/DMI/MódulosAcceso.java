@@ -172,7 +172,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
 
         lblMAtoken.setForeground(new java.awt.Color(204, 204, 204));
         lblMAtoken.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMAtoken.setText("Agendar");
+        lblMAtoken.setText("Modificar Contraseña");
         lblMAtoken.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         lblMAtoken.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         lblMAtoken.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

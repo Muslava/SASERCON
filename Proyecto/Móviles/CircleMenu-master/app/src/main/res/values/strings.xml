@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">MENU DE TECNICOS</string>
+    <string name="textview">TextView</string>
+    <string name="menu_tecnicos">MENU TECNICOS</string>
+    <string name="MENU2">MENU DE SECRETARIAS</string>
+    <string name="MENU3">MENU DE CLIENTE</string>
+    <string name="button">Button</string>
+
+
+    <string name="password">Password</string>
+    <string name="usuario">Usuario</string>
+    <string name="todo">TODO</string>
+    <string name="login">Login</string>
+
+    <string name="registro">Registro</string>
+    <string name="acceder">ACCEDER</string>
+
+
+    <string name="necesitas_contactarnos_da_click_aqui">¿Necesitas contactarnos? Da click aqui!</string>
+    <string name="title_activity_log">log</string>
+    <string name="action_settings">Settings</string>
+</resources>

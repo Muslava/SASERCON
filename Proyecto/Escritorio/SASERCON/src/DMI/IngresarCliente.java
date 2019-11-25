@@ -16,7 +16,6 @@ public class IngresarCliente extends javax.swing.JInternalFrame {
 
 public String ICnombre_de_cliente;
 public String ICtelefono_oficina;
-public int ICempresa;
 public String ICextension;
 protected String ICnombre_del_representante;
 protected String ICapellido_paterno_representante;
@@ -68,13 +67,10 @@ static Comprobacion c = new Comprobacion();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnIEregresar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel59 = new javax.swing.JLabel();
         txtICnombre_cliente = new javax.swing.JTextField();
-        jLabel60 = new javax.swing.JLabel();
-        cboxICempresa = new javax.swing.JComboBox<>();
         jLabel61 = new javax.swing.JLabel();
         txtICnumero_exterior = new javax.swing.JTextField();
         jLabel62 = new javax.swing.JLabel();
@@ -90,7 +86,6 @@ static Comprobacion c = new Comprobacion();
         txtICcorreo_empresarial = new javax.swing.JTextField();
         jLabel68 = new javax.swing.JLabel();
         txtICrfc = new javax.swing.JTextField();
-        jLabel71 = new javax.swing.JLabel();
         jLabel72 = new javax.swing.JLabel();
         jLabel73 = new javax.swing.JLabel();
         jLabel74 = new javax.swing.JLabel();
@@ -119,21 +114,18 @@ static Comprobacion c = new Comprobacion();
         txtICapellido_paterno_representante = new javax.swing.JTextField();
         txtICapellido_materno_representante = new javax.swing.JTextField();
         tgbICvigente = new javax.swing.JToggleButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
-        btnIEregresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_arrow_back_grey600_18dp.png"))); // NOI18N
-        btnIEregresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIEregresarActionPerformed(evt);
-            }
-        });
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Nuevo Cliente");
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingresar Nuevo Cliente"));
 
         jLabel59.setText("Empresa cliente:");
-
-        jLabel60.setText("Empresa a quien pertenece:");
-
-        cboxICempresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Empresa", "SERCON", "ICC", "SAMSARA", "MABA" }));
 
         jLabel61.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel61.setText("Dirección del cliente");
@@ -146,7 +138,7 @@ static Comprobacion c = new Comprobacion();
 
         jLabel62.setText("Teléfono de oficina:");
 
-        jLabel63.setText("Extensión telefónica:");
+        jLabel63.setText("Extensión:");
 
         jLabel64.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel64.setText("Contacto del representante");
@@ -170,8 +162,6 @@ static Comprobacion c = new Comprobacion();
         });
 
         jLabel68.setText("RFC:");
-
-        jLabel71.setText("Vigencia");
 
         jLabel72.setText("Status:");
 
@@ -249,186 +239,192 @@ static Comprobacion c = new Comprobacion();
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnICcancelar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnICguardar))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel65)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addGap(46, 46, 46)
-                                        .addComponent(txtICnombre_del_representante, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtICapellido_paterno_representante, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtICapellido_materno_representante, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))
-                        .addGap(24, 24, 24))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addContainerGap()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel67)
-                                    .addComponent(jLabel66))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtICcorreo_empresarial)
-                                    .addComponent(txtICcorreo_del_representante, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel68)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtICrfc, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
                                 .addComponent(jLabel72)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel73)
                                 .addGap(18, 18, 18)
                                 .addComponent(tgbICvigente, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel74))
+                                .addComponent(jLabel74)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                                .addComponent(btnICcancelar)
+                                .addGap(31, 31, 31)
+                                .addComponent(btnICguardar))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(125, 125, 125)
-                                .addComponent(jLabel71)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(cboxICciudad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cboxICestado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cboxICpais, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cboxICalcaldia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(102, 102, 102)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtICnumero_exterior)
-                    .addComponent(txtICnumero_interior)
-                    .addComponent(txtICcalle)
-                    .addComponent(txtICcolonia)
-                    .addComponent(txtICcodigo_postal))
-                .addGap(24, 24, 24))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel65, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtICapellido_paterno_representante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                    .addComponent(txtICnombre_del_representante, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtICapellido_materno_representante))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel68)
+                                    .addComponent(jLabel67)
+                                    .addComponent(jLabel66))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtICcorreo_empresarial, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                                    .addComponent(txtICcorreo_del_representante, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtICrfc)))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel62)
-                            .addComponent(jLabel59))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtICtelefono_oficina, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                            .addComponent(txtICnombre_cliente))
-                        .addGap(40, 40, 40)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel63)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtICextension, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel60)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cboxICempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
+                        .addGap(217, 217, 217)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel61)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel64))))
+                            .addComponent(jLabel20)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(209, 209, 209)
+                        .addComponent(jLabel64))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cboxICciudad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cboxICestado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cboxICpais, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cboxICalcaldia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtICnumero_exterior, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                                .addComponent(txtICnumero_interior)
+                                .addComponent(txtICcalle)
+                                .addComponent(txtICcolonia)
+                                .addComponent(txtICcodigo_postal)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel62)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtICtelefono_oficina, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel63)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtICextension, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel59)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtICnombre_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jLabel20)
-                .addGap(17, 17, 17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel59)
-                    .addComponent(txtICnombre_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel60)
-                    .addComponent(cboxICempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtICnombre_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel62)
                     .addComponent(txtICtelefono_oficina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel63)
                     .addComponent(txtICextension, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel61)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(cboxICpais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25)
-                    .addComponent(txtICnumero_exterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(cboxICestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel26)
-                    .addComponent(txtICnumero_interior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel23)
-                    .addComponent(cboxICciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel27)
-                    .addComponent(txtICcalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(cboxICalcaldia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel28)
-                    .addComponent(txtICcolonia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel29)
-                    .addComponent(txtICcodigo_postal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel21)
+                            .addComponent(cboxICpais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel22)
+                            .addComponent(cboxICestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel23)
+                            .addComponent(cboxICciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(cboxICalcaldia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel25)
+                            .addComponent(txtICnumero_exterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel26)
+                            .addComponent(txtICnumero_interior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel27)
+                            .addComponent(txtICcalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel28)
+                            .addComponent(txtICcolonia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel29)
+                            .addComponent(txtICcodigo_postal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel64)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel65)
-                    .addComponent(txtICnombre_del_representante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(txtICapellido_paterno_representante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtICapellido_materno_representante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel66)
-                    .addComponent(txtICcorreo_del_representante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtICcorreo_empresarial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel67))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel68)
-                    .addComponent(txtICrfc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(jLabel71)
-                .addGap(7, 7, 7)
+                .addGap(13, 13, 13)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtICnombre_del_representante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel65, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtICapellido_paterno_representante)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtICapellido_materno_representante)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(2, 2, 2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtICcorreo_del_representante, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtICcorreo_empresarial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtICrfc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(23, 23, 23)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -436,13 +432,13 @@ static Comprobacion c = new Comprobacion();
                             .addComponent(jLabel73))
                         .addComponent(tgbICvigente, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel74)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel74)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnICguardar)
+                                .addComponent(btnICcancelar)))
                         .addGap(1, 1, 1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnICcancelar)
-                    .addComponent(btnICguardar))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel4);
@@ -451,98 +447,15 @@ static Comprobacion c = new Comprobacion();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnIEregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnIEregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane2)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public void ingresar()  {
-        
-        ConexionMySQL cmysql = new ConexionMySQL();
-        Connection conec = (Connection) cmysql.Conectar();
-        
-        String senSQL = "INSERT INTO cliente(vigencia,nombreEmpresa,correoEmpresarial,extension,telefonoOficina,nombreRepresentante,apellidoPaternoRepresentante,apellidoMaternoRepresentante,correoRepresentante,empresa,RFC) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-        String senSQL2 = "INSERT INTO direccion (numeroExterior,numeroInterior,calle,colonia,codigoPostal,tipo,alcaldia) VALUES(?,?,?,?,?,?,?)";
-
-        try {
-            
-            PreparedStatement ps = conec.prepareStatement(senSQL);
-            ps.setBoolean(1,ICvigente);
-            ps.setString(2,ICnombre_de_cliente);
-            ps.setString(3,ICcorreo_empresarial);
-            ps.setString(4,ICextension);
-            ps.setString(5,ICtelefono_oficina);
-            ps.setString(6,ICnombre_del_representante);
-            ps.setString(7,ICapellido_paterno_representante);
-            ps.setString(8,ICapellido_materno_representante);
-            ps.setString(9,ICcorreo_del_representante);
-            ps.setInt(10,ICempresa);
-            ps.setString(11,ICrfc);
-            
-            PreparedStatement ps2 = conec.prepareStatement(senSQL2);
-            ps2.setString(1,ICnumero_exterior);
-            ps2.setString(2,ICnumero_interior);
-            ps2.setString(3,ICcalle);
-            ps2.setString(4,ICcolonia);
-            ps2.setInt(5,ICcodigo_postal);
-            ps2.setInt(6,1);
-            ps2.setInt(7,ICalcaldia);
-            
-            PreparedStatement ps3 = conec.prepareStatement("INSERT INTO direccionCliente VALUES((select max(clave) from direccion),(select max(folio) from cliente))");
-            PreparedStatement ps4 = conec.prepareStatement("UPDATE cliente SET contrasena = (select max(folio)+1000) WHERE folio=(select max(folio)) AND RFC='"+ICrfc+"'");
-            int m = ps2.executeUpdate();
-            int n = ps.executeUpdate();
-            int o = ps3.executeUpdate();
-            int p = ps4.executeUpdate();
-            Statement st = conec.createStatement();
-            ResultSet rs = st.executeQuery("SELECT MAX(matricula) FROM EMPLEADO");
-            while(rs.next()) {
-                ICmatricula = rs.getInt("MAX(matricula)");
-            }
-            if (n > 0 && m > 0 && o > 0 && p > 0)  {
-                JOptionPane.showOptionDialog(this, "Se han guardado sus datos satisfactoriamente. La contraseña es la matricula + 1000.",
-                        "MySQL Information", JOptionPane.INFORMATION_MESSAGE,
-                        JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" 0K "},"0K");
-                this.dispose();
-            }
-        }
-        catch( SQLException ex )    {
-            JOptionPane.showMessageDialog(null,ex,"SQL error",2);
-        }
-    }
-    
-    private void btnIEregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIEregresarActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_btnIEregresarActionPerformed
-
-    private void txtICnumero_exteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtICnumero_exteriorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtICnumero_exteriorActionPerformed
-
-    private void txtICnombre_del_representanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtICnombre_del_representanteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtICnombre_del_representanteActionPerformed
-
-    private void txtICcorreo_empresarialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtICcorreo_empresarialActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtICcorreo_empresarialActionPerformed
-
-    private void btnICcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnICcancelarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnICcancelarActionPerformed
 
     private void tgbICvigenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgbICvigenteActionPerformed
         if(tgbICvigente.isSelected())   {
@@ -553,10 +466,43 @@ static Comprobacion c = new Comprobacion();
         }
     }//GEN-LAST:event_tgbICvigenteActionPerformed
 
+    private void cboxICestadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboxICestadoItemStateChanged
+        this.cboxICalcaldia.removeAllItems();
+        this.cboxICalcaldia.addItem("Seleccione la alcaldía");
+        ConexionMySQL cmysql = new ConexionMySQL();
+        Connection conec = (Connection) cmysql.Conectar();
+
+        try {
+            Statement st=conec.createStatement();
+            ResultSet rs = st.executeQuery("SELECT alcaldia FROM alcaldia WHERE claveCiudad = "+cboxICestado.getSelectedIndex());
+            while (rs.next())   {
+                this.cboxICalcaldia.addItem(rs.getString("alcaldia"));
+            }
+        } catch(Exception ex)   {
+            JOptionPane.showMessageDialog(null,ex,"SQL error",2);
+        }
+    }//GEN-LAST:event_cboxICestadoItemStateChanged
+
+    private void cboxICpaisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboxICpaisItemStateChanged
+        this.cboxICestado.removeAllItems();
+        this.cboxICestado.addItem("Seleccione un estado");
+        ConexionMySQL cmysql = new ConexionMySQL();
+        Connection conec = (Connection) cmysql.Conectar();
+
+        try {
+            Statement st=conec.createStatement();
+            ResultSet rs = st.executeQuery("SELECT estado FROM estado WHERE clavePais = "+cboxICpais.getSelectedIndex());
+            while (rs.next())   {
+                this.cboxICestado.addItem(rs.getString("estado"));
+            }
+        } catch(Exception ex)   {
+            JOptionPane.showMessageDialog(null,ex,"SQL error",2);
+        }
+    }//GEN-LAST:event_cboxICpaisItemStateChanged
+
     private void btnICguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnICguardarActionPerformed
         ICnombre_de_cliente = this.txtICnombre_cliente.getText().trim();
         ICtelefono_oficina = this.txtICtelefono_oficina.getText().trim();
-        ICempresa = this.cboxICempresa.getSelectedIndex();
         ICextension = this.txtICextension.getText().trim();
         ICnombre_del_representante = this.txtICnombre_del_representante.getText().trim();
         ICapellido_paterno_representante = this.txtICapellido_paterno_representante.getText().trim();
@@ -565,20 +511,20 @@ static Comprobacion c = new Comprobacion();
         ICcorreo_empresarial = this.txtICcorreo_empresarial.getText().trim();
         ICrfc = this.txtICrfc.getText().trim();
         ICvigente = this.tgbICvigente.isSelected();
-        
+
         ICnumero_exterior = this.txtICnumero_exterior.getText().trim();
         ICnumero_interior = this.txtICnumero_interior.getText().trim();
         ICcalle = this.txtICcalle.getText().trim();
         ICcolonia = this.txtICcolonia.getText().trim();
         ICcodigo_postal = Integer.parseInt(this.txtICcodigo_postal.getText().trim());
         ICalcaldia = this.cboxICalcaldia.getSelectedIndex();
-        
+
         String pr="";
-        
-        if(c.valtext(ICnombre_de_cliente)&&c.valmail(ICcorreo_empresarial)&&ICempresa!=0&&c.valtext(ICnombre_del_representante)&&
-                c.valtext(ICapellido_paterno_representante)&&c.valtext(ICapellido_materno_representante)&&c.valmail(ICcorreo_del_representante)&&
-                c.valtel(ICtelefono_oficina)&&c.valrfc(ICrfc)&&c.valne(ICnumero_exterior)&&c.valni(ICnumero_interior)&&!c.vacio(ICcalle)&&
-                c.valtext(ICcolonia)&&c.valcp(this.txtICcodigo_postal.getText().trim())&&ICalcaldia!=0&&c.valint(ICextension))    {
+
+        if(c.valtext(ICnombre_de_cliente)&&c.valmail(ICcorreo_empresarial)&&c.valtext(ICnombre_del_representante)&&
+            c.valtext(ICapellido_paterno_representante)&&c.valtext(ICapellido_materno_representante)&&c.valmail(ICcorreo_del_representante)&&
+            c.valtel(ICtelefono_oficina)&&c.valrfc(ICrfc)&&c.valne(ICnumero_exterior)&&c.valni(ICnumero_interior)&&!c.vacio(ICcalle)&&
+            c.valtext(ICcolonia)&&c.valcp(this.txtICcodigo_postal.getText().trim())&&ICalcaldia!=0&&c.valint(ICextension))    {
             ingresar();
         }
         if(!c.valtext(ICnombre_de_cliente)) {
@@ -586,9 +532,6 @@ static Comprobacion c = new Comprobacion();
         }
         if(!c.valmail(ICcorreo_empresarial))    {
             pr=pr+"\nCorreo empresarial";
-        }
-        if(ICempresa==0)    {
-            pr=pr+"\nEmpresa";
         }
         if(!c.valtext(ICnombre_del_representante))    {
             pr=pr+"\nNombre del representante";
@@ -629,56 +572,90 @@ static Comprobacion c = new Comprobacion();
         if(!c.valint(ICextension))   {
             pr=pr+"\nExtensión";
         }
-        if(!(c.valtext(ICnombre_de_cliente)&&c.valmail(ICcorreo_empresarial)&&ICempresa!=0&&c.valtext(ICnombre_del_representante)&&
-                c.valtext(ICapellido_paterno_representante)&&c.valtext(ICapellido_materno_representante)&&c.valmail(ICcorreo_del_representante)&&
-                c.valtel(ICtelefono_oficina)&&c.valrfc(ICrfc)&&c.valne(ICnumero_exterior)&&c.valni(ICnumero_interior)&&!c.vacio(ICcalle)&&
-                c.valtext(ICcolonia)&&c.valcp(this.txtICcodigo_postal.getText().trim())&&ICalcaldia!=0)&&c.valint(ICextension))    {
-            JOptionPane.showMessageDialog(null, "Revice los siguICntes campos e inténtelo de nuevo: "+pr, "Datos incorrectos", 2);
+        if(!(c.valtext(ICnombre_de_cliente)&&c.valmail(ICcorreo_empresarial)&&c.valtext(ICnombre_del_representante)&&
+            c.valtext(ICapellido_paterno_representante)&&c.valtext(ICapellido_materno_representante)&&c.valmail(ICcorreo_del_representante)&&
+            c.valtel(ICtelefono_oficina)&&c.valrfc(ICrfc)&&c.valne(ICnumero_exterior)&&c.valni(ICnumero_interior)&&!c.vacio(ICcalle)&&
+            c.valtext(ICcolonia)&&c.valcp(this.txtICcodigo_postal.getText().trim())&&ICalcaldia!=0)&&c.valint(ICextension))    {
+        JOptionPane.showMessageDialog(null, "Revice los siguICntes campos e inténtelo de nuevo: "+pr, "Datos incorrectos", 2);
         }
     }//GEN-LAST:event_btnICguardarActionPerformed
 
-    private void cboxICpaisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboxICpaisItemStateChanged
-        this.cboxICestado.removeAllItems();
-        this.cboxICestado.addItem("Seleccione un estado");
+    private void btnICcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnICcancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnICcancelarActionPerformed
+
+    private void txtICcorreo_empresarialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtICcorreo_empresarialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtICcorreo_empresarialActionPerformed
+
+    private void txtICnombre_del_representanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtICnombre_del_representanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtICnombre_del_representanteActionPerformed
+
+    private void txtICnumero_exteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtICnumero_exteriorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtICnumero_exteriorActionPerformed
+
+    public void ingresar()  {
+        
         ConexionMySQL cmysql = new ConexionMySQL();
         Connection conec = (Connection) cmysql.Conectar();
         
+        String senSQL = "INSERT INTO cliente(vigencia,nombreEmpresa,correoEmpresarial,extension,telefonoOficina,nombreRepresentante,apellidoPaternoRepresentante,apellidoMaternoRepresentante,correoRepresentante,RFC) VALUES(?,?,?,?,?,?,?,?,?,?)";
+        String senSQL2 = "INSERT INTO direccion (numeroExterior,numeroInterior,calle,colonia,codigoPostal,tipo,alcaldia) VALUES(?,?,?,?,?,?,?)";
+
         try {
-            Statement st=conec.createStatement();
-            ResultSet rs = st.executeQuery("SELECT estado FROM estado WHERE clavePais = "+cboxICpais.getSelectedIndex());
-            while (rs.next())   {
-                this.cboxICestado.addItem(rs.getString("estado"));
+            
+            PreparedStatement ps = conec.prepareStatement(senSQL);
+            ps.setBoolean(1,ICvigente);
+            ps.setString(2,ICnombre_de_cliente);
+            ps.setString(3,ICcorreo_empresarial);
+            ps.setString(4,ICextension);
+            ps.setString(5,ICtelefono_oficina);
+            ps.setString(6,ICnombre_del_representante);
+            ps.setString(7,ICapellido_paterno_representante);
+            ps.setString(8,ICapellido_materno_representante);
+            ps.setString(9,ICcorreo_del_representante);
+            ps.setString(10,ICrfc);
+            
+            PreparedStatement ps2 = conec.prepareStatement(senSQL2);
+            ps2.setString(1,ICnumero_exterior);
+            ps2.setString(2,ICnumero_interior);
+            ps2.setString(3,ICcalle);
+            ps2.setString(4,ICcolonia);
+            ps2.setInt(5,ICcodigo_postal);
+            ps2.setInt(6,1);
+            ps2.setInt(7,ICalcaldia);
+            
+            PreparedStatement ps3 = conec.prepareStatement("INSERT INTO direccionCliente VALUES((select max(clave) from direccion),(select max(folio) from cliente))");
+            PreparedStatement ps4 = conec.prepareStatement("UPDATE cliente SET contrasena = (select max(folio)+1000) WHERE folio=(select max(folio)) AND RFC='"+ICrfc+"'");
+            int m = ps2.executeUpdate();
+            int n = ps.executeUpdate();
+            int o = ps3.executeUpdate();
+            int p = ps4.executeUpdate();
+            Statement st = conec.createStatement();
+            ResultSet rs = st.executeQuery("SELECT MAX(matricula) FROM EMPLEADO");
+            while(rs.next()) {
+                ICmatricula = rs.getInt("MAX(matricula)");
             }
-        } catch(Exception ex)   {
+            if (n > 0 && m > 0 && o > 0 && p > 0)  {
+                JOptionPane.showOptionDialog(this, "Se han guardado sus datos satisfactoriamente. La contraseña es la matricula + 1000.",
+                        "MySQL Information", JOptionPane.INFORMATION_MESSAGE,
+                        JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" 0K "},"0K");
+                this.dispose();
+            }
+        }
+        catch( SQLException ex )    {
             JOptionPane.showMessageDialog(null,ex,"SQL error",2);
         }
-    }//GEN-LAST:event_cboxICpaisItemStateChanged
-
-    private void cboxICestadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboxICestadoItemStateChanged
-        this.cboxICalcaldia.removeAllItems();
-        this.cboxICalcaldia.addItem("Seleccione la alcaldía");
-        ConexionMySQL cmysql = new ConexionMySQL();
-        Connection conec = (Connection) cmysql.Conectar();
-        
-        try {
-            Statement st=conec.createStatement();
-            ResultSet rs = st.executeQuery("SELECT alcaldia FROM alcaldia WHERE claveCiudad = "+cboxICestado.getSelectedIndex());
-            while (rs.next())   {
-                this.cboxICalcaldia.addItem(rs.getString("alcaldia"));
-            }
-        } catch(Exception ex)   {
-            JOptionPane.showMessageDialog(null,ex,"SQL error",2);
-        }
-    }//GEN-LAST:event_cboxICestadoItemStateChanged
-
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnICcancelar;
     private javax.swing.JButton btnICguardar;
-    private javax.swing.JButton btnIEregresar;
     private javax.swing.JComboBox<String> cboxICalcaldia;
     private javax.swing.JComboBox<String> cboxICciudad;
-    private javax.swing.JComboBox<String> cboxICempresa;
     private javax.swing.JComboBox<String> cboxICestado;
     private javax.swing.JComboBox<String> cboxICpais;
     private javax.swing.JLabel jLabel1;
@@ -694,7 +671,6 @@ static Comprobacion c = new Comprobacion();
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel59;
-    private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
@@ -703,12 +679,13 @@ static Comprobacion c = new Comprobacion();
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
-    private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JToggleButton tgbICvigente;
     private javax.swing.JTextField txtICapellido_materno_representante;
     private javax.swing.JTextField txtICapellido_paterno_representante;

@@ -54,13 +54,6 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
     private void initComponents() {
 
         dialogAsignarContrasenha = new javax.swing.JDialog();
-        panLpreguntas = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         panLcontraseña = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -96,57 +89,6 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
         dialogAsignarContrasenha.setMinimumSize(new java.awt.Dimension(390, 355));
         dialogAsignarContrasenha.setUndecorated(true);
         dialogAsignarContrasenha.setSize(new java.awt.Dimension(390, 355));
-
-        panLpreguntas.setBorder(javax.swing.BorderFactory.createTitledBorder("Preguntas Secretas"));
-
-        jLabel1.setText("Pregunta 1:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una pregunta" }));
-
-        jLabel2.setText("Pregunta 2:");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una pregunta" }));
-
-        javax.swing.GroupLayout panLpreguntasLayout = new javax.swing.GroupLayout(panLpreguntas);
-        panLpreguntas.setLayout(panLpreguntasLayout);
-        panLpreguntasLayout.setHorizontalGroup(
-            panLpreguntasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panLpreguntasLayout.createSequentialGroup()
-                .addGroup(panLpreguntasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panLpreguntasLayout.createSequentialGroup()
-                        .addGroup(panLpreguntasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panLpreguntasLayout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(jLabel1))
-                            .addGroup(panLpreguntasLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel2)))
-                        .addGap(0, 291, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panLpreguntasLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panLpreguntasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap())
-        );
-        panLpreguntasLayout.setVerticalGroup(
-            panLpreguntasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panLpreguntasLayout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         panLcontraseña.setBorder(javax.swing.BorderFactory.createTitledBorder("Contraseña"));
 
@@ -228,7 +170,6 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
         dialogAsignarContrasenha.getContentPane().setLayout(dialogAsignarContrasenhaLayout);
         dialogAsignarContrasenhaLayout.setHorizontalGroup(
             dialogAsignarContrasenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panLpreguntas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(panLcontraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogAsignarContrasenhaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -244,15 +185,13 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
             dialogAsignarContrasenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogAsignarContrasenhaLayout.createSequentialGroup()
                 .addComponent(lblLcerrar1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addComponent(panLcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panLpreguntas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(dialogAsignarContrasenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLguardar)
                     .addComponent(btnLregresar))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         dialogRecuperarContrasenha.setAlwaysOnTop(true);
@@ -881,10 +820,6 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
     private javax.swing.JButton btnLregresar;
     private javax.swing.JDialog dialogAsignarContrasenha;
     private javax.swing.JDialog dialogRecuperarContrasenha;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -893,8 +828,6 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblLcerrar;
     private javax.swing.JLabel lblLcerrar1;
     private javax.swing.JLabel lblLcerrar2;
@@ -907,7 +840,6 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
     private javax.swing.JLabel lblLrecuperar_contra;
     private javax.swing.JPanel panLLogin;
     private javax.swing.JPanel panLcontraseña;
-    private javax.swing.JPanel panLpreguntas;
     private javax.swing.JPasswordField psfLconfirmar_contra;
     private javax.swing.JPasswordField psfLcontra;
     private javax.swing.JPasswordField psfLnueva_contra;
