@@ -11,6 +11,7 @@ import java.sql.*;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
+import java.awt.geom.RoundRectangle2D;
 import java.util.Arrays;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -26,21 +27,21 @@ public class Login extends javax.swing.JFrame {
 
 protected String Lcorreo;
 private static String Lcontra;
-private String Lscontra;
+private String Lscontra, Lmail = "";
 private int Lcodigo;
 public int Lpuesto, Lmatricula, Lcont=0;
 public int[] Lintentos = new int[40];
 public int X1, Y1;
 Comprobacion ALERTA = new Comprobacion();
-MódulosAcceso ma = new MódulosAcceso(Lmatricula);
 
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
-        dialogRecuperarContrasenha.setLocationRelativeTo(this);
-        dialogAsignarContrasenha.setLocationRelativeTo(this);
+        dialogLrecuperar_contrasenha.setLocationRelativeTo(this);
+        dialogLasignar_contrasenha.setLocationRelativeTo(this);
+        setTitle("SASERCON");
         setIconImage(new ImageIcon(getClass().getResource("/img/LOGOfdktp.png")).getImage());
     }
 
@@ -53,7 +54,7 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        dialogAsignarContrasenha = new javax.swing.JDialog();
+        dialogLasignar_contrasenha = new javax.swing.JDialog();
         panLcontraseña = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -64,7 +65,7 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
         lblLcerrar1 = new javax.swing.JLabel();
         btnLguardar = new javax.swing.JButton();
         btnLregresar = new javax.swing.JButton();
-        dialogRecuperarContrasenha = new javax.swing.JDialog();
+        dialogLrecuperar_contrasenha = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         txtLcodigo = new javax.swing.JTextField();
@@ -85,10 +86,19 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
         lblLminimizar = new javax.swing.JLabel();
         lblLrecuperar_contra = new javax.swing.JLabel();
 
-        dialogAsignarContrasenha.setAlwaysOnTop(true);
-        dialogAsignarContrasenha.setMinimumSize(new java.awt.Dimension(390, 355));
-        dialogAsignarContrasenha.setUndecorated(true);
-        dialogAsignarContrasenha.setSize(new java.awt.Dimension(390, 355));
+        dialogLasignar_contrasenha.setMinimumSize(new java.awt.Dimension(390, 355));
+        dialogLasignar_contrasenha.setUndecorated(true);
+        dialogLasignar_contrasenha.setSize(new java.awt.Dimension(390, 355));
+        dialogLasignar_contrasenha.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                dialogLasignar_contrasenhaMouseDragged(evt);
+            }
+        });
+        dialogLasignar_contrasenha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                dialogLasignar_contrasenhaMousePressed(evt);
+            }
+        });
 
         panLcontraseña.setBorder(javax.swing.BorderFactory.createTitledBorder("Contraseña"));
 
@@ -99,6 +109,18 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
         jLabel6.setPreferredSize(new java.awt.Dimension(14, 14));
 
         jLabel7.setPreferredSize(new java.awt.Dimension(20, 20));
+
+        psfLnueva_contra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                psfLnueva_contraKeyTyped(evt);
+            }
+        });
+
+        psfLconfirmar_contra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                psfLconfirmar_contraKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout panLcontraseñaLayout = new javax.swing.GroupLayout(panLcontraseña);
         panLcontraseña.setLayout(panLcontraseñaLayout);
@@ -166,42 +188,44 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
             }
         });
 
-        javax.swing.GroupLayout dialogAsignarContrasenhaLayout = new javax.swing.GroupLayout(dialogAsignarContrasenha.getContentPane());
-        dialogAsignarContrasenha.getContentPane().setLayout(dialogAsignarContrasenhaLayout);
-        dialogAsignarContrasenhaLayout.setHorizontalGroup(
-            dialogAsignarContrasenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout dialogLasignar_contrasenhaLayout = new javax.swing.GroupLayout(dialogLasignar_contrasenha.getContentPane());
+        dialogLasignar_contrasenha.getContentPane().setLayout(dialogLasignar_contrasenhaLayout);
+        dialogLasignar_contrasenhaLayout.setHorizontalGroup(
+            dialogLasignar_contrasenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panLcontraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogAsignarContrasenhaLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogLasignar_contrasenhaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblLcerrar1))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogAsignarContrasenhaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLregresar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLguardar)
-                .addContainerGap())
+                .addGroup(dialogLasignar_contrasenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLcerrar1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogLasignar_contrasenhaLayout.createSequentialGroup()
+                        .addComponent(btnLregresar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLguardar))))
         );
-        dialogAsignarContrasenhaLayout.setVerticalGroup(
-            dialogAsignarContrasenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogAsignarContrasenhaLayout.createSequentialGroup()
+        dialogLasignar_contrasenhaLayout.setVerticalGroup(
+            dialogLasignar_contrasenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogLasignar_contrasenhaLayout.createSequentialGroup()
                 .addComponent(lblLcerrar1)
                 .addGap(1, 1, 1)
                 .addComponent(panLcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(dialogAsignarContrasenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(11, 11, 11)
+                .addGroup(dialogLasignar_contrasenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLguardar)
-                    .addComponent(btnLregresar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLregresar)))
         );
 
-        dialogRecuperarContrasenha.setAlwaysOnTop(true);
-        dialogRecuperarContrasenha.setMinimumSize(new java.awt.Dimension(410, 130));
-        dialogRecuperarContrasenha.setUndecorated(true);
-        dialogRecuperarContrasenha.setSize(new java.awt.Dimension(430, 130));
+        dialogLrecuperar_contrasenha.setMinimumSize(new java.awt.Dimension(410, 130));
+        dialogLrecuperar_contrasenha.setUndecorated(true);
+        dialogLrecuperar_contrasenha.setSize(new java.awt.Dimension(430, 130));
 
         jLabel8.setText("Se le ha enviado un código a su correo. Revíselo e ingrese el código aquí:");
 
         txtLcodigo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtLcodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLcodigoKeyTyped(evt);
+            }
+        });
 
         btnLconfirmar.setText("Confirmar");
         btnLconfirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -258,25 +282,25 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
 
         jLabel9.setText("Recuerde revisar en la carpeta de SPAM");
 
-        javax.swing.GroupLayout dialogRecuperarContrasenhaLayout = new javax.swing.GroupLayout(dialogRecuperarContrasenha.getContentPane());
-        dialogRecuperarContrasenha.getContentPane().setLayout(dialogRecuperarContrasenhaLayout);
-        dialogRecuperarContrasenhaLayout.setHorizontalGroup(
-            dialogRecuperarContrasenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogRecuperarContrasenhaLayout.createSequentialGroup()
+        javax.swing.GroupLayout dialogLrecuperar_contrasenhaLayout = new javax.swing.GroupLayout(dialogLrecuperar_contrasenha.getContentPane());
+        dialogLrecuperar_contrasenha.getContentPane().setLayout(dialogLrecuperar_contrasenhaLayout);
+        dialogLrecuperar_contrasenhaLayout.setHorizontalGroup(
+            dialogLrecuperar_contrasenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogLrecuperar_contrasenhaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(lblLcerrar2))
-            .addGroup(dialogRecuperarContrasenhaLayout.createSequentialGroup()
+            .addGroup(dialogLrecuperar_contrasenhaLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addGroup(dialogRecuperarContrasenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(dialogLrecuperar_contrasenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogRecuperarContrasenhaLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogLrecuperar_contrasenhaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel9)))
                 .addGap(5, 5, 5))
         );
-        dialogRecuperarContrasenhaLayout.setVerticalGroup(
-            dialogRecuperarContrasenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dialogRecuperarContrasenhaLayout.createSequentialGroup()
+        dialogLrecuperar_contrasenhaLayout.setVerticalGroup(
+            dialogLrecuperar_contrasenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogLrecuperar_contrasenhaLayout.createSequentialGroup()
                 .addComponent(lblLcerrar2)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -475,7 +499,7 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblLcerrar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLcerrar1MouseClicked
-        dialogAsignarContrasenha.dispose();
+        dialogLasignar_contrasenha.dispose();
     }//GEN-LAST:event_lblLcerrar1MouseClicked
 
     private void lblLcerrar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLcerrar1MouseEntered
@@ -487,24 +511,11 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
     }//GEN-LAST:event_lblLcerrar1MouseExited
 
     private void btnLconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLconfirmarActionPerformed
-        if(ALERTA.valint(txtLcodigo.getText())) {
-            System.out.println("prueba");
-            System.out.println(txtLcodigo.getText());
-            if(Lcodigo == Integer.parseInt(txtLcodigo.getText().trim()))  {
-                dialogRecuperarContrasenha.dispose();
-                dialogAsignarContrasenha.setVisible(true);
-            }
-            else    {
-                JOptionPane.showMessageDialog(null,"Revise que el código corresponda con el enviado a su correo.","Código inválido",2);
-            }
-        }
-        else    {
-            JOptionPane.showMessageDialog(null,"El código está conformado de 8 dígitos numéricos.","Código inválido",2);
-        }
+        confirmarCodigo();
     }//GEN-LAST:event_btnLconfirmarActionPerformed
 
     private void lblLcerrar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLcerrar2MouseClicked
-        dialogRecuperarContrasenha.dispose();
+        dialogLrecuperar_contrasenha.dispose();
     }//GEN-LAST:event_lblLcerrar2MouseClicked
 
     private void lblLcerrar2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLcerrar2MouseEntered
@@ -516,39 +527,11 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
     }//GEN-LAST:event_lblLcerrar2MouseExited
 
     private void btnLguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLguardarActionPerformed
-        if(Arrays.toString(psfLnueva_contra.getPassword()).length() >= 8) {
-            if(Arrays.toString(psfLnueva_contra.getPassword()).equals(Arrays.toString(psfLconfirmar_contra.getPassword())))   {
-                Connection con;
-                PreparedStatement ps;
-                try {
-                    ConexionMySQL cmysql = new ConexionMySQL();
-                    con = (Connection) cmysql.Conectar();
-                    ps = con.prepareStatement("UPDATE empleado SET contrasena = "+ALERTA.getSHA3(new String(psfLnueva_contra.getPassword()))+" INTO empleado WHERE correoEmpleado = '"+Lcorreo+"';");
-                    int n=ps.executeUpdate();
-                    if (n>0)    {
-                        JOptionPane.showOptionDialog(this, "Se ha actualizado la contraseña satisfactoriamente.",
-                                "MySQL Information", JOptionPane.INFORMATION_MESSAGE,
-                                JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" 0K "},"0K");
-                        this.dispose();
-                        ma.setVisible(true);
-                        JOptionPane.showMessageDialog(null,"¡Bienvenido a SASERCON!","¡Bienvenido!",1);
-                    }
-                }
-                catch(Exception ex) {
-                    JOptionPane.showMessageDialog(null,ex);
-                }
-            }
-            else    {
-                JOptionPane.showMessageDialog(null,"Las contraseñas deben *.","",JOptionPane.WARNING_MESSAGE);
-            }
-        }
-        else    {
-            JOptionPane.showMessageDialog(null,"La contraseña debe ser mayor a 8 caracteres.","Contraseña demasiado corta",JOptionPane.WARNING_MESSAGE);
-        }
+        asignarContrasenha();
     }//GEN-LAST:event_btnLguardarActionPerformed
 
     private void btnLregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLregresarActionPerformed
-        dialogAsignarContrasenha.dispose();
+        dialogLasignar_contrasenha.dispose();
     }//GEN-LAST:event_btnLregresarActionPerformed
 
     private void btnLconfirmarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLconfirmarKeyTyped
@@ -558,8 +541,8 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
                 System.out.println("prueba");
                 System.out.println(txtLcodigo.getText());
                 if(Lcodigo == Integer.parseInt(txtLcodigo.getText().trim()))  {
-                    dialogRecuperarContrasenha.dispose();
-                    dialogAsignarContrasenha.setVisible(true);
+                    dialogLrecuperar_contrasenha.dispose();
+                    LrecuperarContrasena();
                 }
                 else    {
                     JOptionPane.showMessageDialog(null,"Revise que el código corresponda con el enviado a su correo.","Código inválido",2);
@@ -637,7 +620,10 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
         if(!ALERTA.valmail(txtLcorreo.getText().trim()) && !txtLcorreo.getText().trim().isEmpty())    {
             this.lblLcorreo.setForeground(red);
             this.lblLiusuario.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_user_filled_30px_1.png")));
-            balloontip(this.txtLcorreo, "Se debe ingresar un correo válido.",30,10).setVisible(true);
+            ALERTA.balloontip(this.txtLcorreo, "Se debe ingresar un correo válido.",30,10).setVisible(true);
+        }
+        else    {
+            if(!Lmail.equals(this.txtLcorreo.getText().trim())) Lcont = 0;
         }
         /*if(ALERTA.valmail(txtLcorreo.getText().trim()) && txtLcorreo.getText().trim().isEmpty())    {
             this.lblLusuario.setForeground(new java.awt.Color(120, 121, 124));
@@ -653,35 +639,126 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
     }//GEN-LAST:event_btnLaccesarActionPerformed
 
     private void lblLrecuperar_contraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLrecuperar_contraMouseClicked
+        boolean rep;
         int resp = JOptionPane.showConfirmDialog(null, "¿Olvidaste tu contraseña?", "Recuperar contraseña", 2);
         if (resp==0)  {
-            Lcodigo = (int)(Math.random() * 99999999 + 10000000);
-            String aa = ALERTA.enviarCorreo(Lcorreo, Lcodigo);
-            if(aa.equals(""))   {
-                JOptionPane.showMessageDialog(null, "Correo enviado con éxito.", "Envío exitoso", JOptionPane.INFORMATION_MESSAGE);
-                dialogRecuperarContrasenha.setVisible(true);
-            }
-            else    {
-                JOptionPane.showMessageDialog(null, "Error al enviar correo: "+aa, "Error de correo", JOptionPane.ERROR_MESSAGE);
-            }
+            do {
+                Lcorreo = JOptionPane.showInputDialog("Escriba su correo.");
+                if(!ALERTA.valmail(Lcorreo.trim()) && !Lcorreo.trim().isEmpty())    {
+                    rep=true;
+                }
+                else    {
+                    rep=false;
+                    Lcodigo = (int)(Math.random() * 99999999 + 10000000);
+                    String aa = ALERTA.enviarCorreo(Lcorreo, Lcodigo);  // Return error or null
+                    if(aa.equals(""))   {
+                        JOptionPane.showMessageDialog(null, "Correo enviado con éxito.", "Envío exitoso", JOptionPane.INFORMATION_MESSAGE);
+                        dialogLrecuperar_contrasenha.setVisible(true);
+                    }
+                    else    {
+                        JOptionPane.showMessageDialog(null, "Error al enviar correo. Favor de intentarlo más tarde."/*+aa*/, "Error de correo", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            } while (rep);
         }
     }//GEN-LAST:event_lblLrecuperar_contraMouseClicked
 
-    public BalloonTip balloontip(Component com, String tx, int gp, int pest)    {
-        BalloonTip btLvalida = new BalloonTip(
-            (JComponent) com,
-            new JLabel(tx),
-            new ModernBalloonStyle(2/*Contorno*/, 1/*Padding*/,
-                new Color(146, 150, 153),   //Color1
-                new Color(191, 192, 194),   //Color2
-                new Color(178, 179, 179)),  //Contorno
-            BalloonTip.Orientation.LEFT_BELOW,
-            BalloonTip.AttachLocation.SOUTH,
-            gp, // Espacio entre inicio del globo y la pestaña
-            pest, // Tamaño de la pestaña
-            true
-        );
-        return btLvalida;
+    private void dialogLasignar_contrasenhaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dialogLasignar_contrasenhaMousePressed
+        if(this.getExtendedState() == this.NORMAL)    {
+            X1 = evt.getX();
+            Y1 = evt.getY();
+        }
+    }//GEN-LAST:event_dialogLasignar_contrasenhaMousePressed
+
+    private void dialogLasignar_contrasenhaMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dialogLasignar_contrasenhaMouseDragged
+        if(this.getExtendedState() == this.NORMAL)    {
+            Point mueve = MouseInfo.getPointerInfo().getLocation();
+            dialogLasignar_contrasenha.setLocation(mueve.x - X1, mueve.y - Y1);
+        }
+    }//GEN-LAST:event_dialogLasignar_contrasenhaMouseDragged
+
+    private void txtLcodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLcodigoKeyTyped
+        char d=evt.getKeyChar();
+        if(d == KeyEvent.VK_ENTER)  {
+            confirmarCodigo();
+        }
+    }//GEN-LAST:event_txtLcodigoKeyTyped
+
+    private void psfLnueva_contraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_psfLnueva_contraKeyTyped
+        char d=evt.getKeyChar();
+        if(d == KeyEvent.VK_ENTER)  {
+            asignarContrasenha();
+        }
+    }//GEN-LAST:event_psfLnueva_contraKeyTyped
+
+    private void psfLconfirmar_contraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_psfLconfirmar_contraKeyTyped
+        char d=evt.getKeyChar();
+        if(d == KeyEvent.VK_ENTER)  {
+            asignarContrasenha();
+        }
+    }//GEN-LAST:event_psfLconfirmar_contraKeyTyped
+
+    public void confirmarCodigo()   {
+        if(ALERTA.valint(txtLcodigo.getText())) {
+            System.out.println("prueba");
+            System.out.println(txtLcodigo.getText());
+            if(Lcodigo == Integer.parseInt(txtLcodigo.getText().trim()))  {
+                dialogLrecuperar_contrasenha.dispose();
+                dialogLasignar_contrasenha.setVisible(true);
+            }
+            else    {
+                JOptionPane.showMessageDialog(null,"Revise que el código corresponda con el enviado a su correo.","Código inválido",2);
+            }
+        }
+        else    {
+            JOptionPane.showMessageDialog(null,"El código está conformado de 8 dígitos numéricos.","Código inválido",2);
+        }
+    }
+    
+    public void asignarContrasenha()    {
+        if(psfLnueva_contra.getText().isEmpty())    {
+            ALERTA.balloontip(this.psfLnueva_contra,"Este campo no puede quedar vacío.",30,10).setVisible(true);
+        }
+        if(psfLconfirmar_contra.getText().isEmpty())    {
+            ALERTA.balloontip(this.psfLconfirmar_contra,"Vuelva a ingresar la contraseña.",30,10).setVisible(true);
+        }
+        if(!(psfLconfirmar_contra.getText().isEmpty() && psfLnueva_contra.getText().isEmpty())) {
+            if(Arrays.toString(psfLnueva_contra.getPassword()).length() >= 8) {
+                if(Arrays.toString(psfLnueva_contra.getPassword()).equals(Arrays.toString(psfLconfirmar_contra.getPassword())))   {
+                    Connection con;
+                    PreparedStatement ps;
+                    try {
+                        ConexionMySQL cmysql = new ConexionMySQL();
+                        con = (Connection) cmysql.Conectar();
+                        ps = con.prepareStatement("UPDATE tbl_empleado SET contrasena = '"+ALERTA.getSHA3(new String(psfLnueva_contra.getPassword()))+"' WHERE correoEmpleado = '"+Lcorreo+"';");
+                        int n=ps.executeUpdate();
+                        if (n>0)    {
+                            JOptionPane.showOptionDialog(this, "Se ha actualizado la contraseña satisfactoriamente.",
+                                    "MySQL Information", JOptionPane.INFORMATION_MESSAGE,
+                                    JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" 0K "},"0K");
+                            this.dialogLasignar_contrasenha.dispose();
+                        }
+                    }
+                    catch(Exception ex) {
+                        JOptionPane.showMessageDialog(null,ex);
+                    }
+                }
+                else    {
+                    JOptionPane.showMessageDialog(null,"Las contraseñas deben coincidir.","",JOptionPane.WARNING_MESSAGE);
+                }
+            }
+            else    {
+                JOptionPane.showMessageDialog(null,"La contraseña debe ser mayor a 8 caracteres.","Contraseña demasiado corta",JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }
+    
+    public void LrecuperarContrasena()  {
+        this.dialogLasignar_contrasenha.setSize(new Dimension(480, 200));
+        this.dialogLasignar_contrasenha.setShape(new RoundRectangle2D.Double(1, 1, 480, 200, 20, 12)); // arriba, costado
+        this.dialogLasignar_contrasenha.setLocationRelativeTo(this);
+        this.dialogLasignar_contrasenha.setResizable(false);
+        this.dialogLasignar_contrasenha.setVisible(true);
     }
     
     private void Acceder()  {
@@ -693,11 +770,35 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
             JOptionPane.showMessageDialog(null,"El correo no debe quedar vacío.");
         }
         if(psfLcontra.getText().trim().isEmpty() && !txtLcorreo.getText().trim().isEmpty()) {
-            this.lblLcontra.setForeground(red);
-            this.lblLipassword.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_key_30px_1.png")));
-            this.lblLcorreo.setForeground(new java.awt.Color(120, 121, 124));
-            this.lblLiusuario.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_user_filled_30px.png")));
-            JOptionPane.showMessageDialog(null,"La contraseña no debe quedar vacía.");
+            Connection con;
+            PreparedStatement ps;
+            try {
+                ConexionMySQL cmysql = new ConexionMySQL();
+                con = (Connection) cmysql.Conectar();
+                ps = con.prepareStatement("SELECT contrasena FROM tbl_empleado WHERE correoEmpleado = '"+Lcorreo+"' AND estadoActivo = 1;");
+                ResultSet rs = ps.executeQuery();
+                if(rs.next()==true)    {
+                    // Comprueba si tiene contraseña (primer ingreso)
+                    if(rs.getString("contrasena")!=null)    {
+                        this.lblLcontra.setForeground(red);
+                        this.lblLipassword.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_key_30px_1.png")));
+                        this.lblLcorreo.setForeground(new java.awt.Color(120, 121, 124));
+                        this.lblLiusuario.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_user_filled_30px.png")));
+                        JOptionPane.showMessageDialog(null,"La contraseña no debe quedar vacía.");
+                    }
+                    if(rs.getString("contrasena")==null)    {
+                        JOptionPane.showMessageDialog(null,"Primera vez de ingreso, registre su contraseña","Primer ingreso.",1);
+                        LrecuperarContrasena();
+                    }
+                }
+            }
+            catch(Exception e)   {
+                this.lblLcontra.setForeground(red);
+                this.lblLipassword.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_key_30px_1.png")));
+                this.lblLcorreo.setForeground(new java.awt.Color(120, 121, 124));
+                this.lblLiusuario.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_user_filled_30px.png")));
+                JOptionPane.showMessageDialog(null,"La contraseña no debe quedar vacía.");
+            }
         }
         if(txtLcorreo.getText().trim().isEmpty() && psfLcontra.getText().trim().isEmpty()) {
             this.lblLcorreo.setForeground(red);
@@ -718,47 +819,55 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
             try {
                 ConexionMySQL cmysql = new ConexionMySQL();
                 con = (Connection) cmysql.Conectar();
-                ps = con.prepareStatement("SELECT matricula FROM empleado WHERE correoEmpleado = '"+Lcorreo+"' AND estadoActivo = 1;");
+                ps = con.prepareStatement("SELECT matricula FROM tbl_empleado WHERE correoEmpleado = '"+Lcorreo+"' AND estadoActivo = 1;");
                 ResultSet rs = ps.executeQuery();
                 // Comprueba si el correo está registrado
                 if(rs.next()!=false)    {
-                    ps = con.prepareStatement("SELECT contrasena FROM empleado WHERE correoEmpleado = '"+Lcorreo+"' AND estadoActivo = 1;");
+                    ps = con.prepareStatement("SELECT contrasena FROM tbl_empleado WHERE correoEmpleado = '"+Lcorreo+"' AND estadoActivo = 1;");
                     rs = ps.executeQuery();
-                    // Comprueba si tiene contraseña (primer ingreso)
                     if(rs.next()!=false)    {
-                        ps = con.prepareStatement("SELECT contrasena, puesto, matricula FROM empleado WHERE correoEmpleado = '"+Lcorreo+"' AND estadoActivo = 1;");
-                        rs = ps.executeQuery();
-                        // Lee los resultados para autorizar
-                        while (rs.next())   {
-                            Lpuesto = rs.getInt("puesto");
-                            Lcontra = rs.getString("contrasena");
-                            Lmatricula = rs.getInt("matricula");
-                            Lscontra = ALERTA.getSHA3(new String(psfLcontra.getPassword()));
-                            if(Lscontra.equals(Lcontra) && Lpuesto != 3)    {
-                                Lintentos[Lmatricula] = 0;
-                                ps2 = con.prepareStatement("INSERT INTO bitacoraAccesos(matriculaEmpleado,fechaIngreso) VALUES ("+Lmatricula+",NOW());");
-                                ps2.executeUpdate();
-                                this.dispose();
-                                ma.setVisible(true);
-                                JOptionPane.showMessageDialog(null,"¡Bienvenido a SASERCON!","¡Bienvenido!",1);
-                            }
-                            else if(Lpuesto == 3)   {
-                                JOptionPane.showMessageDialog(null,"El sistema es para directivos y secretarias.","Acceso denegado.",0);
-                            }
-                            else    {
-                                JOptionPane.showMessageDialog(null,"Contraseña inválida, favor de verificar.","Contraseña inválida",2);
-                                Lintentos[Lmatricula] = Lcont++;
-                                if(Lcont>=3)    {
-                                    int resp = JOptionPane.showConfirmDialog(null, "¿Olvidaste tu contraseña?", "Recuperar contraseña", 2);
-                                    if (resp==0)  {
-                                        Lcodigo = (int)(Math.random() * 99999999 + 10000000);
-                                        String aa = ALERTA.enviarCorreo(Lcorreo, Lcodigo);
-                                        if(aa.equals(""))   {
-                                            JOptionPane.showMessageDialog(null, "Correo enviado con éxito.", "Envío exitoso", JOptionPane.INFORMATION_MESSAGE);
-                                            dialogRecuperarContrasenha.setVisible(true);
-                                        }
-                                        else    {
-                                            JOptionPane.showMessageDialog(null, "Error al enviar correo: "+aa, "Error de correo", JOptionPane.ERROR_MESSAGE);
+                        // Comprueba si tiene contraseña (primer ingreso)
+                        if(rs.getString("contrasena")==null)    {
+                            JOptionPane.showMessageDialog(null,"Primera vez de ingreso, registre su contraseña","Primer ingreso.",1);
+                            LrecuperarContrasena();
+                        }
+                        else    {
+                            ps = con.prepareStatement("SELECT contrasena, puesto, matricula FROM tbl_empleado WHERE correoEmpleado = '"+Lcorreo+"' AND estadoActivo = 1;");
+                            rs = ps.executeQuery();
+                            // Lee los resultados para autorizar
+                            while (rs.next())   {
+                                Lpuesto = rs.getInt("puesto");
+                                Lcontra = rs.getString("contrasena");
+                                Lmatricula = rs.getInt("matricula");
+                                Lscontra = ALERTA.getSHA3(new String(psfLcontra.getPassword()));
+                                if(Lscontra.equals(Lcontra) && Lpuesto != 3)    {
+                                    ps2 = con.prepareStatement("INSERT INTO tbl_bitacoraAccesos(matriculaEmpleado,fecha,ingreso) VALUES ("+Lmatricula+",NOW(),true);");
+                                    ps2.executeUpdate();
+                                    this.dispose();
+                                    MódulosAcceso ma = new MódulosAcceso(Lmatricula);
+                                    ma.setVisible(true);
+                                    JOptionPane.showMessageDialog(null,"¡Bienvenido a SASERCON!","¡Bienvenido!",1);
+                                }
+                                else if(Lpuesto == 3)   {
+                                    JOptionPane.showMessageDialog(null,"El sistema es para directivos y secretarias.","Acceso denegado.",0);
+                                }
+                                else    {
+                                    JOptionPane.showMessageDialog(null,"Contraseña inválida, favor de verificar.","Contraseña inválida",2);
+                                    if(!Lmail.equals(this.txtLcorreo.getText().trim()))   Lmail = this.txtLcorreo.getText().trim();
+                                    //Lintentos[Lmatricula] = 
+                                    Lcont++;
+                                    if(Lcont >= 3)    {
+                                        int resp = JOptionPane.showConfirmDialog(null, "¿Olvidaste tu contraseña?", "Recuperar contraseña", 2);
+                                        if (resp==0)  {
+                                            Lcodigo = (int)(Math.random() * 99999999 + 10000000);
+                                            String aa = ALERTA.enviarCorreo(Lcorreo, Lcodigo);
+                                            if(aa.equals(""))   {
+                                                JOptionPane.showMessageDialog(null, "Correo enviado con éxito.", "Envío exitoso", JOptionPane.INFORMATION_MESSAGE);
+                                                dialogLrecuperar_contrasenha.setVisible(true);
+                                            }
+                                            else    {
+                                                JOptionPane.showMessageDialog(null, "Error al enviar correo: "+aa, "Error de correo", JOptionPane.ERROR_MESSAGE);
+                                            }
                                         }
                                     }
                                 }
@@ -766,12 +875,11 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
                         }
                     }
                     else    {
-                        JOptionPane.showMessageDialog(null,"Primera vez de ingreso, registre su contraseña","Primer ingreso.",2);
-                        dialogAsignarContrasenha.setVisible(true);
+                        JOptionPane.showMessageDialog(null,"Error con la Base de Datos.","Error.",2);
                     }
                 }
                 else    {
-                    JOptionPane.showMessageDialog(null,"El correo no está registrado o está dado de baja, favor de verificar.","Correo no registrado",2);
+                    JOptionPane.showMessageDialog(null,"El correo no está registrado o está dado de baja, favor de verificar o comunicarse a gerencia.","Correo no registrado",2);
                 }
                 con.close();
             } catch (Exception ex)   {
@@ -818,8 +926,8 @@ MódulosAcceso ma = new MódulosAcceso(Lmatricula);
     private javax.swing.JButton btnLconfirmar;
     private javax.swing.JButton btnLguardar;
     private javax.swing.JButton btnLregresar;
-    private javax.swing.JDialog dialogAsignarContrasenha;
-    private javax.swing.JDialog dialogRecuperarContrasenha;
+    private javax.swing.JDialog dialogLasignar_contrasenha;
+    private javax.swing.JDialog dialogLrecuperar_contrasenha;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

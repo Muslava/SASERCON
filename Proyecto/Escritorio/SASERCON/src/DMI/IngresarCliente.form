@@ -330,9 +330,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtICnumero_exterior">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtICnumero_exteriorActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel62">
               <Properties>
@@ -367,9 +364,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtICnombre_del_representante">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtICnombre_del_representanteActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtICcorreo_del_representante">
             </Component>
@@ -379,9 +373,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtICcorreo_empresarial">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtICcorreo_empresarialActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel68">
               <Properties>

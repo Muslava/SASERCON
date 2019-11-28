@@ -8,6 +8,9 @@ package DMI;
 import java.awt.*;
 import java.io.*;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -23,7 +26,6 @@ public String IEnombre_de_empleado;
 public String IEapellido_paterno_empleado;
 public String IEapellido_materno_empleado;
 public String IEcorreo;
-public int IEempresa;
 public int IEpuesto;
 protected String IEcurp;
 protected String IErfc;
@@ -45,7 +47,9 @@ protected String IEapellido_paterno_contacto;
 protected String IEapellido_materno_contacto;
 protected String IEcorreo_contacto;
 protected boolean IEvigente;
+protected boolean IEn = false, IEap = false, IEam = false, IEfn = false;
 protected int IEmatricula;
+protected Date IEfecha_nacimiento = new Date();
 
 public int IEtipo;
 
@@ -54,19 +58,28 @@ protected FileInputStream IEfoto = null;
 protected Image IEfi = null;
 
 static FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "png", "gif", "jpeg");
-static Comprobacion c = new Comprobacion();
+static Comprobacion ALERTA = new Comprobacion();
+
+public DateFormat ffecha = new SimpleDateFormat("yyyy/MM/dd");
 /**
      * Creates new form IngresarEmpleado
      */
     public IngresarEmpleado() {
         initComponents();
-        this.setIconifiable(true);
+        try {
+            //System.out.println(ffecha.format(this.dcIEfecha_nacimiento.getDate()));
+            this.dcIEfecha_nacimiento.setMinSelectableDate(ffecha.parse("1910/11/29"));
+            this.dcIEfecha_nacimiento.setMaxSelectableDate(ffecha.parse("2001/11/29"));
+        } catch (Exception e)	{
+            JOptionPane.showMessageDialog(null, "El valor que usted ingresó no es una fecha", "Fecha no ingresada.", 0);
+            //e.printStackTrace();
+        }
         
         try {
             ConexionMySQL cmysql = new ConexionMySQL();
             Connection conec = (Connection) cmysql.Conectar();
             Statement st=conec.createStatement();
-            ResultSet rs = st.executeQuery("SELECT pais FROM pais;");
+            ResultSet rs = st.executeQuery("SELECT pais FROM tbl_pais;");
             while (rs.next())   {
                 this.cboxIEpais.addItem(rs.getString("pais"));
             }
@@ -146,6 +159,8 @@ static Comprobacion c = new Comprobacion();
         jLabel19 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        dcIEfecha_nacimiento = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
         setIconifiable(true);
@@ -157,11 +172,31 @@ static Comprobacion c = new Comprobacion();
 
         jLabel23.setText("Nombre:");
 
+        txtIEnombre_de_empleado.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtIEnombre_de_empleadoFocusLost(evt);
+            }
+        });
+
         jLabel24.setText("Correo:");
 
         jLabel27.setText("CURP:");
 
+        txtIEcurp.setEditable(false);
+        txtIEcurp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtIEcurpMouseClicked(evt);
+            }
+        });
+
         jLabel28.setText("RFC:");
+
+        txtIErfc.setEditable(false);
+        txtIErfc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtIErfcMouseClicked(evt);
+            }
+        });
 
         jLabel29.setText("Número de Seguro Social:");
 
@@ -222,7 +257,19 @@ static Comprobacion c = new Comprobacion();
 
         jLabel36.setText("Apellido Paterno:");
 
+        txtIEapellido_paterno_empleado.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtIEapellido_paterno_empleadoFocusLost(evt);
+            }
+        });
+
         jLabel37.setText("Apellido Materno:");
+
+        txtIEapellido_materno_empleado.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtIEapellido_materno_empleadoFocusLost(evt);
+            }
+        });
 
         jLabel38.setText("Apellido Paterno:");
 
@@ -292,6 +339,8 @@ static Comprobacion c = new Comprobacion();
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel19.setText("Contacto del empleado");
+
+        jLabel1.setText("Nacimiento:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -374,11 +423,6 @@ static Comprobacion c = new Comprobacion();
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(jPanel3Layout.createSequentialGroup()
                                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                                        .addComponent(jLabel44)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(cboxIEpuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                             .addComponent(jLabel27)
@@ -386,8 +430,12 @@ static Comprobacion c = new Comprobacion();
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addComponent(txtIErfc, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(txtIEcurp, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGap(143, 143, 143)))
+                                                            .addComponent(txtIEcurp, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                                        .addComponent(jLabel1)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(dcIEfecha_nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(143, 143, 143)
                                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(txtIEtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(txtIEtelefono_emergencia, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -414,9 +462,12 @@ static Comprobacion c = new Comprobacion();
                                                             .addComponent(jLabel30)
                                                             .addComponent(jLabel37)
                                                             .addComponent(jLabel31)
-                                                            .addComponent(jLabel32))
+                                                            .addComponent(jLabel32)
+                                                            .addComponent(jLabel44))
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(txtIEapellido_materno_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(txtIEapellido_materno_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(cboxIEpuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                                         .addGap(18, 18, 18)))
                                 .addComponent(btnIEfoto, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -440,29 +491,35 @@ static Comprobacion c = new Comprobacion();
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel43)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel23)
-                                    .addComponent(txtIEnombre_de_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtIEcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel24)))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel36)
-                                    .addComponent(txtIEapellido_paterno_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel37)
-                                    .addComponent(txtIEapellido_materno_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel30)
-                            .addComponent(txtIEtelefono_emergencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboxIEpuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel23)
+                                            .addComponent(txtIEnombre_de_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(txtIEcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel24)))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel36)
+                                            .addComponent(txtIEapellido_paterno_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel37)
+                                            .addComponent(txtIEapellido_materno_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel30)
+                                            .addComponent(txtIEtelefono_emergencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(dcIEfecha_nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -484,7 +541,9 @@ static Comprobacion c = new Comprobacion();
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel29)
-                            .addComponent(txtIEnss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtIEnss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboxIEpuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -576,16 +635,18 @@ static Comprobacion c = new Comprobacion();
             ConexionMySQL cmysql = new ConexionMySQL();
             Connection conec = (Connection) cmysql.Conectar();
 
-            String senSQL = "INSERT INTO empleado (nombreEmpleado,apellidoPaternoEmpleado,apellidoMaternoEmpleado,correoEmpleado,empresa,puesto,curp,numeroSeguroSocial,celular,telefonoEmergencia,nombreContacto,apellidoPaternoContacto,apellidoMaternoContacto,correoContacto,estadoActivo,telefono,fotoEmpleado,RFC) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            String senSQL2 = "INSERT INTO direccion (numeroExterior,numeroInterior,calle,colonia,codigoPostal,tipo,alcaldia) VALUES(?,?,?,?,?,?,?)";
-
+            String senSQL = "INSERT INTO tbl_empleado (nombreEmpleado,apellidoPaternoEmpleado,apellidoMaternoEmpleado,fechaNacimiento,correoEmpleado,puesto,curp,numeroSeguroSocial,celular,telefonoEmergencia,nombreContacto,apellidoPaternoContacto,apellidoMaternoContacto,correoContacto,estadoActivo,telefono,fotoEmpleado,RFC) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String senSQL2 = "INSERT INTO tbl_direccion (numeroExterior,numeroInterior,calle,colonia,codigoPostal,tipo,alcaldia) VALUES(?,?,?,?,?,?,?)";
+            
+            java.util.Date d = this.dcIEfecha_nacimiento.getDate();
+            java.sql.Date sqldate = new java.sql.Date(d.getTime());
+            
             PreparedStatement ps = conec.prepareStatement(senSQL);
-        
             ps.setString(1,IEnombre_de_empleado);
             ps.setString(2,IEapellido_paterno_empleado);
             ps.setString(3,IEapellido_materno_empleado);
-            ps.setString(4,IEcorreo);
-            ps.setInt(5,IEempresa);
+            ps.setDate(4,sqldate);
+            ps.setString(5,IEcorreo);
             ps.setInt(6,IEpuesto);
             ps.setString(7,IEcurp);
             ps.setString(8,IEnss);
@@ -609,19 +670,17 @@ static Comprobacion c = new Comprobacion();
             ps2.setInt(6,IEtipo);
             ps2.setInt(7,IEalcaldia);
             
-            PreparedStatement ps3 = conec.prepareStatement("INSERT INTO direccionEmpleado VALUES((select max(matricula) from empleado),(select max(clave) from direccion))");
-            PreparedStatement ps4 = conec.prepareStatement("UPDATE empleado SET contrasena = (select max(matricula)+1000) WHERE matricula=(select max(matricula)) AND RFC='"+IErfc+"'");
+            PreparedStatement ps3 = conec.prepareStatement("INSERT INTO tbl_direccionEmpleado VALUES((SELECT MAX(matricula) FROM tbl_empleado),(SELECT MAX(clave) FROM tbl_direccion))");
             int m = ps2.executeUpdate();
             int n = ps.executeUpdate();
             int o = ps3.executeUpdate();
-            int p = ps4.executeUpdate();
             Statement st = conec.createStatement();
-            ResultSet rs = st.executeQuery("SELECT MAX(matricula) FROM EMPLEADO");
+            ResultSet rs = st.executeQuery("SELECT MAX(matricula) FROM tbl_empleado");
             while(rs.next()) {
                 IEmatricula = rs.getInt("MAX(matricula)");
             }
-            if (n > 0 && m > 0 && o > 0 && p > 0)  {
-                JOptionPane.showOptionDialog(this, "Se han guardado sus datos satisfactoriamente. La contraseña es la matricula + 1000.",
+            if (n > 0 && m > 0 && o > 0)  {
+                JOptionPane.showOptionDialog(this, "Se han guardado sus datos satisfactoriamente.",
                         "MySQL Information", JOptionPane.INFORMATION_MESSAGE,
                         JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" 0K "},"0K");
                 this.dispose();
@@ -656,18 +715,20 @@ static Comprobacion c = new Comprobacion();
         IEnombre_de_empleado = this.txtIEnombre_de_empleado.getText().trim();
         IEapellido_paterno_empleado = this.txtIEapellido_paterno_empleado.getText().trim();
         IEapellido_materno_empleado = this.txtIEapellido_materno_empleado.getText().trim();
+        IEfecha_nacimiento = this.dcIEfecha_nacimiento.getDate();
         IEcorreo = this.txtIEcorreo.getText().trim();
-        IEcurp = this.txtIEcurp.getText().trim();
+        IEcurp = this.txtIEcurp.getText();
         IEnss = this.txtIEnss.getText().trim();
-        IEcelular = this.txtIEtelefono_emergencia.getText().trim();
-        IEtelefono_emergencia = this.txtIEcelular.getText().trim();
+        IEtelefono = this.txtIEtelefono.getText().trim();
+        IEtelefono_emergencia = this.txtIEtelefono_emergencia.getText().trim();
+        IEcelular = this.txtIEcelular.getText().trim();
         IEnombre_contacto = this.txtIEnombre_contacto.getText().trim();
         IEapellido_paterno_contacto = this.txtIEapellido_paterno_contacto.getText().trim();
         IEapellido_materno_contacto = this.txtIEapellido_materno_contacto.getText().trim();
         IEcorreo_contacto = this.txtIEcorreo_contacto.getText().trim();
+        IEpuesto = this.cboxIEpuesto.getSelectedIndex();
         IEvigente = this.tgbIEvigente.isSelected();
-        IEtelefono = this.txtIEtelefono.getText().trim();
-        IErfc = this.txtIErfc.getText().trim();
+        IErfc = this.txtIErfc.getText();
         
         IEnumero_exterior = this.txtIEnumero_exterior.getText().trim();
         IEnumero_interior = this.txtIEnumero_interior.getText().trim();
@@ -679,86 +740,86 @@ static Comprobacion c = new Comprobacion();
         
         String pr="";
         
-        if(c.valtext(IEnombre_de_empleado)&&c.valtext(IEapellido_paterno_empleado)&&c.valtext(IEapellido_materno_empleado)&&
-                c.valmail(IEcorreo)&&IEempresa!=0&&IEpuesto!=0&&c.valcurp(IEcurp)&&c.valnss(IEnss)&&c.valcel(IEcelular)&&
-                c.valtel(IEtelefono_emergencia)&&c.valtext(IEnombre_contacto)&&c.valtext(IEapellido_paterno_contacto)&&
-                c.valtext(IEapellido_materno_contacto)&&c.valmail(IEcorreo_contacto)&&c.valtel(IEtelefono)&&
-                c.valrfc(IErfc)&&c.valne(IEnumero_exterior)&&c.valni(IEnumero_interior)&&!c.vacio(IEcalle)&&
-                c.valtext(IEcolonia)&&c.valcp(this.txtIEcodigo_postal.getText().trim())&&IEalcaldia!=0)    {
+        if(ALERTA.valtext(IEnombre_de_empleado)&&ALERTA.valtext(IEapellido_paterno_empleado)&&ALERTA.valtext(IEapellido_materno_empleado)&&
+                ALERTA.valmail(IEcorreo)&&IEpuesto!=0&&ALERTA.valcurp(IEcurp)&&ALERTA.valnss(IEnss)&&ALERTA.valcel(IEcelular)&&
+                ALERTA.valtel(IEtelefono_emergencia)&&ALERTA.valtext(IEnombre_contacto)&&ALERTA.valtext(IEapellido_paterno_contacto)&&
+                ALERTA.valtext(IEapellido_materno_contacto)&&ALERTA.valmail(IEcorreo_contacto)&&ALERTA.valtel(IEtelefono)&&
+                ALERTA.valrfc(IErfc)&&ALERTA.valne(IEnumero_exterior)&&ALERTA.valni(IEnumero_interior)&&!ALERTA.vacio(IEcalle)&&
+                ALERTA.valtext(IEcolonia)&&ALERTA.valcp(this.txtIEcodigo_postal.getText().trim())&&IEalcaldia!=0)    {
             ingresar();
         }
-        if(!c.valtext(IEnombre_de_empleado)) {
+        if(!ALERTA.valtext(IEnombre_de_empleado)) {
             pr=pr+"\nNombre del empleado";
         }
-        if(!c.valtext(IEapellido_paterno_empleado))    {
+        if(!ALERTA.valtext(IEapellido_paterno_empleado))    {
             pr=pr+"\nApellido paterno del empleado";
         }
-        if(!c.valtext(IEapellido_materno_empleado))    {
+        if(!ALERTA.valtext(IEapellido_materno_empleado))    {
             pr=pr+"\nApellido materno del empleado";
         }
-        if(!c.valmail(IEcorreo))    {
+        if(!ALERTA.valmail(IEcorreo))    {
             pr=pr+"\nCorreo del empleado";
         }
-        if(IEempresa==0)    {
-            pr=pr+"\nEmpresa";
+        if(IEfecha_nacimiento == null)    {
+            pr=pr+"\nFecha de nacimiento";
         }
         if(IEpuesto==0)    {
             pr=pr+"\nPuesto";
         }
-        if(!c.valcurp(IEcurp))    {
+        if(!ALERTA.valcurp(IEcurp))    {
             pr=pr+"\nCURP";
         }
-        if(!c.valnss(IEnss))    {
+        if(!ALERTA.valnss(IEnss))    {
             pr=pr+"\nNúmero de Seguridad Social";
         }
-        if(!c.valcel(IEcelular))    {
+        if(!ALERTA.valcel(IEcelular))    {
             pr=pr+"\nCelular";
         }
-        if(!c.valtel(IEtelefono_emergencia))    {
+        if(!ALERTA.valtel(IEtelefono_emergencia))    {
             pr=pr+"\nTeléfono de emergencia";
         }
-        if(!c.valtext(IEnombre_contacto))    {
+        if(!ALERTA.valtext(IEnombre_contacto))    {
             pr=pr+"\nNombre del contacto";
         }
-        if(!c.valtext(IEapellido_paterno_contacto))    {
+        if(!ALERTA.valtext(IEapellido_paterno_contacto))    {
             pr=pr+"\nApellido paterno del contacto";
         }
-        if(!c.valtext(IEapellido_materno_contacto))    {
+        if(!ALERTA.valtext(IEapellido_materno_contacto))    {
             pr=pr+"\nApellido materno del contacto";
         }
-        if(!c.valmail(IEcorreo_contacto)) {
+        if(!ALERTA.valmail(IEcorreo_contacto)) {
             pr=pr+"\nCorreo del contacto";
         }
-        if(!c.valtel(IEtelefono))   {
+        if(!ALERTA.valtel(IEtelefono))   {
             pr=pr+"\nTeléfono";
         }
-        if(!c.valrfc(IErfc))    {
+        if(!ALERTA.valrfc(IErfc))    {
             pr=pr+"\nRFC";
         }
-        if(!c.valne(IEnumero_exterior))    {
+        if(!ALERTA.valne(IEnumero_exterior))    {
             pr=pr+"\nNúmero exterior";
         }
-        if(!c.valni(IEnumero_interior))    {
+        if(!ALERTA.valni(IEnumero_interior))    {
             pr=pr+"\nNúmero interior";
         }
-        if(c.vacio(IEcalle))    {
+        if(ALERTA.vacio(IEcalle))    {
             pr=pr+"\nCalle";
         }
-        if(!c.valtext(IEcolonia))    {
+        if(!ALERTA.valtext(IEcolonia))    {
             pr=pr+"\nColonia";
         }
-        if(!c.valcp(this.txtIEcodigo_postal.getText().trim()))    {
+        if(!ALERTA.valcp(this.txtIEcodigo_postal.getText().trim()))    {
             pr=pr+"\nCódigo Postal";
         }
         if(IEalcaldia==0)    {
             pr=pr+"\nAlcaldía";
         }
-        if(!(c.valtext(IEnombre_de_empleado)&&c.valtext(IEapellido_paterno_empleado)&&c.valtext(IEapellido_materno_empleado)&&
-                c.valmail(IEcorreo)&&IEempresa!=0&&IEpuesto!=0&&c.valcurp(IEcurp)&&c.valnss(IEnss)&&c.valcel(IEcelular)&&
-                c.valtel(IEtelefono_emergencia)&&c.valtext(IEnombre_contacto)&&c.valtext(IEapellido_paterno_contacto)&&
-                c.valtext(IEapellido_materno_contacto)&&c.valmail(IEcorreo_contacto)&&c.valtel(IEtelefono)&&
-                c.valrfc(IErfc)&&c.valne(IEnumero_exterior)&&c.valni(IEnumero_interior)&&!c.vacio(IEcalle)&&
-                c.valtext(IEcolonia)&&c.valcp(this.txtIEcodigo_postal.getText().trim())&&IEalcaldia!=0))    {
+        if(!(ALERTA.valtext(IEnombre_de_empleado)&&ALERTA.valtext(IEapellido_paterno_empleado)&&ALERTA.valtext(IEapellido_materno_empleado)&&
+                ALERTA.valmail(IEcorreo)&&IEpuesto!=0&&ALERTA.valcurp(IEcurp)&&ALERTA.valnss(IEnss)&&ALERTA.valcel(IEcelular)&&
+                ALERTA.valtel(IEtelefono_emergencia)&&ALERTA.valtext(IEnombre_contacto)&&ALERTA.valtext(IEapellido_paterno_contacto)&&
+                ALERTA.valtext(IEapellido_materno_contacto)&&ALERTA.valmail(IEcorreo_contacto)&&ALERTA.valtel(IEtelefono)&&
+                ALERTA.valrfc(IErfc)&&ALERTA.valne(IEnumero_exterior)&&ALERTA.valni(IEnumero_interior)&&!ALERTA.vacio(IEcalle)&&
+                ALERTA.valtext(IEcolonia)&&ALERTA.valcp(this.txtIEcodigo_postal.getText().trim())&&IEalcaldia!=0))    {
             JOptionPane.showMessageDialog(null, "Revice los siguientes campos e inténtelo de nuevo: "+pr, "Datos incorrectos", 2);
         }
     }//GEN-LAST:event_btnIEguardarActionPerformed
@@ -796,7 +857,7 @@ static Comprobacion c = new Comprobacion();
         
         try {
             Statement st=conec.createStatement();
-            ResultSet rs = st.executeQuery("SELECT alcaldia FROM alcaldia WHERE claveCiudad = "+cboxIEestado.getSelectedIndex());
+            ResultSet rs = st.executeQuery("SELECT alcaldia FROM tbl_alcaldia WHERE claveCiudad = "+cboxIEestado.getSelectedIndex());
             while (rs.next())   {
                 this.cboxIEalcaldia.addItem(rs.getString("alcaldia"));
             }
@@ -813,7 +874,7 @@ static Comprobacion c = new Comprobacion();
         
         try {
             Statement st=conec.createStatement();
-            ResultSet rs = st.executeQuery("SELECT estado FROM estado WHERE clavePais = "+cboxIEpais.getSelectedIndex());
+            ResultSet rs = st.executeQuery("SELECT estado FROM tbl_estado WHERE clavePais = "+cboxIEpais.getSelectedIndex());
             while (rs.next())   {
                 this.cboxIEestado.addItem(rs.getString("estado"));
             }
@@ -821,6 +882,49 @@ static Comprobacion c = new Comprobacion();
             JOptionPane.showMessageDialog(null,ex,"SQL error",2);
         }
     }//GEN-LAST:event_cboxIEpaisItemStateChanged
+
+    private void txtIEnombre_de_empleadoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIEnombre_de_empleadoFocusLost
+        IEn = ALERTA.valtext(this.txtIEnombre_de_empleado.getText().trim())&&!this.txtIEnombre_de_empleado.getText().equals("");
+    }//GEN-LAST:event_txtIEnombre_de_empleadoFocusLost
+
+    private void txtIEapellido_paterno_empleadoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIEapellido_paterno_empleadoFocusLost
+        IEap = ALERTA.valtext(this.txtIEapellido_paterno_empleado.getText().trim())&&!this.txtIEapellido_paterno_empleado.getText().equals("");
+    }//GEN-LAST:event_txtIEapellido_paterno_empleadoFocusLost
+
+    private void txtIEapellido_materno_empleadoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIEapellido_materno_empleadoFocusLost
+        IEam = ALERTA.valtext(this.txtIEapellido_materno_empleado.getText().trim())&&!this.txtIEapellido_materno_empleado.getText().equals("");
+    }//GEN-LAST:event_txtIEapellido_materno_empleadoFocusLost
+
+    private void txtIEcurpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIEcurpMouseClicked
+        IEfn = this.dcIEfecha_nacimiento.getDate()!=null;
+        if(IEn&&IEap&&IEam&&IEfn)    {
+            System.out.println(ffecha.format(this.dcIEfecha_nacimiento.getDate()));
+            this.txtIEcurp.setText(txtIEapellido_paterno_empleado.getText().substring(0,2).toUpperCase()+
+                    txtIEapellido_materno_empleado.getText().substring(0,1).toUpperCase()+
+                    txtIEnombre_de_empleado.getText().substring(0,1).toUpperCase()+
+                    ffecha.format(this.dcIEfecha_nacimiento.getDate()).substring(2,4)+
+                    ffecha.format(this.dcIEfecha_nacimiento.getDate()).substring(5,7)+
+                    ffecha.format(this.dcIEfecha_nacimiento.getDate()).substring(8,10)+
+                    "MDF"+
+                    txtIEapellido_paterno_empleado.getText().substring(2,3).toUpperCase()+
+                    txtIEapellido_materno_empleado.getText().substring(2,3).toUpperCase()+
+                    txtIEnombre_de_empleado.getText().substring(2,3).toUpperCase()+
+                    "A9");
+        }
+    }//GEN-LAST:event_txtIEcurpMouseClicked
+
+    private void txtIErfcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIErfcMouseClicked
+        IEfn = this.dcIEfecha_nacimiento.getDate()!=null;
+        if(IEn&&IEap&&IEam&&IEfn)    {
+            this.txtIErfc.setText(txtIEapellido_paterno_empleado.getText().substring(0,2).toUpperCase()+
+                    txtIEapellido_materno_empleado.getText().substring(0,1).toUpperCase()+
+                    txtIEnombre_de_empleado.getText().substring(0,1).toUpperCase()+
+                    ffecha.format(this.dcIEfecha_nacimiento.getDate()).substring(2,4)+
+                    ffecha.format(this.dcIEfecha_nacimiento.getDate()).substring(5,7)+
+                    ffecha.format(this.dcIEfecha_nacimiento.getDate()).substring(8,10)+
+                    "QG7");
+        }
+    }//GEN-LAST:event_txtIErfcMouseClicked
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -832,6 +936,8 @@ static Comprobacion c = new Comprobacion();
     private javax.swing.JComboBox<String> cboxIEestado;
     private javax.swing.JComboBox<String> cboxIEpais;
     private javax.swing.JComboBox<String> cboxIEpuesto;
+    private com.toedter.calendar.JDateChooser dcIEfecha_nacimiento;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
