@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         circleMenu.setMainMenu(Color.parseColor("#CDCDCD"), R.mipmap.ic_action_name, R.mipmap.icon_cancel)
-                .addSubMenu(Color.parseColor("#8A39FF"), R.mipmap.bitacora_tecnico)
+                .addSubMenu(Color.parseColor("#8A39FF"), R.mipmap.bitacora_tecnico) //referenciar cuando se toque en el menu
                 .addSubMenu(Color.parseColor("#03A9F4"), R.mipmap.consulta_manuales)
                 .addSubMenu(Color.parseColor("#FFEB3B"), R.mipmap.control_e_s)
                 .addSubMenu(Color.parseColor("#FFC107"), R.mipmap.gestionar_productos)
