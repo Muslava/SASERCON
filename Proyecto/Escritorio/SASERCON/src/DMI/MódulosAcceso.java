@@ -5,14 +5,19 @@
  */
 package DMI;
 
+import java.awt.Dimension;
 import java.sql.*;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.geom.RoundRectangle2D;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Box;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -21,6 +26,7 @@ import javax.swing.JOptionPane;
  * @author coner
  */
 public class MódulosAcceso extends javax.swing.JFrame {
+    Comprobacion ALERTA = new Comprobacion();
     boolean MAie = false;
     public static int x, y, MAmatricula;
     /**
@@ -29,7 +35,8 @@ public class MódulosAcceso extends javax.swing.JFrame {
     public MódulosAcceso(int mat) {
         initComponents();
         this.setIconImage(new ImageIcon(getClass().getResource("/img/LOGOfdktp.png")).getImage());
-        this.MAmatricula = mat;
+        this.setTitle("SASERCON");
+        MAmatricula = mat;
     }
 
     /**
@@ -41,6 +48,17 @@ public class MódulosAcceso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dialogMAmodificar_contra = new javax.swing.JDialog();
+        panMAcontraseña = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        psfMAnueva_contra = new javax.swing.JPasswordField();
+        psfMAconfirmar_contra = new javax.swing.JPasswordField();
+        btnMAregresar = new javax.swing.JButton();
+        btnMAguardar = new javax.swing.JButton();
+        lblMAcerrar_contra = new javax.swing.JLabel();
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/FONDO.png"));
         Image image = icon.getImage();
         dkpMAfondo = new javax.swing.JDesktopPane() {
@@ -57,7 +75,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
         btnMAingresar_servicio = new javax.swing.JButton();
         btnMAingresar_producto = new javax.swing.JButton();
         btnMAsalir = new javax.swing.JButton();
-        lblMAtoken = new javax.swing.JLabel();
+        btnMAmodificar_contra = new javax.swing.JButton();
         mbarMAmenu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -70,6 +88,132 @@ public class MódulosAcceso extends javax.swing.JFrame {
         mitemMAbuscar_producto = new javax.swing.JMenuItem();
         mitemMAbuscar_empleado = new javax.swing.JMenuItem();
         mitemMAbuscar_servicio = new javax.swing.JMenuItem();
+
+        dialogMAmodificar_contra.setUndecorated(true);
+        dialogMAmodificar_contra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                dialogMAmodificar_contraMouseDragged(evt);
+            }
+        });
+        dialogMAmodificar_contra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                dialogMAmodificar_contraMousePressed(evt);
+            }
+        });
+
+        panMAcontraseña.setBorder(javax.swing.BorderFactory.createTitledBorder("Contraseña"));
+
+        jLabel4.setText("Nueva Contraseña");
+
+        jLabel5.setText("Confirmar Contraseña");
+
+        jLabel6.setPreferredSize(new java.awt.Dimension(14, 14));
+
+        jLabel7.setPreferredSize(new java.awt.Dimension(20, 20));
+
+        psfMAnueva_contra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                psfMAnueva_contraKeyTyped(evt);
+            }
+        });
+
+        psfMAconfirmar_contra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                psfMAconfirmar_contraKeyTyped(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panMAcontraseñaLayout = new javax.swing.GroupLayout(panMAcontraseña);
+        panMAcontraseña.setLayout(panMAcontraseñaLayout);
+        panMAcontraseñaLayout.setHorizontalGroup(
+            panMAcontraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panMAcontraseñaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panMAcontraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panMAcontraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(psfMAnueva_contra, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                    .addComponent(psfMAconfirmar_contra))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panMAcontraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+        panMAcontraseñaLayout.setVerticalGroup(
+            panMAcontraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panMAcontraseñaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panMAcontraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panMAcontraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(psfMAnueva_contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panMAcontraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panMAcontraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(psfMAconfirmar_contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        btnMAregresar.setText("< Regresar");
+        btnMAregresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMAregresarActionPerformed(evt);
+            }
+        });
+
+        btnMAguardar.setText("Guardar y continuar>");
+        btnMAguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMAguardarActionPerformed(evt);
+            }
+        });
+
+        lblMAcerrar_contra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMAcerrar_contra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LogIn/icons8_close_window_24px_3.png"))); // NOI18N
+        lblMAcerrar_contra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblMAcerrar_contra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMAcerrar_contraMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblMAcerrar_contraMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMAcerrar_contraMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialogMAmodificar_contraLayout = new javax.swing.GroupLayout(dialogMAmodificar_contra.getContentPane());
+        dialogMAmodificar_contra.getContentPane().setLayout(dialogMAmodificar_contraLayout);
+        dialogMAmodificar_contraLayout.setHorizontalGroup(
+            dialogMAmodificar_contraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panMAcontraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogMAmodificar_contraLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(dialogMAmodificar_contraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMAcerrar_contra, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogMAmodificar_contraLayout.createSequentialGroup()
+                        .addComponent(btnMAregresar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMAguardar))))
+        );
+        dialogMAmodificar_contraLayout.setVerticalGroup(
+            dialogMAmodificar_contraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogMAmodificar_contraLayout.createSequentialGroup()
+                .addComponent(lblMAcerrar_contra)
+                .addGap(1, 1, 1)
+                .addComponent(panMAcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addGroup(dialogMAmodificar_contraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMAguardar)
+                    .addComponent(btnMAregresar)))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -170,17 +314,14 @@ public class MódulosAcceso extends javax.swing.JFrame {
             }
         });
 
-        lblMAtoken.setForeground(new java.awt.Color(204, 204, 204));
-        lblMAtoken.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMAtoken.setText("Modificar Contraseña");
-        lblMAtoken.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        lblMAtoken.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        lblMAtoken.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblMAtoken.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        lblMAtoken.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/Módulos/token.png")));
-        lblMAtoken.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMAtokenMouseClicked(evt);
+        btnMAmodificar_contra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MódulosAcceso/Módulos/reasign_password.png"))); // NOI18N
+        btnMAmodificar_contra.setText("Nueva Contraseña");
+        btnMAmodificar_contra.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMAmodificar_contra.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnMAmodificar_contra.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMAmodificar_contra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMAmodificar_contraActionPerformed(evt);
             }
         });
 
@@ -193,7 +334,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
         dkpMAfondo.setLayer(btnMAingresar_servicio, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dkpMAfondo.setLayer(btnMAingresar_producto, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dkpMAfondo.setLayer(btnMAsalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dkpMAfondo.setLayer(lblMAtoken, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dkpMAfondo.setLayer(btnMAmodificar_contra, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dkpMAfondoLayout = new javax.swing.GroupLayout(dkpMAfondo);
         dkpMAfondo.setLayout(dkpMAfondoLayout);
@@ -211,8 +352,8 @@ public class MódulosAcceso extends javax.swing.JFrame {
                             .addComponent(btnMAingresar_producto, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                             .addComponent(btnMAingresar_servicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(dkpMAfondoLayout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(lblMAtoken, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(94, 94, 94)
+                        .addComponent(btnMAmodificar_contra)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 341, Short.MAX_VALUE)
                 .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dkpMAfondoLayout.createSequentialGroup()
@@ -247,7 +388,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
                 .addGroup(dkpMAfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnMAsalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMAtoken, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnMAmodificar_contra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36))
         );
 
@@ -427,6 +568,16 @@ public class MódulosAcceso extends javax.swing.JFrame {
                 }
                 break;
             case 3:
+                ConexionMySQL cmysql = new ConexionMySQL();
+                Connection conn = (Connection) cmysql.Conectar();
+                try {
+                    PreparedStatement ps = conn.prepareStatement("INSERT INTO tbl_bitacoraAccesos(matriculaEmpleado,fecha,ingreso) VALUES ("+MAmatricula+",NOW(),false);");
+                    ps.executeUpdate();
+                }
+                catch(Exception e) {
+                    JOptionPane.showMessageDialog(null,"Problema de conexión con el servidor.");
+                    Logger.getLogger(MódulosAcceso.class.getName()).log(Level.WARNING, null, e);
+                }
                 System.exit(0);
                 break;
             case 4:
@@ -500,7 +651,7 @@ public class MódulosAcceso extends javax.swing.JFrame {
         ConexionMySQL cmysql = new ConexionMySQL();
         Connection conn = (Connection) cmysql.Conectar();
         try {
-            String senSQL = "INSERT INTO bitacoraAccesos(matriculaEmpleado,fechaIngreso) VALUES ("+MAmatricula+",NOW());";
+            String senSQL = "INSERT INTO tbl_bitacoraAccesos(matriculaEmpleado,fecha,ingreso) VALUES ("+MAmatricula+",NOW(),false);";
             PreparedStatement ps = conn.prepareStatement(senSQL);
             ps.executeUpdate();
         }
@@ -540,12 +691,6 @@ public class MódulosAcceso extends javax.swing.JFrame {
         BC.show();
     }//GEN-LAST:event_mitemMAbuscar_clienteActionPerformed
 
-    private void lblMAtokenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMAtokenMouseClicked
-        Agendar A = new Agendar();
-        this.dkpMAfondo.add(A);
-        A.show();
-    }//GEN-LAST:event_lblMAtokenMouseClicked
-
     private void mitemMAingresar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitemMAingresar_productoActionPerformed
         IngresarProducto IP = new IngresarProducto();
         this.dkpMAfondo.add(IP);
@@ -582,6 +727,102 @@ public class MódulosAcceso extends javax.swing.JFrame {
         BS.show();
     }//GEN-LAST:event_mitemMAbuscar_servicioActionPerformed
 
+    private void btnMAregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAregresarActionPerformed
+        this.dialogMAmodificar_contra.dispose();
+    }//GEN-LAST:event_btnMAregresarActionPerformed
+
+    private void btnMAguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAguardarActionPerformed
+        asignarContrasenha();
+    }//GEN-LAST:event_btnMAguardarActionPerformed
+
+    private void lblMAcerrar_contraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMAcerrar_contraMouseClicked
+        this.dialogMAmodificar_contra.dispose();
+    }//GEN-LAST:event_lblMAcerrar_contraMouseClicked
+
+    private void lblMAcerrar_contraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMAcerrar_contraMouseEntered
+        lblMAcerrar_contra.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_close_window_24px_6.png")));
+    }//GEN-LAST:event_lblMAcerrar_contraMouseEntered
+
+    private void lblMAcerrar_contraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMAcerrar_contraMouseExited
+        lblMAcerrar_contra.setIcon((Icon) new ImageIcon(getClass().getResource("../img/LogIn/icons8_close_window_24px_3.png")));
+    }//GEN-LAST:event_lblMAcerrar_contraMouseExited
+
+    private void btnMAmodificar_contraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAmodificar_contraActionPerformed
+        this.dialogMAmodificar_contra.setSize(new Dimension(480, 200));
+        this.dialogMAmodificar_contra.setShape(new RoundRectangle2D.Double(1, 1, 480, 200, 20, 12)); // arriba, costado
+        this.dialogMAmodificar_contra.setLocationRelativeTo(this);
+        this.dialogMAmodificar_contra.setResizable(false);
+        this.dialogMAmodificar_contra.setVisible(true);
+    }//GEN-LAST:event_btnMAmodificar_contraActionPerformed
+
+    private void dialogMAmodificar_contraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dialogMAmodificar_contraMousePressed
+        if(this.getExtendedState() == this.NORMAL)    {
+            x = evt.getX();
+            y = evt.getY();
+        }
+    }//GEN-LAST:event_dialogMAmodificar_contraMousePressed
+
+    private void dialogMAmodificar_contraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dialogMAmodificar_contraMouseDragged
+        if(this.getExtendedState() == this.NORMAL)    {
+            Point mueve = MouseInfo.getPointerInfo().getLocation();
+            dialogMAmodificar_contra.setLocation(mueve.x - x, mueve.y - y);
+        }
+    }//GEN-LAST:event_dialogMAmodificar_contraMouseDragged
+
+    private void psfMAnueva_contraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_psfMAnueva_contraKeyTyped
+        char d=evt.getKeyChar();
+        if(d == KeyEvent.VK_ENTER)  {
+            asignarContrasenha();
+        }
+    }//GEN-LAST:event_psfMAnueva_contraKeyTyped
+
+    private void psfMAconfirmar_contraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_psfMAconfirmar_contraKeyTyped
+        char d=evt.getKeyChar();
+        if(d == KeyEvent.VK_ENTER)  {
+            asignarContrasenha();
+        }
+    }//GEN-LAST:event_psfMAconfirmar_contraKeyTyped
+
+    public void asignarContrasenha()    {
+        if(psfMAnueva_contra.getText().isEmpty())    {
+            ALERTA.balloontip(this.psfMAnueva_contra, "Este campo no puede quedar vacío.",30,10).setVisible(true);
+        }
+        if(psfMAconfirmar_contra.getText().isEmpty())    {
+            ALERTA.balloontip(this.psfMAconfirmar_contra, "Vuelva a ingresar la contraseña.",30,10).setVisible(true);
+        }
+        if(!(psfMAconfirmar_contra.getText().isEmpty() && psfMAnueva_contra.getText().isEmpty())) {
+            if(Arrays.toString(psfMAnueva_contra.getPassword()).length() >= 8) {
+                if(Arrays.toString(psfMAnueva_contra.getPassword()).equals(Arrays.toString(psfMAconfirmar_contra.getPassword())))   {
+                    Connection con;
+                    PreparedStatement ps;
+                    try {
+                        ConexionMySQL cmysql = new ConexionMySQL();
+                        con = (Connection) cmysql.Conectar();
+                        ps = con.prepareStatement("UPDATE tbl_empleado SET contrasena = '"+ALERTA.getSHA3(new String(psfMAnueva_contra.getPassword()))+"' WHERE matricula = '"+this.MAmatricula+"';");
+                        int n=ps.executeUpdate();
+                        if (n>0)    {
+                            JOptionPane.showOptionDialog(this, "Se ha actualizado la contraseña satisfactoriamente.",
+                                    "MySQL Information", JOptionPane.INFORMATION_MESSAGE,
+                                    JOptionPane.INFORMATION_MESSAGE, null, new Object[]{" 0K "},"0K");
+                            this.dialogMAmodificar_contra.dispose();
+                        }
+                    }
+                    catch(Exception ex) {
+                        JOptionPane.showMessageDialog(null,ex);
+                    }
+                }
+                else    {
+                    JOptionPane.showMessageDialog(null,"Las contraseñas deben coincidir.","",JOptionPane.WARNING_MESSAGE);
+                }
+            }
+            else    {
+                JOptionPane.showMessageDialog(null,"La contraseña debe ser mayor a 8 caracteres.","Contraseña demasiado corta",JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -627,16 +868,24 @@ public class MódulosAcceso extends javax.swing.JFrame {
     private javax.swing.JButton btnMAbuscar_empleado;
     private javax.swing.JButton btnMAbuscar_producto;
     private javax.swing.JButton btnMAbuscar_servicio;
+    private javax.swing.JButton btnMAguardar;
     private javax.swing.JButton btnMAingresar_cliente;
     private javax.swing.JButton btnMAingresar_empleado;
     private javax.swing.JButton btnMAingresar_producto;
     private javax.swing.JButton btnMAingresar_servicio;
+    private javax.swing.JButton btnMAmodificar_contra;
+    private javax.swing.JButton btnMAregresar;
     private javax.swing.JButton btnMAsalir;
+    private javax.swing.JDialog dialogMAmodificar_contra;
     private javax.swing.JDesktopPane dkpMAfondo;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JLabel lblMAtoken;
+    private javax.swing.JLabel lblMAcerrar_contra;
     public javax.swing.JMenuBar mbarMAmenu;
     private javax.swing.JMenuItem mitemMAbuscar_cliente;
     private javax.swing.JMenuItem mitemMAbuscar_empleado;
@@ -646,5 +895,8 @@ public class MódulosAcceso extends javax.swing.JFrame {
     private javax.swing.JMenuItem mitemMAingresar_empleado;
     private javax.swing.JMenuItem mitemMAingresar_producto;
     private javax.swing.JMenuItem mitemMAingresar_servicio;
+    private javax.swing.JPanel panMAcontraseña;
+    private javax.swing.JPasswordField psfMAconfirmar_contra;
+    private javax.swing.JPasswordField psfMAnueva_contra;
     // End of variables declaration//GEN-END:variables
 }

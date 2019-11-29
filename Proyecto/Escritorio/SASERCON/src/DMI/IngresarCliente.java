@@ -49,7 +49,7 @@ static Comprobacion c = new Comprobacion();
         
         try {
             Statement st=conec.createStatement();
-            ResultSet rs = st.executeQuery("SELECT pais FROM pais");
+            ResultSet rs = st.executeQuery("SELECT pais FROM tbl_pais");
             while (rs.next())   {
                 this.cboxICpais.addItem(rs.getString("pais"));
             }
@@ -130,12 +130,6 @@ static Comprobacion c = new Comprobacion();
         jLabel61.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel61.setText("Dirección del cliente");
 
-        txtICnumero_exterior.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtICnumero_exteriorActionPerformed(evt);
-            }
-        });
-
         jLabel62.setText("Teléfono de oficina:");
 
         jLabel63.setText("Extensión:");
@@ -147,19 +141,7 @@ static Comprobacion c = new Comprobacion();
 
         jLabel66.setText("Correo representante:");
 
-        txtICnombre_del_representante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtICnombre_del_representanteActionPerformed(evt);
-            }
-        });
-
         jLabel67.setText("Correo empresarial:");
-
-        txtICcorreo_empresarial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtICcorreo_empresarialActionPerformed(evt);
-            }
-        });
 
         jLabel68.setText("RFC:");
 
@@ -474,7 +456,7 @@ static Comprobacion c = new Comprobacion();
 
         try {
             Statement st=conec.createStatement();
-            ResultSet rs = st.executeQuery("SELECT alcaldia FROM alcaldia WHERE claveCiudad = "+cboxICestado.getSelectedIndex());
+            ResultSet rs = st.executeQuery("SELECT alcaldia FROM tbl_alcaldia WHERE claveCiudad = "+cboxICestado.getSelectedIndex());
             while (rs.next())   {
                 this.cboxICalcaldia.addItem(rs.getString("alcaldia"));
             }
@@ -491,7 +473,7 @@ static Comprobacion c = new Comprobacion();
 
         try {
             Statement st=conec.createStatement();
-            ResultSet rs = st.executeQuery("SELECT estado FROM estado WHERE clavePais = "+cboxICpais.getSelectedIndex());
+            ResultSet rs = st.executeQuery("SELECT estado FROM tbl_estado WHERE clavePais = "+cboxICpais.getSelectedIndex());
             while (rs.next())   {
                 this.cboxICestado.addItem(rs.getString("estado"));
             }
@@ -584,18 +566,6 @@ static Comprobacion c = new Comprobacion();
         this.dispose();
     }//GEN-LAST:event_btnICcancelarActionPerformed
 
-    private void txtICcorreo_empresarialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtICcorreo_empresarialActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtICcorreo_empresarialActionPerformed
-
-    private void txtICnombre_del_representanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtICnombre_del_representanteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtICnombre_del_representanteActionPerformed
-
-    private void txtICnumero_exteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtICnumero_exteriorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtICnumero_exteriorActionPerformed
-
     public void ingresar()  {
         
         ConexionMySQL cmysql = new ConexionMySQL();
@@ -627,14 +597,14 @@ static Comprobacion c = new Comprobacion();
             ps2.setInt(6,1);
             ps2.setInt(7,ICalcaldia);
             
-            PreparedStatement ps3 = conec.prepareStatement("INSERT INTO direccionCliente VALUES((select max(clave) from direccion),(select max(folio) from cliente))");
+            PreparedStatement ps3 = conec.prepareStatement("INSERT INTO direccionCliente VALUES((select max(clave) FROM tbl_direccion),(select max(folio) FROM tbl_cliente))");
             PreparedStatement ps4 = conec.prepareStatement("UPDATE cliente SET contrasena = (select max(folio)+1000) WHERE folio=(select max(folio)) AND RFC='"+ICrfc+"'");
             int m = ps2.executeUpdate();
             int n = ps.executeUpdate();
             int o = ps3.executeUpdate();
             int p = ps4.executeUpdate();
             Statement st = conec.createStatement();
-            ResultSet rs = st.executeQuery("SELECT MAX(matricula) FROM EMPLEADO");
+            ResultSet rs = st.executeQuery("SELECT MAX(matricula) FROM tbl_EMPLEADO");
             while(rs.next()) {
                 ICmatricula = rs.getInt("MAX(matricula)");
             }

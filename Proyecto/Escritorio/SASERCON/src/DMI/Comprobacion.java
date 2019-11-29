@@ -16,6 +16,8 @@ import com.google.crypto.tink.JsonKeysetReader;
 import com.google.crypto.tink.JsonKeysetWriter;
 import com.google.crypto.tink.KeysetHandle;
 import com.google.crypto.tink.aead.AeadKeyTemplates;
+import java.awt.Color;
+import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
@@ -26,6 +28,10 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import net.java.balloontip.BalloonTip;
+import net.java.balloontip.styles.ModernBalloonStyle;
 
 /**
  *
@@ -78,7 +84,7 @@ private final String keysetFilename = "my_keyset.json";
     }
 
     public boolean valcurp (String a)   {
-        return a.matches("[^0-9]{4}[^a-zA-Z]{6}[^0-9]{6}[^a-zA-Z]{2}")&&vacio(a)==false;
+        return a.matches("[^0-9]{4}[^a-zA-Z]{6}[^0-9]{6}[A-Z0-9]{2}")&&vacio(a)==false;
     }
     
     public boolean valrfc (String a)  {
@@ -211,5 +217,22 @@ private final String keysetFilename = "my_keyset.json";
         catch(Exception e)  {
             return "e";
         }
+    }
+    
+    public BalloonTip balloontip(Component com, String tx, int gp, int pest)    {
+        BalloonTip btLvalida = new BalloonTip(
+            (JComponent) com,
+            new JLabel(tx),
+            new ModernBalloonStyle(2/*Contorno*/, 1/*Padding*/,
+                new Color(146, 150, 153),   //Color1
+                new Color(191, 192, 194),   //Color2
+                new Color(178, 179, 179)),  //Contorno
+            BalloonTip.Orientation.LEFT_BELOW,
+            BalloonTip.AttachLocation.SOUTH,
+            gp, // Espacio entre inicio del globo y la pestaña
+            pest, // Tamaño de la pestaña
+            true
+        );
+        return btLvalida;
     }
 }
