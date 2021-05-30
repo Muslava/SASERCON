@@ -1,0 +1,10 @@
+Azul
+0x5897B0
+Rojo
+0xBD1922
+Gris
+0x757575
+Gris claro
+0xB4B4B4
+Oro
+0xF7D100

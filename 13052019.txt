@@ -1,8 +1,0 @@
-1.2 Paquete de programación
-Agregar diseño web y separarlo con diseño de escritorio.
-
-Apartado 3 (cambios).
-
-Montar en MDI ?
-
-Se realizará el mapeo para red local

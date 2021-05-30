@@ -1,0 +1,14 @@
+CLIENTES:
+Cfolio 
+CdireccionE
+CCRNombre
+CCRCorreo 
+CRFC
+CCECorreo
+Cdireccion 
+Cnombre 
+CdireccionF
+CExtencion 
+Ctelefono_oficina 
+CStatus
+Cclient

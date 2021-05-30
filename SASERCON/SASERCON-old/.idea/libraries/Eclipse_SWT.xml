@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Eclipse SWT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/Eclipse SWT/src.zip!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Eclipse SWT/swt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Eclipse SWT/swt-debug.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

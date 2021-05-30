@@ -1,0 +1,9 @@
+				Faltantes:
+
+Ingresar clientes: apellidos del cliente y representante, detallar dirección de entrega y el otro.
+Buscar cilente: es Nombre del representante
+Ingresar empleado: puesto (cbox), apellidos de contacto.
+Buscar empleado: quitar dirección
+Buscar servicio: cambiar el text input de fecha de realización por un ingresar por calendario -> [ / / ] ícono
+Ingresar servicio: apellidos del cliente, quitar correo contacto y correo empresarial, editar el campo dirección, nombre del cliente por cbox, fecha del servicio -> fecha de entrada, agregar fecha agendada y hora agendada
+Ingresar producto: peso

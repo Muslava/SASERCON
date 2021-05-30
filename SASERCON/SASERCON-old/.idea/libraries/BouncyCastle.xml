@@ -1,0 +1,50 @@
+<component name="libraryTable">
+  <library name="BouncyCastle">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bctls-jdk15to18-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcmail-jdk14-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcmail-jdk13-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcpg-jdk15on-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/jce-ext-jdk12-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcprov-jdk14-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bctest-jdk15to18-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/jce-ext-jdk13-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcprov-ext-jdk15on-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcprov-debug-jdk15to18-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcpkix-jdk14-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcprov-jdk13-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcpkix-jdk15to18-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcprov-debug-jdk14-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcprov-ext-jdk15to18-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcprov-jdk12-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcprov-ext-jdk12-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcprov-jdk15to18-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcprov-ext-jdk13-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcprov-ext-debug-jdk14-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcprov-ext-jdk14-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcprov-debug-jdk15on-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bctls-jdk15on-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcmail-jdk15to18-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcpkix-jdk15on-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcpg-jdk15to18-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcpkix-jdk13-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcprov-jdk15on-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcprov-ext-debug-jdk15to18-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcmail-jdk15on-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bctest-jdk14-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcpg-jdk14-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bctest-jdk15on-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/jce-jdk13-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bctest-jdk13-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcpg-jdk13-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcprov-ext-debug-jdk15on-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/jce-jdk12-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcpkix-jdk12-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bcpg-jdk12-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bctest-jdk12-163.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/BouncyCastle/bctls-jdk14-163.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

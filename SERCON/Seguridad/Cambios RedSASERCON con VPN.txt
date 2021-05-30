@@ -1,0 +1,82 @@
+enable
+config t
+hostname R3
+banner motd @ ACCESO RESTRINGIDO @
+// Levantar nodos
+interface fa0/0
+ description conexion R3
+ ip address 130.150.1.69 255.255.0.0
+ duplex auto
+ speed auto
+ no shutdown
+exit
+interface fa0/1
+ description BD
+ ip address 192.168.1.5 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+exit
+// Levantar AAA
+router rip
+ version 2
+ network 130.150.0.0
+ network 192.168.1.0
+exit
+enable secret 12345678
+username aldo secret 123456
+username tony secret 123456
+username can secret 123456
+tacacs-server host 192.168.1.253
+tacacs-server key 12345678
+aaa new-model
+aaa authentication login default group tacacs+ local
+aaa accounting exec default start-stop group TACACS+
+line con 0
+login authentication default
+exit
+do wr
+exit
+// Levantar VPN-GRE
+interface tunnel 0
+ip address 192.168.2.2 255.255.255.0
+tunnel source fa0/0
+tunnel destination 130.150.1.5
+tunnel mode gre ip
+do wr
+router ospf 1
+network 192.168.0.0 0.0.0.255 area 0
+network 192.168.2.0 0.0.0.3 area 0
+network 192.168.1.0 0.0.0.255 area 0
+do wr
+
+ip route 192.168.0.0 255.255.255.0 192.168.2.1
+
+		R3
+// Levantar VPN-GRE
+interface tunnel 0
+ip address 192.168.2.1 255.255.255.0
+tunnel source fa0/0
+tunnel destination 130.150.1.69
+tunnel mode gre ip
+do wr
+router ospf 1
+network 192.168.0.0 0.0.0.255 area 0
+network 192.168.1.0 0.0.0.255 area 0
+network 192.168.2.0 0.0.0.3 area 0
+do wr
+
+ip route 192.168.1.0 255.255.255.0 192.168.2.2
+
+// Cambio de IP del servidor
+// DHCP
+ip dhcp pool LAN-SERCON
+no dns-server 130.150.1.253
+dns-server 192.168.1.253
+exit
+do wr
+// AAA Server
+no tacacs-server host 130.150.1.253
+tacacs-server host 192.168.1.253
+do wr
+

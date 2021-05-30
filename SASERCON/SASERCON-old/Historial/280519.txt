@@ -1,0 +1,18 @@
+			Faltantes:
+
+Ingresar cliente: campos de las direcciones, quitar correo empresarial
+Empleado: PUESTO
+Agendar: quitar hora de entrada y salida, fecha de salida cambiarle el calendario por un formato de fecha, agregar "Servicio a realizar" como cbox.
+Servicio: quitar apellidos de "nombre del cliente", quitar duración del servicio (ya está en agendar), mover [fecha del servicio, fecha de entrada y salida] a agendar, quitar las horas de entrada y salida, quitar técnicos disponibles, quitar la dirección, folio de pago y forma de pago.
+Producto: quitar empleado, quitar material, quitar condiciones de pago, mover porcentaje de anticipo a agendar, **porcentaje de anticipo, en lugar de origen quitar país y solo dejar ciudad, foto, impuesto, costo, peso, diferenciar producto con embalaje (revisar modelo lógico de BD).
+
+
+*Observación.
+ Al agregar cliente, para la dirección de entrega pueden ser agregados más de uno mediante una ventana emergente (formato de ingreso) y se visualizarán en el formato de "ingresar cliente" en un cbox.
+
+ Se quita módulo "carrito", "Cotizar Producto", "Asignar Contraseña" y "Modificar Contraseña" ya que son especialmente para clientes en el sitio web.
+
+Módulos faltantes: dirección, actualizar existencias en escritorio.
+
+*Observación ERS:
+El sistema de uso para clientes y para empleados técnicos es el sistema WEB de SASERCON. Para directivos y secretarias es el sistema de ESCRITORIO de SASERCON. El móvil será especializado para técnicos.

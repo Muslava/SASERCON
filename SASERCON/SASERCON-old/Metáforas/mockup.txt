@@ -1,0 +1,47 @@
+1.login//aldo
+2.-menu//david
+3.-ingresar clinetes//toño
+4.-modificar cliente//toño
+5.-buscar cliente//toño
+6.-ingresar empleado//david
+7.-buscar empleado//david
+8.-modificar empleado //david
+9.-asignar contraseña//aldo 
+10.-modificar contraseña//aldo
+11.-ingresar respuestas//aldo 
+12.-agendar clientes//toño 
+13.-agendar servicios//can
+14.-agendar servicio en claendario//can
+15.-agendar(caracteristicas de servicio)//can
+16.-buscar producto//aldo 
+17.-buscar servicio//can
+18.-cotizar refaccion//toño 
+19.-carrito//david
+20.-ingresar servicio//can
+21.-modificar servicio//can 
+22.-ingresar producto//aldo
+23.-modificar producto//aldo
+24.-mensaje de alerta//aldo
+25.-cotizar producto/refaccion/aldo
+**
+**
+mock-ups sin revicion 
+26.-main menu 
+27.-login 
+28.-ingresar cliente 
+29.-modificar cliente 
+30.-ingresar empleado 
+31.-buscar cliente 
+32.- buscar empleado 
+33.-modificar empleado 
+34.- asignar contraseña
+35.-modificar contraseña 
+36.-agendar clientes 
+37.-ingresar respuestas 
+38.-agendar servicio
+39.-calendario agendar
+40.-buscar producto
+41.-generar orden de trabajo
+42.-buscar servicio 
+43.-formulario para ingresar producto 
+44.-ingresar servicio 

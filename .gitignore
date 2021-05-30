@@ -1,5 +1,7 @@
-/RFID
 SASERCON DRIVE.lnk
-/Proyecto/Escritorio/SASERCON/build/classes
-/Proyecto/Escritorio/SASERCON/nbproject
+/SASERCON-Ant/sasercon-escritorio/build/classes
+/SASERCON-Ant/sasercon-escritorio/nbproject
+/SASERCON-old/sasercon-escritorio/build/classes
+/SASERCON-old/sasercon-escritorio/nbproject
 *.class
+/gitPersonal
